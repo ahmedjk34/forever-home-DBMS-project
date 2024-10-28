@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+.main-button-style {
+    -fx-background-color: #495c46;
+    -fx-border-color: white;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-family: "Century";
+    -fx-font-size: 16px; /* Add px for size units */
+    -fx-font-style: italic;
+    -fx-color : #000;
+}
