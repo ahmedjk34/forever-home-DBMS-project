@@ -4,6 +4,7 @@
  */
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Server.Adopter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -11,9 +12,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane; 
 
@@ -34,51 +38,83 @@ public class AuthenticationController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void handleLogin() throws IOException {
-        String ssn = ssnField.getText();
-        String password = passwordField.getText();
+@FXML
+private void handleLogin() throws IOException {
+    String ssn = ssnField.getText();
+    String password = passwordField.getText();
 
-        if (ssn.isEmpty() || password.isEmpty()) {
-            showAlert("Login Error", "Please enter both SSN and password.");
-            return;
-        }
-
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String dbUser = "postgres";
-        String dbPassword = "ahm@212005";
-
-        try (Connection connection = DriverManager.getConnection(url, dbUser, dbPassword)) {
-            String query = "SELECT p.SSN, a.SSN AS AdopterSSN, s.SSN AS StaffSSN "
-                         + "FROM Person p "
-                         + "LEFT JOIN Adopter a ON p.SSN = a.SSN "
-                         + "LEFT JOIN Staff s ON p.SSN = s.SSN "
-                         + "WHERE p.SSN = ? AND p.Password = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, ssn);
-            preparedStatement.setString(2, password);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                if (resultSet.getString("AdopterSSN") != null) {
-                    // Load the adopter view if user is an adopter
-                    App.setRoot("AdopterDashboard"); // Adjust to your Adopter FXML file name
-                } else if (resultSet.getString("StaffSSN") != null) {
-                    // Load the staff view if user is staff
-                    App.setRoot("StaffDashboard"); // Adjust to your Staff FXML file name
-                } else {
-                    // Handle case if user is neither in Adopter nor Staff (unlikely if data is correct)
-                    showAlert("Login Error", "Invalid user role.");
-                }
-            } else {
-                showAlert("Login Error", "Invalid SSN or password.");
-            }
-        } catch (SQLException e) {
-            showAlert("Database Error", "Failed to connect to the database: " + e.getMessage());
-        }
+    if (ssn.isEmpty() || password.isEmpty()) {
+        showAlert("Login Error", "Please enter both SSN and password.");
+        return;
     }
+
+    String url = "jdbc:postgresql://localhost:5432/postgres";
+    String dbUser = "postgres";
+    String dbPassword = "ahm@212005";
+
+    try (Connection connection = DriverManager.getConnection(url, dbUser, dbPassword)) {
+       String query = "SELECT p.SSN, p.Password, p.FName, p.LName, p.Address, p.Social_status, p.Gender, "
+             + "p.Email, p.Phone_Number, p.Date_Of_Birth, "
+             + "a.Occupation, a.Number_of_Pets_Owned, a.Number_of_Children, a.Yearly_Income, "
+             + "s.Hire_Date, s.Expertise, s.Role, s.Salary, "
+             + "CASE WHEN a.SSN IS NOT NULL THEN 'Adopter' "
+             + "     WHEN s.SSN IS NOT NULL THEN 'Staff' "
+             + "     ELSE 'Unknown' END AS RoleType "
+             + "FROM Person p "
+             + "LEFT JOIN Adopter a ON p.SSN = a.SSN "
+             + "LEFT JOIN Staff s ON p.SSN = s.SSN "
+             + "WHERE p.SSN = ? AND p.Password = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, ssn);
+        preparedStatement.setString(2, password);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            if (resultSet.getString("Hire_Date") == null) { // This implies user is an Adopter
+                // Extract all necessary data from ResultSet to create an Adopter object
+                String retrievedSSN = resultSet.getString("SSN");
+                String retrievedPassword = resultSet.getString("Password");
+                String retrievedGender = resultSet.getString("Gender");
+                String gender = resultSet.getString("Gender");
+                String fName = resultSet.getString("FName");
+                String lName = resultSet.getString("LName");
+                String address = resultSet.getString("Address");
+                String socialStatus = resultSet.getString("Social_status");
+                String email = resultSet.getString("Email");
+                String phoneNumber = resultSet.getString("Phone_Number");
+                LocalDate dateOfBirth = resultSet.getDate("Date_Of_Birth").toLocalDate();
+                String occupation = resultSet.getString("Occupation");
+                int numberOfPetsOwned = resultSet.getInt("Number_of_Pets_Owned");
+                int numberOfChildren = resultSet.getInt("Number_of_Children");
+                double yearlyIncome = resultSet.getDouble("Yearly_Income");
+
+                // Create Adopter object with all the retrieved data
+                Adopter loggedAdopter = new Adopter(retrievedSSN, retrievedPassword, retrievedGender, fName, lName, address, socialStatus,
+                                                    email, phoneNumber, dateOfBirth, occupation, numberOfPetsOwned, 
+                                                    numberOfChildren, yearlyIncome);
+
+                // Load Adopter Dashboard and pass Adopter data
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdopterDashboard.fxml"));
+                Parent root = loader.load();
+                AdopterDashboardController controller = loader.getController();
+                controller.setAdopter(loggedAdopter); // Pass Adopter to the controller
+                //App.setRoot(root); // Adjust to use the loaded root if needed
+                App.setRoot("AdopterDashboard");
+            } else {
+                            System.out.println(resultSet.getString("Hire_Date"));
+
+                // Load Staff Dashboard for staff user
+                App.setRoot("StaffDashboard");
+            }
+        } else {
+            showAlert("Login Error", "Invalid SSN or password.");
+        }
+    } catch (SQLException e) {
+        showAlert("Database Error", "Failed to connect to the database: " + e.getMessage());
+    }
+}
 
     // Method to show alerts using JOptionPane
     private void showAlert(String title, String message) {
