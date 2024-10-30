@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
    <children>
       <BorderPane layoutX="-1.0" layoutY="-4.0" prefHeight="56.0" prefWidth="700.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
-      <BorderPane layoutY="50.0" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #72946a;">
+      <BorderPane layoutY="50.0" maxHeight="550.0" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #72946a;">
          <right>
             <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
                <children>
@@ -65,7 +65,7 @@
          <left>
             <AnchorPane prefHeight="550.0" prefWidth="484.0" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane layoutX="10.0" layoutY="7.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="28.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN:" BorderPane.alignment="CENTER">
                            <font>
@@ -77,7 +77,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="42.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="66.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Full Name:" BorderPane.alignment="CENTER">
                            <font>
@@ -89,7 +89,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="77.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="104.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Gender:" BorderPane.alignment="CENTER">
                            <font>
@@ -101,7 +101,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="112.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="7.0" layoutY="142.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Phone Number:" BorderPane.alignment="CENTER">
                            <font>
@@ -113,7 +113,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="147.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="6.0" layoutY="218.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Email:" BorderPane.alignment="CENTER">
                            <font>
@@ -125,7 +125,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="252.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="293.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Social Status:" BorderPane.alignment="CENTER">
                            <font>
@@ -137,7 +137,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="287.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="7.0" layoutY="331.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Address:" BorderPane.alignment="CENTER">
                            <font>
@@ -149,7 +149,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="322.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="369.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Occupation:" BorderPane.alignment="CENTER">
                            <font>
@@ -161,7 +161,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="357.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="407.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Pets:" BorderPane.alignment="CENTER">
                            <font>
@@ -173,7 +173,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="392.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="445.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Children:" BorderPane.alignment="CENTER">
                            <font>
@@ -185,7 +185,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="427.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="483.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Yearly Income:" BorderPane.alignment="CENTER">
                            <font>
@@ -197,7 +197,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="182.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="180.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date of Birth:" BorderPane.alignment="CENTER">
                            <font>
@@ -209,7 +209,7 @@
                         <Label text="Label" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="217.0" prefHeight="35.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="256.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" BorderPane.alignment="CENTER">
                            <font>
