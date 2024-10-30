@@ -5,11 +5,13 @@
 package com.mycompany.foreverhomedbmsproject.Server;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Person {
 
     private String ssn;
     private String password;
+    private String gender;
     private String fName;
     private String lName;
     private String address;
@@ -19,10 +21,11 @@ public class Person {
     private LocalDate dateOfBirth;
 
     // Constructor
-    public Person(String ssn, String password, String fName, String lName, String address,
+    public Person(String ssn, String password, String gender,String fName, String lName, String address,
                   String socialStatus, String email, String phoneNumber, LocalDate dateOfBirth) {
         this.ssn = ssn;
         this.password = password;
+        this.gender = gender;
         this.fName = fName;
         this.lName = lName;
         this.address = address;
@@ -39,6 +42,14 @@ public class Person {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
+    }
+    
+     public String getGender() {
+        return ssn;
+    }
+
+    public void setGender(String gender) {
+        this.ssn = gender;
     }
 
     public String getPassword() {
@@ -108,6 +119,10 @@ public class Person {
     //getting the full name
     public String getFullName(){
         return fName + " " + lName;
+    }
+    public int getAge() {
+        LocalDate currentDate = LocalDate.now();
+        return Period.between(dateOfBirth, currentDate).getYears();
     }
     
     // toString() Method

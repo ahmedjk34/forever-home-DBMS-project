@@ -14,10 +14,10 @@ public class Adopter extends Person {
     private double yearlyIncome;
 
     // Constructor
-    public Adopter(String ssn, String password, String fName, String lName, String address,
+    public Adopter(String ssn, String password, String gender,  String fName, String lName, String address,
                    String socialStatus, String email, String phoneNumber, LocalDate dateOfBirth,
                    String occupation, int numberOfPetsOwned, int numberOfChildren, double yearlyIncome) {
-        super(ssn, password, fName, lName, address, socialStatus, email, phoneNumber, dateOfBirth);
+        super(ssn, password, gender , fName, lName, address, socialStatus, email, phoneNumber, dateOfBirth);
         this.occupation = occupation;
         this.numberOfPetsOwned = numberOfPetsOwned;
         this.numberOfChildren = numberOfChildren;
