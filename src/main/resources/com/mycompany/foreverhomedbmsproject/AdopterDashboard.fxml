@@ -1,10 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
    <children>
-      <Label layoutX="331.0" layoutY="192.0" text="Adopter" />
+      <BorderPane layoutX="-1.0" layoutY="-4.0" prefHeight="56.0" prefWidth="700.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
+      <BorderPane layoutY="50.0" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #72946a;">
+         <right>
+            <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Button alignment="CENTER" layoutX="25.0" layoutY="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/application.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button alignment="CENTER" layoutX="25.0" layoutY="96.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/animal.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Contact Us">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/contact-us.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="25.0" layoutY="241.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/feedback.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="24.0" layoutY="315.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/medical-record.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="550.0" prefWidth="484.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane layoutX="10.0" layoutY="7.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="42.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Full Name:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="77.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Gender:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="112.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Phone Number:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="147.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Email:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="252.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Social Status:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="287.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Address:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="322.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Occupation:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="357.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Pets:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="392.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Children:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="427.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Yearly Income:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="182.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date of Birth:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="217.0" prefHeight="35.0" prefWidth="470.0">
+                     <left>
+                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <center>
+                        <Label text="Label" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </left></BorderPane>
    </children>
 </AnchorPane>
