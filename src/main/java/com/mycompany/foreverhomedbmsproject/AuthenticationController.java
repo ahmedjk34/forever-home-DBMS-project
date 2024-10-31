@@ -17,8 +17,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane; 
 
 /**
@@ -91,17 +93,19 @@ private void handleLogin() throws IOException {
                 double yearlyIncome = resultSet.getDouble("Yearly_Income");
 
                 // Create Adopter object with all the retrieved data
+   // Create Adopter object with the retrieved data
                 Adopter loggedAdopter = new Adopter(retrievedSSN, retrievedPassword, retrievedGender, fName, lName, address, socialStatus,
-                                                    email, phoneNumber, dateOfBirth, occupation, numberOfPetsOwned, 
-                                                    numberOfChildren, yearlyIncome);
+                                            email, phoneNumber, dateOfBirth, occupation, numberOfPetsOwned, 
+                                            numberOfChildren, yearlyIncome);
 
-                // Load Adopter Dashboard and pass Adopter data
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AdopterDashboard.fxml"));
                 Parent root = loader.load();
                 AdopterDashboardController controller = loader.getController();
-                controller.setAdopter(loggedAdopter); // Pass Adopter to the controller
-                //App.setRoot(root); // Adjust to use the loaded root if needed
-                App.setRoot("AdopterDashboard");
+                controller.setAdopter(loggedAdopter); 
+
+                Stage stage = (Stage) ((Node) ssnField).getScene().getWindow();
+                stage.getScene().setRoot(root);
+
             } else {
                             System.out.println(resultSet.getString("Hire_Date"));
 
