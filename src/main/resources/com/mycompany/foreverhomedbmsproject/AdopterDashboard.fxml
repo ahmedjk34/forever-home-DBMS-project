@@ -8,64 +8,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
    <children>
-      <BorderPane layoutX="-1.0" layoutY="-4.0" prefHeight="56.0" prefWidth="700.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
-      <BorderPane layoutY="50.0" maxHeight="550.0" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #72946a;">
-         <right>
-            <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
-               <children>
-                  <Button alignment="CENTER" layoutX="25.0" layoutY="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../assets/application.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button alignment="CENTER" layoutX="25.0" layoutY="96.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../assets/animal.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Contact Us">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../assets/contact-us.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" layoutX="25.0" layoutY="241.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../assets/feedback.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" layoutX="24.0" layoutY="315.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
-                     <graphic>
-                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../assets/medical-record.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </right>
+      <BorderPane layoutY="-4.0" maxHeight="60.0" prefHeight="55.0" prefWidth="800.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
+      <BorderPane fx:id="mainBorderPane" layoutY="50.0" maxHeight="600.0" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #72946a;">
          <left>
-            <AnchorPane prefHeight="550.0" prefWidth="484.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="contentPane" prefHeight="550.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                <children>
-                  <BorderPane layoutX="6.0" layoutY="27.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="6.0" layoutY="53.0" prefHeight="38.0" prefWidth="470.0">
                      <center>
                         <Label fx:id="ssnLabel" prefHeight="18.0" prefWidth="474.0" text="Label" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
@@ -80,7 +30,7 @@
                         </Label>
                      </left>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="66.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="92.0" prefHeight="38.0" prefWidth="470.0">
                      <center>
                         <Label fx:id="fullNameLabel" prefWidth="477.0" text="Label" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
@@ -95,7 +45,7 @@
                         </Label>
                      </left>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="104.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="130.0" prefHeight="38.0" prefWidth="470.0">
                      <center>
                         <Label fx:id="genderLabel" prefWidth="477.0" text="Label" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
@@ -110,7 +60,7 @@
                         </Label>
                      </left>
                   </BorderPane>
-                  <BorderPane layoutX="7.0" layoutY="142.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="7.0" layoutY="168.0" prefHeight="38.0" prefWidth="470.0">
                      <center>
                         <Label fx:id="phoneNumberLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
                            <font>
@@ -125,7 +75,7 @@
                         </Label>
                      </left>
                   </BorderPane>
-                  <BorderPane layoutX="6.0" layoutY="218.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="6.0" layoutY="244.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Email:" BorderPane.alignment="CENTER">
                            <font>
@@ -140,7 +90,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="293.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="319.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Social Status:" BorderPane.alignment="CENTER">
                            <font>
@@ -155,7 +105,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="7.0" layoutY="331.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="7.0" layoutY="357.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Address:" BorderPane.alignment="CENTER">
                            <font>
@@ -170,7 +120,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="369.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="395.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Occupation:" BorderPane.alignment="CENTER">
                            <font>
@@ -186,7 +136,7 @@
                         </Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="407.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="433.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Pets:" BorderPane.alignment="CENTER">
                            <font>
@@ -201,7 +151,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="445.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="471.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Children:" BorderPane.alignment="CENTER">
                            <font>
@@ -216,7 +166,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="483.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="509.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Yearly Income:" BorderPane.alignment="CENTER">
                            <font>
@@ -231,7 +181,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="180.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="206.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date of Birth:" BorderPane.alignment="CENTER">
                            <font>
@@ -246,7 +196,7 @@
                            </font></Label>
                      </center>
                   </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="256.0" prefHeight="38.0" prefWidth="470.0">
+                  <BorderPane layoutX="8.0" layoutY="282.0" prefHeight="38.0" prefWidth="470.0">
                      <left>
                         <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" BorderPane.alignment="CENTER">
                            <font>
@@ -263,6 +213,58 @@
                   </BorderPane>
                </children>
             </AnchorPane>
-         </left></BorderPane>
+         </left>
+         <center>
+            <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Button alignment="CENTER" layoutX="25.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleApplicationsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
+    <graphic>
+        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/application.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+<Button alignment="CENTER" layoutX="25.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleAnimalsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
+    <graphic>
+        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/animal.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+<Button alignment="CENTER" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleContactUsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Contact Us">
+    <graphic>
+        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/contact-us.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+<Button alignment="CENTER" layoutX="25.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleFeedbackAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
+    <graphic>
+        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/feedback.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+<Button alignment="CENTER" layoutX="24.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleMedicalRecordsAction" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
+    <graphic>
+        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/medical-record.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+
+               </children>
+            </AnchorPane>
+         </center></BorderPane>
    </children>
 </AnchorPane>

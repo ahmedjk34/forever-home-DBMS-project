@@ -5,52 +5,35 @@
 package com.mycompany.foreverhomedbmsproject;
 
 import com.mycompany.foreverhomedbmsproject.Server.Adopter;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 public class AdopterDashboardController implements Initializable {
 
     private Adopter adopter;
+    
+    @FXML
+    private AnchorPane contentPane ; // Reference to the inner AnchorPane for content
 
     @FXML
-    private Label ssnLabel;
-    @FXML
-    private Label fullNameLabel;
-    @FXML
-    private Label genderLabel;
-    @FXML
-    private Label phoneNumberLabel;
-    @FXML
-    private Label emailLabel;
-    @FXML
-    private Label socialStatusLabel;
-    @FXML
-    private Label addressLabel;
-    @FXML
-    private Label occupationLabel;
-    @FXML
-    private Label numberOfPetsLabel;
-    @FXML
-    private Label numberOfChildrenLabel;
-    @FXML
-    private Label yearlyIncomeLabel;
-    @FXML
-    private Label dobLabel;
-    @FXML
-    private Label ageLabel;
+    private Label ssnLabel, fullNameLabel, genderLabel, phoneNumberLabel, emailLabel, socialStatusLabel, addressLabel, occupationLabel, numberOfPetsLabel, numberOfChildrenLabel, yearlyIncomeLabel, dobLabel, ageLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Leave empty if you plan to populate fields after setting adopter
+        // Initialization code here
     }    
 
     public void setAdopter(Adopter adopter) {
         this.adopter = adopter;
         updateFields();
+        
     }
 
     private void updateFields() {
@@ -67,5 +50,40 @@ public class AdopterDashboardController implements Initializable {
         yearlyIncomeLabel.setText(String.format("$%.2f", adopter.getYearlyIncome()));
         dobLabel.setText(adopter.getDateOfBirth().toString());
         ageLabel.setText(String.valueOf(adopter.getAge())); 
+    }
+
+    // Button action methods
+    @FXML
+    private void handleApplicationsAction() {
+        // Code to handle Applications button
+        System.out.println("Applications button clicked");
+    }
+
+    @FXML
+private void handleAnimalsAction() throws IOException {
+    // Load the new content
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalExplorer.fxml"));
+    AnchorPane animalPane = loader.load();
+    
+    // Clear the existing content and set the new one
+    contentPane.getChildren().setAll(animalPane);
+}
+
+    @FXML
+    private void handleContactUsAction() {
+        // Code to handle Contact Us button
+        System.out.println("Contact Us button clicked");
+    }
+
+    @FXML
+    private void handleFeedbackAction() {
+        // Code to handle Feedback button
+        System.out.println("Feedback button clicked");
+    }
+
+    @FXML
+    private void handleMedicalRecordsAction() {
+        // Code to handle Medical Records button
+        System.out.println("Medical Records button clicked");
     }
 }
