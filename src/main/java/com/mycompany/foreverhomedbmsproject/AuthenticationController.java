@@ -102,8 +102,9 @@ private void handleLogin() throws IOException {
                 Parent root = loader.load();
                 AdopterDashboardController controller = loader.getController();
                 controller.setAdopter(loggedAdopter); 
-
                 Stage stage = (Stage) ((Node) ssnField).getScene().getWindow();
+                stage.setWidth(800);
+                stage.setHeight(650);
                 stage.getScene().setRoot(root);
 
             } else {
@@ -124,4 +125,5 @@ private void handleLogin() throws IOException {
     private void showAlert(String title, String message) {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
     }
+
 }
