@@ -22,8 +22,26 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+static void setRoot(String fxml) throws IOException {
+    System.out.println("Changing root to: " + fxml); // This should always print
+    Parent newRoot = loadFXML(fxml);
+    scene.setRoot(newRoot);
+    
+    // Adjust the window size based on the loaded FXML
+    if (!(fxml.equals("Authentication"))) {
+        System.out.println("Switching to larger size");
+        setStageSize(800, 650); // Set to larger size for Adopter Dashboard
+    } else {
+        System.out.println("Switching to default size");
+        setStageSize(700, 600); // Default size for Authentication
+    }
+}
+
+
+    private static void setStageSize(double width, double height) {
+        Stage stage = (Stage) scene.getWindow();
+        stage.setWidth(width);
+        stage.setHeight(height);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
@@ -34,5 +52,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
