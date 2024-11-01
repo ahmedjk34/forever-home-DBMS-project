@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="550.0" maxWidth="550.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoAdopterController">
-         <AnchorPane prefHeight="550.0" prefWidth="550.0" style="-fx-background-color: #72946a;" BorderPane.alignment="CENTER">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="550.0" prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoAdopterController">
+         <AnchorPane prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #72946a;" BorderPane.alignment="CENTER">
                <children>
                   <BorderPane layoutX="6.0" layoutY="53.0" prefHeight="38.0" prefWidth="470.0">
                      <center>
