@@ -61,7 +61,7 @@
         </ImageView>
     </graphic>
 </Button>
-                  <Button alignment="CENTER" layoutX="35.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleContactUsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Main Info">
+                  <Button alignment="CENTER" layoutX="35.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleMainInfoAdopterAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Main Info">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
