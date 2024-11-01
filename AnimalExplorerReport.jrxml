@@ -1,0 +1,461 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="AnimalExplorerReport" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a86e06a3-48b5-4fa8-8a32-a13d371d8bc4">
+	<property name="template.engine" value="tabular_template"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="YW5pbWFsIEFTICwxNDUsNzgsYmFhYTcyMGUtZGE1MS00ZGRkLTlhOTUtMDNmOTY1OGY4MzNmO2Fk&#xa;b3B0cyBBUyAsMzMzLDkzLDJjOGJjYWQxLWQ3MWMtNDk2My1hZDI0LWVlYjc2Y2UxMjVhNTs="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<style name="Title" fontName="Arial" fontSize="26.0" bold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18.0"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12.0" bold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12.0"/>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Transparent" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Transparent" forecolor="#B89F7D" backcolor="#70A9C6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Transparent" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="tableDataset" uuid="f2bd96f9-7c80-4287-ba97-710fd0123e1b">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+		<query language="SQL"><![CDATA[SELECT adopts.ssn,
+	adopts.animal_id,
+	adopts.application_date,
+	adopts.application_status,
+	animal.name,
+	animal.date_of_birth,
+	animal.behavior_description,
+	animal.size,
+	animal.breed,
+	animal.gender
+FROM adopts
+	INNER JOIN animal ON 
+	 adopts.animal_id = animal.animal_id]]></query>
+		<field name="animal_id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="animal_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="animal_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="adopts"/>
+		</field>
+		<field name="name" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="name"/>
+			<property name="com.jaspersoft.studio.field.label" value="name"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="animal"/>
+		</field>
+		<field name="size" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="size"/>
+			<property name="com.jaspersoft.studio.field.label" value="size"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="animal"/>
+		</field>
+		<field name="breed" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="breed"/>
+			<property name="com.jaspersoft.studio.field.label" value="breed"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="animal"/>
+		</field>
+		<field name="gender" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="gender"/>
+			<property name="com.jaspersoft.studio.field.label" value="gender"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="animal"/>
+		</field>
+		<field name="behavior_description" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="behavior_description"/>
+			<property name="com.jaspersoft.studio.field.label" value="behavior_description"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="animal"/>
+		</field>
+		<field name="date_of_birth" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.name" value="date_of_birth"/>
+			<property name="com.jaspersoft.studio.field.label" value="date_of_birth"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="animal"/>
+		</field>
+		<field name="ssn" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="ssn"/>
+			<property name="com.jaspersoft.studio.field.label" value="ssn"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="adopts"/>
+		</field>
+		<field name="application_date" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.name" value="application_date"/>
+			<property name="com.jaspersoft.studio.field.label" value="application_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="adopts"/>
+		</field>
+		<field name="application_status" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="application_status"/>
+			<property name="com.jaspersoft.studio.field.label" value="application_status"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="adopts"/>
+		</field>
+		<group name="animal_id">
+			<expression><![CDATA[$F{animal_id}]]></expression>
+		</group>
+		<group name="name">
+			<expression><![CDATA[$F{name}]]></expression>
+		</group>
+		<group name="size">
+			<expression><![CDATA[$F{size}]]></expression>
+		</group>
+		<group name="breed">
+			<expression><![CDATA[$F{breed}]]></expression>
+		</group>
+		<group name="gender">
+			<expression><![CDATA[$F{gender}]]></expression>
+		</group>
+		<group name="behavior_description">
+			<expression><![CDATA[$F{behavior_description}]]></expression>
+		</group>
+		<group name="date_of_birth">
+			<expression><![CDATA[$F{date_of_birth}]]></expression>
+		</group>
+		<group name="ssn">
+			<expression><![CDATA[$F{ssn}]]></expression>
+		</group>
+		<group name="application_date">
+			<expression><![CDATA[$F{application_date}]]></expression>
+		</group>
+		<group name="application_status">
+			<expression><![CDATA[$F{application_status}]]></expression>
+		</group>
+	</dataset>
+	<query language="sql"><![CDATA[]]></query>
+	<title height="70" splitType="Stretch">
+		<element kind="image" uuid="22cd99c0-4c66-4f46-91f6-8c6bf79265b3" x="275" y="0" width="300" height="64">
+			<expression><![CDATA["leaf_banner_red.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="c650873e-f5ba-448b-aadc-56458cf851aa" x="0" y="13" width="263" height="33" vTextAlign="Middle" style="Title">
+			<text><![CDATA[Leaf Red Title]]></text>
+		</element>
+		<element kind="staticText" uuid="f64cc5c9-a3a6-478b-a526-2f2227cf7122" x="117" y="46" width="157" height="22" style="SubTitle">
+			<text><![CDATA[Leaf Red SubTitle]]></text>
+		</element>
+	</title>
+	<pageFooter height="20" splitType="Stretch">
+		<element kind="textField" uuid="8ae1e619-5258-4650-bbaa-d6d09b24aa3b" x="433" y="0" width="80" height="20" fontSize="10.0" bold="false" hTextAlign="Right" style="Column header">
+			<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+		</element>
+		<element kind="textField" uuid="2048e4ca-cc4c-4707-aa9e-061f836f08e6" x="513" y="0" width="40" height="20" fontSize="10.0" evaluationTime="Report" bold="false" style="Column header">
+			<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="d74f0593-032f-405a-87e1-20e3d818ef4e" x="0" y="0" width="197" height="20" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" bold="false" style="Column header">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="800" splitType="Stretch">
+		<element kind="component" uuid="6c592f97-5573-4584-9b35-93d4c74476e2" x="0" y="0" width="555" height="400">
+			<component kind="table">
+				<datasetRun uuid="2381b576-34e9-476c-aaaa-95024e45b0fc" subDataset="tableDataset">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<column kind="group" uuid="ba7198d6-e464-47e6-975a-51fa1c22e47a" width="550">
+					<groupHeader groupName="animal_id">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="1bfd0ade-f7f9-4b49-91f7-e7587ee848a8" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{animal_id}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="name">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="c4f67a41-d570-4197-b365-a50eb2f2f1bb" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{name}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="size">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="1335789d-95cc-41be-a3ea-177e85cf4842" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{size}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="breed">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="b0ea43e7-9d9d-4307-bfa2-218248b5471d" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{breed}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="gender">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="0ca87464-8bfa-41dd-b947-c201ecd69f57" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{gender}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="behavior_description">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="46046cee-eb3a-4112-bedf-6e64eca168ff" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{behavior_description}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="date_of_birth">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="c658c8f9-418a-43b9-b5af-e25a9ecde787" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{date_of_birth}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="ssn">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="4d963b30-4184-463e-9c43-733f00428b5e" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{ssn}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="application_date">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="6deda78a-f526-41e7-8d93-56229fc8df29" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{application_date}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<groupHeader groupName="application_status">
+						<cell height="25" style="Table_CH">
+							<element kind="textField" uuid="0abdd309-a4cc-48ce-917c-f48a66ac52b6" x="0" y="0" width="550" height="25">
+								<expression><![CDATA[$F{application_status}]]></expression>
+							</element>
+						</cell>
+					</groupHeader>
+					<column kind="single" uuid="f119d1f0-e49c-41a0-a354-ceff2811b5ed" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="3d846a77-b998-4c52-8554-55b6c5d20cbc" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="298fd8c7-49f0-4608-91b1-9d0cc1b7abe6" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[animal_id]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="abdaebf4-e804-4751-8b28-924d29342443" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{animal_id}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="5a545bb3-1b35-4903-aa78-92c269448ad1" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="2e8b3731-9d3a-4678-a941-cb7abce8d1fc" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="e96c2499-758c-48fa-8b10-602c3b7db076" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[name]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="11823fcd-dfc0-478a-9e9b-2f3450578f26" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{name}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="149744e5-d1f2-4b4d-aa67-fd24c11fe3ac" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="803c33be-de87-4644-a683-95fbfd7d3527" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="bc71c210-fce8-43d7-9369-46ca0020d80f" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[size]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="211399ee-efb0-4802-a712-18a9a3a8e024" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{size}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="46507e7c-06a8-4198-a163-aeb0839baa58" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="b49c3287-6da5-4824-8aa4-147f2f01c7b9" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="79ec2cfc-1d45-46e3-8acf-a5ac94f0f67f" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[breed]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="9dd6273f-b151-44b7-bdd0-7a2b6f04c1ab" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{breed}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="583cdf93-72df-4f99-aa39-d170c75b1437" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="fcd5c0e6-6215-4af5-8927-64787f9f5279" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="a16b8ab3-603c-4100-82b2-5a5d1ba46f0a" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[gender]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="8b81fd44-8bbc-4b7f-876e-4982b58479a3" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{gender}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="ee7b59f3-e949-48d4-af8e-4e11c8b82467" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="4b665151-b7bf-47f0-be72-e91fb789656c" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="4a3b13ec-291a-4708-9956-15481e638957" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[behavior_description]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="f3c5b680-14e2-44de-9460-d81ad641ac43" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{behavior_description}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="9d0d6a0b-a3f5-4b40-8795-91e2b21868f1" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="fd7181ec-2860-4cfc-9c76-732c833ed3be" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="b2250e40-7604-4d8e-aa73-b666cd39ede9" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[date_of_birth]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="29115502-4451-4058-a740-2dd31912d457" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{date_of_birth}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="d6064009-9912-41fc-8106-1d17fa7ac8fa" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="616aa863-714f-4785-b10d-858ea9ef8684" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="ddac7f70-9a76-406e-a4db-0e4301d2eab0" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[ssn]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="1f4332b9-d764-4c12-8f8e-3d81bb97fa2e" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{ssn}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="8a566992-9a8c-4053-b6d1-4e97e79e1917" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="a2bc76eb-0941-41c3-bd21-4e86dd046e48" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="c5bb064d-58de-4c85-af3c-5010985f5719" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[application_date]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="a929d54b-e247-4f30-94ce-568612695530" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{application_date}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" uuid="b7943415-1dd1-41ec-b5cb-0565e5f44420" width="55">
+						<tableHeader height="30" style="Table_TH">
+							<element kind="textField" uuid="b7ab7525-9443-4aa4-aaa2-48f8e9fe3d67" x="0" y="0" width="55" height="30" forecolor="#CC0000" bold="true" style="SubTitle">
+								<expression><![CDATA["Header"]]></expression>
+							</element>
+						</tableHeader>
+						<tableFooter height="30" style="Table_TH"/>
+						<columnHeader height="30" style="Table_CH">
+							<element kind="staticText" uuid="6d8c0d38-3640-4016-ac15-e36388c84470" key="" x="0" y="0" width="55" height="30" forecolor="#727272" fontName="Arial" fontSize="16.0" bold="true" style="SubTitle">
+								<text><![CDATA[application_status]]></text>
+								<box leftPadding="2" style="SubTitle"/>
+							</element>
+						</columnHeader>
+						<columnFooter height="30" style="Table_CH"/>
+						<detailCell height="30" style="Table_TD">
+							<element kind="textField" uuid="96470563-b76f-47d6-a676-96b688f9ad0d" x="0" y="0" width="55" height="30" fontName="Arial" fontSize="12.0" style="Detail">
+								<expression><![CDATA[$F{application_status}]]></expression>
+								<box leftPadding="2" style="Detail"/>
+							</element>
+						</detailCell>
+					</column>
+				</column>
+			</component>
+			<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+			<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+			<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+		</element>
+		<property name="local_mesure_unitheight" value="pixel"/>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</summary>
+</jasperReport>
