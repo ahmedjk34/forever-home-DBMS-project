@@ -22,27 +22,42 @@ import javafx.fxml.Initializable;
  *
  * @author lenovo
  */
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class FeedbackExplorerController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private ScrollPane scrollPane;
+
+    private List<Feedback> feedbackList = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         getFeedbacks();
-    }    
-    
-    private void getFeedbacks(){
-        String url = "jdbc:postgresql://localhost:5432/postgres";
+        populateScrollPane();
+    }
+
+    private void getFeedbacks() {
+        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
         String password = "ahm@212005";
 
-        String query = "SELECT f.Feedback_ID, p.FName, p.LName,f.Feedback_Title ,f.Feedback_Text, f.Feedback_Date " +
+        String query = "SELECT f.Feedback_ID, p.FName, p.LName, f.Feedback_Title, f.Feedback_Text, f.Feedback_Date " +
                        "FROM Feedback f " +
-                       "JOIN Person p ON f.SSN = p.SSN"; // Join to get the author's full name
+                       "JOIN Person p ON f.SSN = p.SSN";
 
-        try (Connection conn = DriverManager.getConnection(url, user, password);
+        try (Connection conn = DriverManager.getConnection(dbUrl, user, password);
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -59,14 +74,31 @@ public class FeedbackExplorerController implements Initializable {
                     feedbackText,
                     feedbackDate
                 );
-                System.out.println(currentFeedback);
+                feedbackList.add(currentFeedback); // Add to the ArrayList
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
+    private void populateScrollPane() {
+        VBox vBox = new VBox();
+        for (Feedback feedback : feedbackList) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FeedbackItem.fxml"));
+                AnchorPane feedbackPane = loader.load();
+
+                // Get controller for the loaded item
+                FeedbackItemController itemController = loader.getController();
+                itemController.setFeedback(feedback);
+
+                vBox.getChildren().add(feedbackPane);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        scrollPane.setContent(vBox);
+    }
 }
-
-
