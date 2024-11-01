@@ -65,7 +65,13 @@ public class AdopterDashboardController implements Initializable {
 
     @FXML
     private void handleFeedbackAction() {
-        System.out.println("Feedback button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FeedbackExplorer.fxml"));
+            AnchorPane feedbackPane = loader.load();
+            contentPane.getChildren().setAll(feedbackPane);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
