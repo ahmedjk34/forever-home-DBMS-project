@@ -1,89 +1,75 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.mycompany.foreverhomedbmsproject;
 
 import com.mycompany.foreverhomedbmsproject.Server.Adopter;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-
+import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AdopterDashboardController implements Initializable {
 
     private Adopter adopter;
-    
-    @FXML
-    private AnchorPane contentPane ; // Reference to the inner AnchorPane for content
+    private MainInfoAdopterController mainInfoAdopterController;
 
     @FXML
-    private Label ssnLabel, fullNameLabel, genderLabel, phoneNumberLabel, emailLabel, socialStatusLabel, addressLabel, occupationLabel, numberOfPetsLabel, numberOfChildrenLabel, yearlyIncomeLabel, dobLabel, ageLabel;
+    private AnchorPane contentPane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Initialization code here
-    }    
+    }
 
     public void setAdopter(Adopter adopter) {
         this.adopter = adopter;
-        updateFields();
-        
+        loadMainInfoAdopter();
     }
 
-    private void updateFields() {
-        ssnLabel.setText(adopter.getSsn());
-        fullNameLabel.setText(adopter.getFullName());
-        genderLabel.setText(adopter.getGender());
-        phoneNumberLabel.setText(adopter.getPhoneNumber());
-        emailLabel.setText(adopter.getEmail());
-        socialStatusLabel.setText(adopter.getSocialStatus());
-        addressLabel.setText(adopter.getAddress());
-        occupationLabel.setText(adopter.getOccupation());
-        numberOfPetsLabel.setText(String.valueOf(adopter.getNumberOfPetsOwned()));
-        numberOfChildrenLabel.setText(String.valueOf(adopter.getNumberOfChildren()));
-        yearlyIncomeLabel.setText(String.format("$%.2f", adopter.getYearlyIncome()));
-        dobLabel.setText(adopter.getDateOfBirth().toString());
-        ageLabel.setText(String.valueOf(adopter.getAge())); 
+    private void loadMainInfoAdopter() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainInfoAdopter.fxml"));
+            AnchorPane mainInfoPane = loader.load();
+            mainInfoAdopterController = loader.getController();
+            mainInfoAdopterController.setAdopter(adopter);
+            contentPane.getChildren().setAll(mainInfoPane);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    // Button action methods
+    
+    @FXML
+    private void handleMainInfoAdopterAction(){
+         loadMainInfoAdopter();
+    }
     @FXML
     private void handleApplicationsAction() {
-        // Code to handle Applications button
         System.out.println("Applications button clicked");
     }
 
     @FXML
-private void handleAnimalsAction() throws IOException {
-    // Load the new content
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalExplorer.fxml"));
-    AnchorPane animalPane = loader.load();
-    
-    // Clear the existing content and set the new one
-    contentPane.getChildren().setAll(animalPane);
-}
+    private void handleAnimalsAction() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalExplorer.fxml"));
+        AnchorPane animalPane = loader.load();
+        contentPane.getChildren().setAll(animalPane);
+    }
 
     @FXML
     private void handleContactUsAction() {
-        // Code to handle Contact Us button
         System.out.println("Contact Us button clicked");
     }
 
     @FXML
     private void handleFeedbackAction() {
-        // Code to handle Feedback button
         System.out.println("Feedback button clicked");
     }
 
     @FXML
     private void handleMedicalRecordsAction() {
-        // Code to handle Medical Records button
         System.out.println("Medical Records button clicked");
     }
 }

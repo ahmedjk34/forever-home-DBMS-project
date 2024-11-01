@@ -1,223 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
    <children>
       <BorderPane layoutY="-4.0" maxHeight="60.0" prefHeight="55.0" prefWidth="800.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
-      <BorderPane fx:id="mainBorderPane" layoutY="50.0" maxHeight="600.0" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #72946a;">
+      <BorderPane layoutY="50.0" maxHeight="600.0" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #72946a;">
          <left>
-            <AnchorPane fx:id="contentPane" prefHeight="550.0" prefWidth="550.0" BorderPane.alignment="CENTER">
-               <children>
-                  <BorderPane layoutX="6.0" layoutY="53.0" prefHeight="38.0" prefWidth="470.0">
-                     <center>
-                        <Label fx:id="ssnLabel" prefHeight="18.0" prefWidth="474.0" text="Label" textFill="WHITE" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                     <left>
-                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="92.0" prefHeight="38.0" prefWidth="470.0">
-                     <center>
-                        <Label fx:id="fullNameLabel" prefWidth="477.0" text="Label" textFill="WHITE" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                     <left>
-                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Full Name:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="130.0" prefHeight="38.0" prefWidth="470.0">
-                     <center>
-                        <Label fx:id="genderLabel" prefWidth="477.0" text="Label" textFill="WHITE" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                     <left>
-                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Gender:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                  </BorderPane>
-                  <BorderPane layoutX="7.0" layoutY="168.0" prefHeight="38.0" prefWidth="470.0">
-                     <center>
-                        <Label fx:id="phoneNumberLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                     <left>
-                        <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Phone Number:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                  </BorderPane>
-                  <BorderPane layoutX="6.0" layoutY="244.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Email:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="emailLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="319.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Social Status:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="socialStatusLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="7.0" layoutY="357.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Address:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="addressLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="395.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Occupation:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="occupationLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font>
-                        </Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="433.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Pets:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="numberOfPetsLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="471.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Children:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="numberOfChildrenLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="509.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Yearly Income:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="yearlyIncomeLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="206.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date of Birth:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="dobLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-                  <BorderPane layoutX="8.0" layoutY="282.0" prefHeight="38.0" prefWidth="470.0">
-                     <left>
-                        <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Yu Gothic Regular" size="12.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <center>
-                        <Label fx:id="ageLabel" text="Label" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
-                           <font>
-                              <Font name="Berlin Sans FB" size="21.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-               </children>
-            </AnchorPane>
+       
          </left>
          <center>
-            <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="470.0" prefHeight="400.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" layoutX="25.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleApplicationsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
+                  <Button alignment="CENTER" layoutX="34.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleApplicationsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
     <graphic>
         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -226,7 +25,7 @@
         </ImageView>
     </graphic>
 </Button>
-<Button alignment="CENTER" layoutX="25.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleAnimalsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
+<Button alignment="CENTER" layoutX="34.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleAnimalsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
     <graphic>
         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -235,16 +34,16 @@
         </ImageView>
     </graphic>
 </Button>
-<Button alignment="CENTER" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleContactUsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Contact Us">
+<Button alignment="CENTER" layoutX="35.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleContactUsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Events">
     <graphic>
         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../assets/contact-us.png" />
+                <Image url="@../../../assets/event.png" />
             </image>
         </ImageView>
     </graphic>
 </Button>
-<Button alignment="CENTER" layoutX="25.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleFeedbackAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
+<Button alignment="CENTER" layoutX="34.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleFeedbackAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
     <graphic>
         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -253,7 +52,7 @@
         </ImageView>
     </graphic>
 </Button>
-<Button alignment="CENTER" layoutX="24.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleMedicalRecordsAction" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
+<Button alignment="CENTER" layoutX="33.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleMedicalRecordsAction" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
     <graphic>
         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -262,9 +61,20 @@
         </ImageView>
     </graphic>
 </Button>
-
+                  <Button alignment="CENTER" layoutX="35.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleContactUsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Main Info">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/profile.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
-         </center></BorderPane>
+         </center>
+         <left>
+            <AnchorPane fx:id="contentPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </left></BorderPane>
    </children>
 </AnchorPane>
