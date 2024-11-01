@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackItemController">
+    <children>
+        <TextArea fx:id="feedbackText" layoutY="41.0" prefHeight="127.0" prefWidth="550.0" />
+        <Label fx:id="titleOfFeedback" layoutX="22.0" layoutY="14.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Title" />
+        <Label fx:id="authorName" layoutX="32.0" layoutY="178.0" text="Author" />
+        <Label fx:id="dateOfFeedback" layoutX="468.0" layoutY="170.0" text="Date" />
+    </children>
+</AnchorPane>
