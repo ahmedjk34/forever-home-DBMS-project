@@ -102,7 +102,6 @@ public class MedicalRecord {
         this.noteRecords = noteRecords;
     }
 
-    // Nested classes
     public static class VaccinationRecord {
         private int recordId;
         private String vaccination;
