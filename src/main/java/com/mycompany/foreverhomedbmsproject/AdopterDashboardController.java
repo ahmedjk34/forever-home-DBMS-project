@@ -76,6 +76,12 @@ public class AdopterDashboardController implements Initializable {
 
     @FXML
     private void handleMedicalRecordsAction() {
-        System.out.println("Medical Records button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MedicalRecordsExplorer.fxml"));
+            AnchorPane medicalRecordsPane = loader.load();
+            contentPane.getChildren().setAll(medicalRecordsPane);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
