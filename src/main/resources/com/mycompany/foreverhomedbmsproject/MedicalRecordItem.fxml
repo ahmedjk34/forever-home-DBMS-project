@@ -32,13 +32,22 @@
                   </AnchorPane>
                </center>
                <top>
-                  <AnchorPane prefHeight="85.0" prefWidth="0.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label layoutX="90.0" layoutY="14.0" style="-fx-font-size: 14;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Clinic Name" />
-                        <Label fx:id="clinicNameLabel" layoutX="90.0" layoutY="43.0" text="NAME" />
-                     </children>
-                  </AnchorPane>
+                  <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <left>
+                        <ImageView fx:id="animalImage" fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </left>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="10.0" layoutY="14.0" text="Clinc Name:" />
+                              <Label fx:id="clinicNameLabel" layoutX="10.0" layoutY="51.0" text="NAME" />
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
                </top>
             </BorderPane>
          </left>

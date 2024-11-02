@@ -42,7 +42,7 @@ public class MedicalRecordsExplorerController implements Initializable {
     }
 
     private void getMedicalRecords() {
-    String query = "SELECT m.Record_ID, a.Animal_ID, m.Clinic_Name, a.name, a.gender, " +
+    String query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image ,m.Clinic_Name, a.name, a.gender, " +
                    "vr.Vaccination, tr.Treatment, ir.Illness, nr.Note, " +
                    "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age " +
                    "FROM Medical_Record m " +
@@ -70,11 +70,12 @@ public class MedicalRecordsExplorerController implements Initializable {
                 String animalName = rs.getString("name");
                 String animalGender = rs.getString("gender");
                 String animalAge = rs.getString("Age");
+                String animalImage = rs.getString("animal_image");
 
                 // Check if we are processing a new medical record
                 if (currentRecord == null || currentRecord.getRecordId() != recordId) {
                     // Create a new MedicalRecord instance and add it to the list
-                    currentRecord = new MedicalRecord(recordId, animalId, clinicName , animalName , animalGender , animalAge);
+                    currentRecord = new MedicalRecord(recordId, animalId, clinicName , animalName , animalGender , animalAge , animalImage);
                     medicalRecordsList.add(currentRecord);
                 }
 
@@ -119,7 +120,6 @@ public class MedicalRecordsExplorerController implements Initializable {
     private void displayMedicalRecords() {
         for (MedicalRecord record : medicalRecordsList) {
             try {
-                System.out.println(record);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("MedicalRecordItem.fxml"));
                 Node recordNode = loader.load();
 

@@ -14,8 +14,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MedicalRecordItemController {
+
+    @FXML
+    private ImageView animalImage;
 
     @FXML
     private TextField animalIDField;
@@ -56,6 +61,12 @@ public class MedicalRecordItemController {
         animalGenderField.setText(record.getAnimalGender());
         animalAgeField.setText(String.valueOf(record.getAnimalAge()));
         clinicNameLabel.setText(record.getClinicName());
+        
+        String imagePath = record.getAnimalImage();
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
+        animalImage.setImage(image);
+
+
 
         // Get the max size of the lists to avoid index out-of-bounds errors
         int maxRecords = Math.max(
