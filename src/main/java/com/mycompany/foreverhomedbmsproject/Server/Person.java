@@ -45,7 +45,7 @@ public class Person {
     }
     
      public String getGender() {
-        return ssn;
+        return gender;
     }
 
     public void setGender(String gender) {
