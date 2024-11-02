@@ -5,6 +5,7 @@
 package com.mycompany.foreverhomedbmsproject;
 
 import com.mycompany.foreverhomedbmsproject.Server.Application;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +16,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -27,9 +33,18 @@ public class ApplicationsExplorerController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private List<Application> applicationList;
+    
+    
+    @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
+    private VBox applicationsContainer;  // VBox to hold individual record items
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        applicationList = new ArrayList<>(); 
         getApplications();
     }
     private void getApplications() {
@@ -37,31 +52,30 @@ public class ApplicationsExplorerController implements Initializable {
     String user = "postgres";
     String password = "ahm@212005";
 
-String query = "SELECT a.Animal_ID, a.animal_image, " +
-               "a.Name, " +
-               "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, " +
-               "a.Gender, " +
-               "a.Breed, " +
-               "p.FName || ' ' || p.LName AS Adopter_Name, " +  // Concatenate first and last name
-               "ad.Occupation, " +
-               "DATE_PART('year', AGE(p.Date_of_Birth))::text AS Adopter_Age, " +  // Calculate adopter age
-               "ad.Number_of_Children, " +  // Correct field name
-               "ad.Number_of_Pets_Owned, " +  // Correct field name
-               "ad.Yearly_Income, " +
-               "ap.Application_Status, " +  // Correct alias for Application_Status
-               "ap.Application_Date, " +  // Correct alias for Application_Date
-               "p.SSN AS Adopter_SSN " +  // Alias for SSN
-               "FROM Animal a " +
-               "INNER JOIN Adopts ap ON a.Animal_ID = ap.Animal_ID "+
-               "LEFT JOIN Person p ON ap.SSN = p.SSN " +
-               "LEFT JOIN Adopter ad ON p.SSN = ad.SSN;";  // Join Adopter with Person using SSN
+    String query = "SELECT a.Animal_ID, a.animal_image, " +
+                   "a.Name, " +
+                   "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, " +
+                   "a.Gender, " +
+                   "a.Breed, " +
+                   "p.FName || ' ' || p.LName AS Adopter_Name, " +  // Concatenate first and last name
+                   "ad.Occupation, " +
+                   "DATE_PART('year', AGE(p.Date_of_Birth))::text AS Adopter_Age, " +  // Calculate adopter age
+                   "ad.Number_of_Children, " +  // Correct field name
+                   "ad.Number_of_Pets_Owned, " +  // Correct field name
+                   "ad.Yearly_Income, " +
+                   "ap.Application_Status, " +  // Correct alias for Application_Status
+                   "ap.Application_Date, " +  // Correct alias for Application_Date
+                   "p.SSN AS Adopter_SSN " +  // Alias for SSN
+                   "FROM Animal a " +
+                   "INNER JOIN Adopts ap ON a.Animal_ID = ap.Animal_ID "+
+                   "LEFT JOIN Person p ON ap.SSN = p.SSN " +
+                   "LEFT JOIN Adopter ad ON p.SSN = ad.SSN;";  // Join Adopter with Person using SSN
 
     
     try (Connection conn = DriverManager.getConnection(dbUrl, user, password);
         PreparedStatement stmt = conn.prepareStatement(query);
         ResultSet rs = stmt.executeQuery()) {
 
-        List<Application> applicationList = new ArrayList<>(); // Assuming you have an Application class
 
         while (rs.next()) {
             // Extracting data from the result set
@@ -76,7 +90,7 @@ String query = "SELECT a.Animal_ID, a.animal_image, " +
             int adopterAge = rs.getInt("Adopter_Age");
             int numberOfKids = rs.getInt("Number_of_Children");
             int numberOfPets = rs.getInt("Number_of_Pets_Owned");
-            double yearlyIncome = rs.getDouble("Yearly_Income");
+            int yearlyIncome = (int) rs.getDouble("Yearly_Income");
             String adoptionStatus = rs.getString("Application_Status");
             Date adoptionDate = rs.getDate("Application_Date");
             String animalImage = rs.getString("animal_image");
@@ -100,14 +114,29 @@ String query = "SELECT a.Animal_ID, a.animal_image, " +
                 animalImage
             );
             applicationList.add(currentApplication);
-            System.out.println(currentApplication);
+            
         }
-
+    displayApplications();
 
     } catch (SQLException e) {
         e.printStackTrace();
     }
-}
+ }
+ private void displayApplications(){
+     for(Application currentApplication: applicationList){
+          try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ApplicationItem.fxml"));
+                Node applicationNode = loader.load();
 
+                ApplicationItemController itemController = loader.getController();
+                itemController.setApplicationData(currentApplication);
+
+                applicationsContainer.getChildren().add(applicationNode);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+     }
+ }
+   
 }
 
