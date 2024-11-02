@@ -22,7 +22,7 @@ public class Application {
     private int adopterAge;
     private int numberOfKids;
     private int numberOfPets;
-    private double yearlyIncome;
+    private int yearlyIncome;
     private String adoptionStatus;
     private Date adoptionDate;
     private String animalImage;
@@ -30,7 +30,7 @@ public class Application {
     // Constructor
     public Application(int animalId, String animalName, String age, String gender, String breed,
                       String adopterSSN, String adopterName, String occupation, int adopterAge,
-                      int numberOfKids, int numberOfPets, double yearlyIncome,
+                      int numberOfKids, int numberOfPets, int yearlyIncome,
                       String adoptionStatus, Date adoptionDate , String animalImage) {
         this.animalId = animalId;
         this.animalName = animalName;
@@ -138,11 +138,11 @@ public class Application {
         this.numberOfPets = numberOfPets;
     }
 
-    public double getYearlyIncome() {
+    public int getYearlyIncome() {
         return yearlyIncome;
     }
 
-    public void setYearlyIncome(double yearlyIncome) {
+    public void setYearlyIncome(int yearlyIncome) {
         this.yearlyIncome = yearlyIncome;
     }
 
@@ -161,7 +161,12 @@ public class Application {
     public void setAdoptionDate(Date adoptionDate) {
         this.adoptionDate = adoptionDate;
     }
-
+    public String getAnimalImage(){
+        return animalImage;
+    }
+    public void setAnimalImage(String animalImage){
+        this.animalImage = animalImage;
+    }
     @Override
     public String toString() {
         return "Application{" +
