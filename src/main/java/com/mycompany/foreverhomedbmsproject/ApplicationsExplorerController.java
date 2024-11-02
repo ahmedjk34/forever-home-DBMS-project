@@ -4,7 +4,16 @@
  */
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Server.Application;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
@@ -21,6 +30,84 @@ public class ApplicationsExplorerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        getApplications();
+    }
+    private void getApplications() {
+    String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+    String user = "postgres";
+    String password = "ahm@212005";
+
+String query = "SELECT a.Animal_ID, a.animal_image, " +
+               "a.Name, " +
+               "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, " +
+               "a.Gender, " +
+               "a.Breed, " +
+               "p.FName || ' ' || p.LName AS Adopter_Name, " +  // Concatenate first and last name
+               "ad.Occupation, " +
+               "DATE_PART('year', AGE(p.Date_of_Birth))::text AS Adopter_Age, " +  // Calculate adopter age
+               "ad.Number_of_Children, " +  // Correct field name
+               "ad.Number_of_Pets_Owned, " +  // Correct field name
+               "ad.Yearly_Income, " +
+               "ap.Application_Status, " +  // Correct alias for Application_Status
+               "ap.Application_Date, " +  // Correct alias for Application_Date
+               "p.SSN AS Adopter_SSN " +  // Alias for SSN
+               "FROM Animal a " +
+               "INNER JOIN Adopts ap ON a.Animal_ID = ap.Animal_ID "+
+               "LEFT JOIN Person p ON ap.SSN = p.SSN " +
+               "LEFT JOIN Adopter ad ON p.SSN = ad.SSN;";  // Join Adopter with Person using SSN
+
     
+    try (Connection conn = DriverManager.getConnection(dbUrl, user, password);
+        PreparedStatement stmt = conn.prepareStatement(query);
+        ResultSet rs = stmt.executeQuery()) {
+
+        List<Application> applicationList = new ArrayList<>(); // Assuming you have an Application class
+
+        while (rs.next()) {
+            // Extracting data from the result set
+            int animalId = rs.getInt("Animal_ID");
+            String animalName = rs.getString("Name");
+            String age = rs.getString("Age");
+            String gender = rs.getString("Gender");
+            String breed = rs.getString("Breed");
+            String adopterSSN = rs.getString("Adopter_SSN");
+            String adopterName = rs.getString("Adopter_Name");
+            String occupation = rs.getString("Occupation");
+            int adopterAge = rs.getInt("Adopter_Age");
+            int numberOfKids = rs.getInt("Number_of_Children");
+            int numberOfPets = rs.getInt("Number_of_Pets_Owned");
+            double yearlyIncome = rs.getDouble("Yearly_Income");
+            String adoptionStatus = rs.getString("Application_Status");
+            Date adoptionDate = rs.getDate("Application_Date");
+            String animalImage = rs.getString("animal_image");
+
+            // Creating an Application object (assuming you have this class)
+            Application currentApplication = new Application(
+                animalId,
+                animalName,
+                age,
+                gender,
+                breed,
+                adopterSSN,
+                adopterName,
+                occupation,
+                adopterAge,
+                numberOfKids,
+                numberOfPets,
+                yearlyIncome,
+                adoptionStatus,
+                adoptionDate,
+                animalImage
+            );
+            applicationList.add(currentApplication);
+            System.out.println(currentApplication);
+        }
+
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 }
+
+}
+
