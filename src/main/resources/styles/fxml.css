@@ -37,8 +37,10 @@
 
 .side-bar {
     -fx-background-color:#3b4a36; 
-    -fx-border-color: white transparent white white; 
-    -fx-border-width: 10 0 10 10; 
-    -fx-background-radius: 25 0 0 25; 
-    -fx-border-radius: 20 0 0 20; /* Rounded border on left */
+    -fx-border-color: white; 
+    -fx-border-width: 10; 
+    -fx-background-radius: 25 25 25 25; 
+    -fx-border-radius: 20 20 20 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 0, 0.0, 0, 8); /* Add box shadow */
+
 }
