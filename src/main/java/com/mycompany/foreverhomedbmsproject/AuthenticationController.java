@@ -79,7 +79,6 @@ private void handleLogin() throws IOException {
                 String retrievedSSN = resultSet.getString("SSN");
                 String retrievedPassword = resultSet.getString("Password");
                 String retrievedGender = resultSet.getString("Gender");
-                String gender = resultSet.getString("Gender");
                 String fName = resultSet.getString("FName");
                 String lName = resultSet.getString("LName");
                 String address = resultSet.getString("Address");
