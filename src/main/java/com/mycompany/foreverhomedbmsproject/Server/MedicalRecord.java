@@ -21,10 +21,13 @@ public class MedicalRecord {
     private List<IllnessRecord> illnessRecords;
     private List<NoteRecord> noteRecords;
 
-    public MedicalRecord(int recordId, int animalId, String clinicName) {
+    public MedicalRecord(int recordId, int animalId, String clinicName , String animalName, String animalGender, String animalAge) {
         this.recordId = recordId;
         this.animalId = animalId;
         this.clinicName = clinicName;
+        this.animalName = animalName;
+        this.animalGender = animalGender;
+        this.animalAge = Integer.parseInt(animalAge);
 
         this.vaccinationRecords = new ArrayList<>();
         this.treatmentRecords = new ArrayList<>();
@@ -157,29 +160,35 @@ public class MedicalRecord {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Medical Record for Animal ID: ").append(animalId).append("\n");
-        sb.append("Clinic: ").append(clinicName).append("\n");
+        sb.append("Medical Record Details:\n");
+        sb.append("Record ID: ").append(recordId).append("\n");
+        sb.append("Animal ID: ").append(animalId).append("\n");
+        sb.append("Animal Name: ").append(animalName).append("\n");
+        sb.append("Animal Gender: ").append(animalGender).append("\n");
+        sb.append("Animal Age: ").append(animalAge).append("\n");
+        sb.append("Clinic Name: ").append(clinicName).append("\n");
 
-        sb.append("Vaccinations:\n");
+        sb.append("\nVaccinations:\n");
         for (VaccinationRecord record : vaccinationRecords) {
             sb.append(" - ").append(record.getVaccination()).append("\n");
         }
 
-        sb.append("Treatments:\n");
+        sb.append("\nTreatments:\n");
         for (TreatmentRecord record : treatmentRecords) {
             sb.append(" - ").append(record.getTreatment()).append("\n");
         }
 
-        sb.append("Illnesses:\n");
+        sb.append("\nIllnesses:\n");
         for (IllnessRecord record : illnessRecords) {
             sb.append(" - ").append(record.getIllness()).append("\n");
         }
 
-        sb.append("Notes:\n");
+        sb.append("\nNotes:\n");
         for (NoteRecord record : noteRecords) {
             sb.append(" - ").append(record.getNote()).append("\n");
         }
 
         return sb.toString();
     }
+
 }
