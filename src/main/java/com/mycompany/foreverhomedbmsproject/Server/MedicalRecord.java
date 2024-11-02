@@ -15,19 +15,22 @@ public class MedicalRecord {
     private String animalGender;
     private int animalAge;
     private String clinicName;
+    private String animalImage; // New field for animal image
 
     private List<VaccinationRecord> vaccinationRecords;
     private List<TreatmentRecord> treatmentRecords;
     private List<IllnessRecord> illnessRecords;
     private List<NoteRecord> noteRecords;
 
-    public MedicalRecord(int recordId, int animalId, String clinicName , String animalName, String animalGender, String animalAge) {
+    public MedicalRecord(int recordId, int animalId, String clinicName, String animalName, 
+                         String animalGender, String animalAge, String animalImage) {
         this.recordId = recordId;
         this.animalId = animalId;
         this.clinicName = clinicName;
         this.animalName = animalName;
         this.animalGender = animalGender;
         this.animalAge = Integer.parseInt(animalAge);
+        this.animalImage = animalImage; 
 
         this.vaccinationRecords = new ArrayList<>();
         this.treatmentRecords = new ArrayList<>();
@@ -59,10 +62,12 @@ public class MedicalRecord {
     public String getAnimalGender() { return animalGender; }
     public int getAnimalAge() { return animalAge; }
     public String getClinicName() { return clinicName; }
+    public String getAnimalImage() { return animalImage; } // Getter for animal image
     public List<VaccinationRecord> getVaccinationRecords() { return vaccinationRecords; }
     public List<TreatmentRecord> getTreatmentRecords() { return treatmentRecords; }
     public List<IllnessRecord> getIllnessRecords() { return illnessRecords; }
     public List<NoteRecord> getNoteRecords() { return noteRecords; }
+
 
     // Setters
     public void setRecordId(int recordId) {
@@ -87,6 +92,10 @@ public class MedicalRecord {
 
     public void setClinicName(String clinicName) {
         this.clinicName = clinicName;
+    }
+    
+    public void setAnimalImage(String animalImage) { // Setter for animal image
+        this.animalImage = animalImage;
     }
 
     public void setVaccinationRecords(List<VaccinationRecord> vaccinationRecords) {
