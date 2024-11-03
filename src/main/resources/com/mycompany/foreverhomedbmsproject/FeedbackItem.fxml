@@ -6,18 +6,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="200.0" prefWidth="550.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackItemController">
-    <children>
-        <TextArea fx:id="feedbackText" layoutY="41.0" prefHeight="127.0" prefWidth="550.0" style="-fx-background-color: #72946a;" />
-        <Label fx:id="titleOfFeedback" layoutX="27.0" layoutY="9.0" style="-fx-font-size: 25;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Title" />
-        <Label fx:id="authorName" layoutX="21.0" layoutY="170.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Author">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../assets/user.png" />
-               </image>
-            </ImageView>
-         </graphic></Label>
-        <Label fx:id="dateOfFeedback" layoutX="468.0" layoutY="170.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date" />
-    </children>
+<AnchorPane prefHeight="222.0" prefWidth="537.0" style="-fx-background-color: #72946a; -fx-border-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackItemController">
+   <children>
+      <AnchorPane layoutX="23.0" layoutY="22.0" prefHeight="183.0" prefWidth="510.0" style="-fx-background-radius: 20;">
+         <children>
+            <Label fx:id="titleOfFeedback" layoutX="10.0" layoutY="5.0" style="-fx-font-size: 25;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Title" />
+            <Label fx:id="authorName" layoutX="108.0" layoutY="158.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="AUTHOR" />
+            <Label fx:id="dateOfFeedback" layoutX="335.0" layoutY="158.0" prefHeight="23.0" prefWidth="128.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="DATE" />
+            <TextArea fx:id="feedbackText" editable="false" layoutY="37.0" prefHeight="111.0" prefWidth="490.0" style="-fx-background-color: #72946a;" />
+            <Label layoutX="12.0" layoutY="158.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Author:">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label layoutX="262.0" layoutY="158.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date:">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/calendar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
