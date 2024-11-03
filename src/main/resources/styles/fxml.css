@@ -68,3 +68,14 @@
     -fx-border-radius: 20 20 20 20;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 0, 0.0, 0, 8); /* Add box shadow */
 }
+
+.main-popup-style {
+    -fx-border-color: white; /* Sets the border color to white */
+    -fx-border-width: 2; /* Sets the border width */
+    -fx-background-color: #3b4a36; /* Sets the background color */
+    -fx-padding: 20; /* Adds padding inside the popup */
+    -fx-background-radius: 10; /* Rounds all corners of the background */
+    -fx-border-radius: 10; /* Rounds all corners of the border */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 0, 0.0, 0, 8); /* Adds a subtle shadow effect */
+}
+
