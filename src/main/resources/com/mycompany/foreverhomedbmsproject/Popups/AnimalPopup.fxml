@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="main-popup-style" stylesheets="@../../../../styles/fxml.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.Popups.AnimalPopupController">
+    <children>
+        <AnchorPane layoutX="61.0" layoutY="131.0" prefHeight="300.0" prefWidth="519.0" style="-fx-border-color: white;">
+            <children>
+                <BorderPane layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="35.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="ID:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <TextField fx:id="idTextField" disable="true" prefHeight="25.0" prefWidth="187.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+                <BorderPane layoutX="14.0" layoutY="74.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="71.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Name:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <TextField fx:id="nameTextField" disable="true" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+                <TextArea fx:id="behaviorTextArea" editable="false" layoutX="8.0" layoutY="233.0" prefHeight="56.0" prefWidth="500.0" />
+                <Label layoutX="14.0" layoutY="203.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Behavioral Description:" />
+                <BorderPane layoutX="262.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="74.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Gender:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <ComboBox fx:id="genderComboBox" disable="true" prefHeight="31.0" prefWidth="153.0" promptText="Gender" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" visibleRowCount="2" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+                <BorderPane layoutX="262.0" layoutY="74.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="63.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Breed:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <TextField fx:id="breedTextField" disable="true" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+                <BorderPane layoutX="14.0" layoutY="112.0" prefHeight="25.0" prefWidth="240.0">
+                    <center>
+                        <TextField fx:id="dobTextField" disable="true" prefHeight="25.0" prefWidth="187.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="115.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Date of Birth:" BorderPane.alignment="CENTER" />
+                    </left>
+                </BorderPane>
+                <BorderPane layoutX="14.0" layoutY="158.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="50.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Size:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <TextField fx:id="sizeTextField" disable="true" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+                <BorderPane layoutX="262.0" layoutY="112.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="63.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Age:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <TextField fx:id="ageTextField" disable="true" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+                <BorderPane layoutX="262.0" layoutY="160.0" prefHeight="25.0" prefWidth="240.0">
+                    <left>
+                        <Label prefHeight="23.0" prefWidth="63.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Color:" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <TextField fx:id="colorTextField" disable="true" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+        <ImageView fx:id="animalImageView" fitHeight="89.0" fitWidth="91.0" layoutX="255.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+</AnchorPane>
