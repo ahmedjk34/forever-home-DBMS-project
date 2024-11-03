@@ -61,6 +61,8 @@ public class AdopterDashboardController implements Initializable {
     private void handleAnimalsAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalExplorer.fxml"));
         AnchorPane animalPane = loader.load();
+        AnimalExplorerController controller = loader.getController();
+        controller.setUserType("Adopter");
         contentPane.getChildren().setAll(animalPane);
     }
 
