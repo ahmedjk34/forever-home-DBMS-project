@@ -1,82 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="280.0" prefWidth="583.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.ApplicationItemController">
+<AnchorPane id="AnchorPane" maxWidth="693.0" prefHeight="436.0" prefWidth="693.0" style="-fx-background-color: #72946a; -fx-border-color: white; -fx-border-radius: 15; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.ApplicationItemController">
    <children>
-      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="230.0" prefWidth="550.0">
-         <left>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane layoutX="10.0" layoutY="10.0" maxWidth="540.0" prefHeight="230.0" prefWidth="560.0" AnchorPane.bottomAnchor="2.400000000000034" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="2.199999999999932" AnchorPane.topAnchor="10.0">
+         <top>
+            <BorderPane prefHeight="160.0" prefWidth="536.0" BorderPane.alignment="CENTER">
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
-               <top>
-                  <BorderPane prefHeight="215.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <center>
-                        <ImageView fx:id="animalImage" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-                     </center>
-                  </BorderPane>
-               </top>
-            </BorderPane>
-         </left>
-         <center>
-            <AnchorPane minHeight="180.0" prefHeight="500.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="2.0" layoutY="42.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="ID:" />
-                  <Label layoutX="2.0" layoutY="85.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Name:" />
-                  <Label layoutX="2.0" layoutY="129.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Gender:" />
-                  <Label layoutX="2.0" layoutY="170.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" />
-                  <TextField fx:id="animalIDField" disable="true" layoutX="84.0" layoutY="41.0" prefHeight="26.0" prefWidth="85.0" />
-                  <TextField fx:id="animalNameField" disable="true" layoutX="84.0" layoutY="83.0" prefHeight="26.0" prefWidth="85.0" />
-                  <TextField fx:id="animalGenderField" disable="true" layoutX="84.0" layoutY="127.0" prefHeight="26.0" prefWidth="85.0" />
-                  <TextField fx:id="animalAgeField" disable="true" layoutX="84.0" layoutY="168.0" prefHeight="26.0" prefWidth="85.0" />
-               </children>
-            </AnchorPane>
-         </center>
-         <right>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <top>
-                  <AnchorPane prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <AnchorPane maxWidth="300.0" prefHeight="153.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Application Status:" />
-                        <Label fx:id="applicationStatusLabel" layoutX="14.0" layoutY="43.0" text="STATUS">
+                        <ImageView fx:id="animalImage" fitHeight="148.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="155.0" layoutY="84.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Reject">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/remove.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="154.0" layoutY="28.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Accept">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/accept.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="141.0" layoutY="58.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Withdraw">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../assets/withdraw.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </top>
+         <left>
+            <AnchorPane maxHeight="240.0" maxWidth="240.0" minHeight="0.0" prefHeight="240.0" prefWidth="228.0" styleClass="sub-card-info" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="22.0" layoutY="14.0" styleClass="main-title-style" stylesheets="@../../../styles/fxml.css" text="Animal Information">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/animal.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="61.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="ID:" />
+                  <Label layoutX="14.0" layoutY="104.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Name:" />
+                  <Label layoutX="14.0" layoutY="148.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Gender:" />
+                  <Label layoutX="14.0" layoutY="189.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" />
+                  <TextField fx:id="animalIDField" disable="true" layoutX="96.0" layoutY="60.0" prefHeight="26.0" prefWidth="85.0" />
+                  <TextField fx:id="animalNameField" disable="true" layoutX="96.0" layoutY="102.0" prefHeight="26.0" prefWidth="85.0" />
+                  <TextField fx:id="animalGenderField" disable="true" layoutX="96.0" layoutY="146.0" prefHeight="26.0" prefWidth="85.0" />
+                  <TextField fx:id="animalAgeField" disable="true" layoutX="96.0" layoutY="187.0" prefHeight="26.0" prefWidth="85.0" />
+               </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane maxHeight="240.0" prefHeight="240.0" prefWidth="212.0" styleClass="sub-card-info" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="56.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Adopter Name:" />
+                  <Label fx:id="adopterNameLabel" layoutX="157.0" layoutY="60.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NAME" />
+                  <Label layoutX="14.0" layoutY="79.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="AdopterSSN:" />
+                  <Label fx:id="adopterSSNLabel" layoutX="163.0" layoutY="83.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN" />
+                  <Label layoutX="16.0" layoutY="102.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Occupation:" />
+                  <Label fx:id="adopterOccupationLabel" layoutX="152.0" layoutY="106.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="OCCUPATION" />
+                  <Label layoutX="15.0" layoutY="125.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Kids" />
+                  <Label fx:id="adopterNumOfKidsLabel" layoutX="160.0" layoutY="129.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NUM__KIDS" />
+                  <Label layoutX="15.0" layoutY="157.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Pets: " />
+                  <Label fx:id="adopterNumOfPetsLabel" layoutX="164.0" layoutY="161.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NUM_PETS" />
+                  <Label layoutX="15.0" layoutY="190.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Yearly Income:" />
+                  <Label fx:id="adopterYearlyIncomeLabel" layoutX="168.0" layoutY="194.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="INCOME" />
+                  <Label layoutX="19.0" layoutY="14.0" styleClass="main-title-style" stylesheets="@../../../styles/fxml.css" text="Adopter Information">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/profile.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </right>
+         <center>
+            <AnchorPane maxHeight="240.0" prefHeight="258.0" prefWidth="240.0" styleClass="sub-card-info" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="11.0" layoutY="14.0" styleClass="main-title-style" stylesheets="@../../../styles/fxml.css" text="Application Information">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../assets/application.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="14.0" layoutY="120.0" prefHeight="18.0" prefWidth="232.0">
+                     <children>
+                        <Label styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Application Date:" />
+                        <Label fx:id="applicationDateLabel" layoutX="162.0" layoutY="7.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="DATE" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="14.0" layoutY="179.0" prefHeight="15.0" prefWidth="255.0">
+                     <children>
+                        <Label styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Application Status:" />
+                        <Label fx:id="applicationStatusLabel" layoutX="175.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="STATUS">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </Label>
-                        <Label layoutX="14.0" layoutY="76.0" text="Application Date:" />
-                        <Label fx:id="applicationDateLabel" layoutX="45.0" layoutY="97.0" text="DATE" />
                      </children>
                   </AnchorPane>
-               </top>
-               <bottom>
-                  <AnchorPane prefHeight="146.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane layoutX="14.0" layoutY="56.0" prefHeight="17.0" prefWidth="226.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Adopter Name:" />
-                        <Label fx:id="adopterNameLabel" layoutX="100.0" layoutY="14.0" text="NAME" />
-                        <Label layoutX="14.0" layoutY="32.0" text="AdopterSSN:" />
-                        <Label fx:id="adopterSSNLabel" layoutX="96.0" layoutY="32.0" text="SSN" />
-                        <Label layoutX="14.0" layoutY="52.0" text="Occupation" />
-                        <Label fx:id="adopterOccupationLabel" layoutX="93.0" layoutY="52.0" text="OCCUPATION" />
-                        <Label layoutX="14.0" layoutY="78.0" text="Number of Kids" />
-                        <Label fx:id="adopterNumOfKidsLabel" layoutX="104.0" layoutY="78.0" text="NUM__KIDS" />
-                        <Label layoutX="14.0" layoutY="97.0" text="Number of Pets: " />
-                        <Label fx:id="adopterNumOfPetsLabel" layoutX="104.0" layoutY="98.0" text="NUM_PETS" />
-                        <Label layoutX="14.0" layoutY="124.0" text="Yearly Income:" />
-                        <Label fx:id="adopterYearlyIncomeLabel" layoutX="106.0" layoutY="124.0" text="INCOME" />
+                        <Label styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Application ID:" />
+                        <Label layoutX="131.0" layoutY="7.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="APPLICATION_ID" />
                      </children>
                   </AnchorPane>
-               </bottom>
-            </BorderPane>
-         </right>
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

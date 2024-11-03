@@ -51,6 +51,9 @@
                 <content>
                     <VBox fx:id="applicationsContainer" spacing="10.0" />
                 </content>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </ScrollPane>
          </center>
          <bottom>
