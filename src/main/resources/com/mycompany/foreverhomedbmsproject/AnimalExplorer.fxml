@@ -38,7 +38,7 @@
       </Label>
       <BorderPane layoutY="536.0" prefHeight="64.0" prefWidth="550.0">
          <left>
-            <Button mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Animal" BorderPane.alignment="TOP_CENTER">
+            <Button fx:id="addAnimalButton" mnemonicParsing="false" onAction="#addAnimal" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Animal" BorderPane.alignment="TOP_CENTER">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +48,7 @@
                </graphic></Button>
          </left>
          <center>
-            <Button mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Remove an Animal" BorderPane.alignment="TOP_CENTER">
+            <Button fx:id="removeAnimalButton" mnemonicParsing="false" onAction="#removeAnimal" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Remove an Animal" BorderPane.alignment="TOP_CENTER">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                </graphic></Button>
          </center>
          <right>
-            <Button mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit an Animal" BorderPane.alignment="TOP_CENTER">
+            <Button fx:id="editAnimalButton" mnemonicParsing="false" onAction="#editAnimal" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit an Animal" BorderPane.alignment="TOP_CENTER">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
