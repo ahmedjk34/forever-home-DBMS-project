@@ -7,17 +7,25 @@ public class Animal {
     private String gender;
     private String breed;
     private String size;
-    private String adoptionStatus; // Changed from adoption_status to adoptionStatus
+    private String adoptionStatus;
+    private String behaviorDescription;
+    private String animalImage;
+    private String colors; // Comma-separated list of colors
+    private String dob; // Date of Birth
 
     // Constructor
-    public Animal(int animalId, String name, String age, String gender, String breed, String size, String adoptionStatus) {
+    public Animal(int animalId, String name, String age, String gender, String breed, String size, String adoptionStatus, String behaviorDescription, String animalImage, String colors, String dob) {
         this.animalId = animalId;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.breed = breed;
         this.size = size;
-        this.adoptionStatus = adoptionStatus; // Match constructor parameter with field
+        this.adoptionStatus = adoptionStatus;
+        this.behaviorDescription = behaviorDescription;
+        this.animalImage = animalImage;
+        this.colors = colors;
+        this.dob = dob; // Initialize dob
     }
 
     // Getters and Setters
@@ -69,12 +77,44 @@ public class Animal {
         this.size = size;
     }
 
-    public String getAdoptionStatus() { // Ensure this getter matches
-        return adoptionStatus; // Reflect the updated field name
+    public String getAdoptionStatus() {
+        return adoptionStatus;
     }
 
-    public void setAdoptionStatus(String adoptionStatus) { // Ensure this setter matches
-        this.adoptionStatus = adoptionStatus; // Reflect the updated field name
+    public void setAdoptionStatus(String adoptionStatus) {
+        this.adoptionStatus = adoptionStatus;
+    }
+
+    public String getBehaviorDescription() {
+        return behaviorDescription;
+    }
+
+    public void setBehaviorDescription(String behaviorDescription) {
+        this.behaviorDescription = behaviorDescription;
+    }
+
+    public String getAnimalImage() {
+        return animalImage;
+    }
+
+    public void setAnimalImage(String animalImage) {
+        this.animalImage = animalImage;
+    }
+
+    public String getColors() {
+        return colors;
+    }
+
+    public void setColors(String colors) {
+        this.colors = colors;
+    }
+
+    public String getDob() {
+        return dob; // Getter for dob
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob; // Setter for dob
     }
 
     @Override
@@ -86,7 +126,11 @@ public class Animal {
                ", gender='" + gender + '\'' +
                ", breed='" + breed + '\'' +
                ", size='" + size + '\'' +
-               ", adoptionStatus='" + adoptionStatus + '\'' + // Update here too
+               ", adoptionStatus='" + adoptionStatus + '\'' +
+               ", behaviorDescription='" + behaviorDescription + '\'' +
+               ", animalImage='" + animalImage + '\'' +
+               ", colors='" + colors + '\'' +
+               ", dob='" + dob + '\'' + // Include dob in toString
                '}';
     }
 }
