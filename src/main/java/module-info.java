@@ -9,7 +9,11 @@ module com.mycompany.foreverhomedbmsproject {
     // Open packages for JavaFX reflection
     opens com.mycompany.foreverhomedbmsproject.Server to javafx.base;
     opens com.mycompany.foreverhomedbmsproject to javafx.fxml;
+    opens com.mycompany.foreverhomedbmsproject.Popups to javafx.fxml; // This line opens the package
+
+    
 
     // Export the main package
     exports com.mycompany.foreverhomedbmsproject;
+
 }
