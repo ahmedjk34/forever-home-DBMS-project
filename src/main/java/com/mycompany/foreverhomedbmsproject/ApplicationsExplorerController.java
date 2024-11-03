@@ -129,6 +129,7 @@ public class ApplicationsExplorerController implements Initializable {
                 Node applicationNode = loader.load();
 
                 ApplicationItemController itemController = loader.getController();
+                itemController.setUserType("Adopter");
                 itemController.setApplicationData(currentApplication);
 
                 applicationsContainer.getChildren().add(applicationNode);

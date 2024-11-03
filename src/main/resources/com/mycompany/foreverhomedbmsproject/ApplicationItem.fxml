@@ -22,7 +22,7 @@
                   <AnchorPane maxWidth="300.0" prefHeight="153.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="animalImage" fitHeight="148.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="155.0" layoutY="84.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Reject">
+                        <Button fx:id="rejectButton" layoutX="177.0" layoutY="86.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Reject">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -31,7 +31,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="154.0" layoutY="28.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Accept">
+                        <Button fx:id="acceptButton" layoutX="176.0" layoutY="30.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Accept">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -40,7 +40,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="141.0" layoutY="58.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Withdraw">
+                        <Button fx:id="withdrawButton" layoutX="163.0" layoutY="60.0" mnemonicParsing="false" onAction="#withdrawApplication" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Withdraw">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
