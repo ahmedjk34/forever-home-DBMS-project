@@ -168,7 +168,7 @@
                     </Label>
             </top>
             </BorderPane>
-         <Button layoutX="294.0" layoutY="516.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="220.0" style="-fx-font-size: 18;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit Information">
+         <Button fx:id="editInfoButton" layoutX="294.0" layoutY="516.0" mnemonicParsing="false" onAction="#editInformation" prefHeight="49.0" prefWidth="220.0" style="-fx-font-size: 18;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit Information">
             <graphic>
                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                   <image>
