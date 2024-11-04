@@ -1,130 +1,115 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.NewApplicationPopupController;
+import com.mycompany.foreverhomedbmsproject.Server.Adopter;
 import com.mycompany.foreverhomedbmsproject.Server.Application;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author lenovo
- */
+import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
 public class ApplicationsExplorerController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     private List<Application> applicationList;
-    
-    
+
     @FXML
     private ScrollPane scrollPane;
 
     @FXML
     private VBox applicationsContainer;  // VBox to hold individual record items
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        applicationList = new ArrayList<>(); 
+        applicationList = new ArrayList<>();
         getApplications();
     }
+
     private void getApplications() {
-    String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
-    String user = "postgres";
-    String password = "ahm@212005";
+        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+        String user = "postgres";
+        String password = "ahm@212005";
 
-    String query = "SELECT a.Animal_ID, a.animal_image, " +
-                   "a.Name, " +
-                   "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, " +
-                   "a.Gender, " +
-                   "a.Breed, " +
-                   "p.FName || ' ' || p.LName AS Adopter_Name, " +  // Concatenate first and last name
-                   "ad.Occupation, " +
-                   "DATE_PART('year', AGE(p.Date_of_Birth))::text AS Adopter_Age, " +  // Calculate adopter age
-                   "ad.Number_of_Children, " +  // Correct field name
-                   "ad.Number_of_Pets_Owned, " +  // Correct field name
-                   "ad.Yearly_Income, " +
-                   "ap.Application_Status, " +  // Correct alias for Application_Status
-                   "ap.Application_Date, " +  // Correct alias for Application_Date
-                   "p.SSN AS Adopter_SSN " +  // Alias for SSN
-                   "FROM Animal a " +
-                   "INNER JOIN Adopts ap ON a.Animal_ID = ap.Animal_ID "+
-                   "LEFT JOIN Person p ON ap.SSN = p.SSN " +
-                   "LEFT JOIN Adopter ad ON p.SSN = ad.SSN;";  // Join Adopter with Person using SSN
+        String query = "SELECT a.Animal_ID, a.animal_image, "
+                + "a.Name, "
+                + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, "
+                + "a.Gender, "
+                + "a.Breed, "
+                + "p.FName || ' ' || p.LName AS Adopter_Name, "
+                + "ad.Occupation, "
+                + "DATE_PART('year', AGE(p.Date_of_Birth))::text AS Adopter_Age, "
+                + "ad.Number_of_Children, "
+                + "ad.Number_of_Pets_Owned, "
+                + "ad.Yearly_Income, "
+                + "ap.Application_Status, "
+                + "ap.Application_Date, "
+                + "p.SSN AS Adopter_SSN "
+                + "FROM Animal a "
+                + "INNER JOIN Adopts ap ON a.Animal_ID = ap.Animal_ID "
+                + "LEFT JOIN Person p ON ap.SSN = p.SSN "
+                + "LEFT JOIN Adopter ad ON p.SSN = ad.SSN;";
 
-    
-    try (Connection conn = DriverManager.getConnection(dbUrl, user, password);
-        PreparedStatement stmt = conn.prepareStatement(query);
-        ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = DriverManager.getConnection(dbUrl, user, password); PreparedStatement stmt = conn.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
 
+            while (rs.next()) {
+                int animalId = rs.getInt("Animal_ID");
+                String animalName = rs.getString("Name");
+                String age = rs.getString("Age");
+                String gender = rs.getString("Gender");
+                String breed = rs.getString("Breed");
+                String adopterSSN = rs.getString("Adopter_SSN");
+                String adopterName = rs.getString("Adopter_Name");
+                String occupation = rs.getString("Occupation");
+                int adopterAge = rs.getInt("Adopter_Age");
+                int numberOfKids = rs.getInt("Number_of_Children");
+                int numberOfPets = rs.getInt("Number_of_Pets_Owned");
+                int yearlyIncome = (int) rs.getDouble("Yearly_Income");
+                String adoptionStatus = rs.getString("Application_Status");
+                Date adoptionDate = rs.getDate("Application_Date");
+                String animalImage = rs.getString("animal_image");
 
-        while (rs.next()) {
-            // Extracting data from the result set
-            int animalId = rs.getInt("Animal_ID");
-            String animalName = rs.getString("Name");
-            String age = rs.getString("Age");
-            String gender = rs.getString("Gender");
-            String breed = rs.getString("Breed");
-            String adopterSSN = rs.getString("Adopter_SSN");
-            String adopterName = rs.getString("Adopter_Name");
-            String occupation = rs.getString("Occupation");
-            int adopterAge = rs.getInt("Adopter_Age");
-            int numberOfKids = rs.getInt("Number_of_Children");
-            int numberOfPets = rs.getInt("Number_of_Pets_Owned");
-            int yearlyIncome = (int) rs.getDouble("Yearly_Income");
-            String adoptionStatus = rs.getString("Application_Status");
-            Date adoptionDate = rs.getDate("Application_Date");
-            String animalImage = rs.getString("animal_image");
+                Application currentApplication = new Application(
+                        animalId,
+                        animalName,
+                        age,
+                        gender,
+                        breed,
+                        adopterSSN,
+                        adopterName,
+                        occupation,
+                        adopterAge,
+                        numberOfKids,
+                        numberOfPets,
+                        yearlyIncome,
+                        adoptionStatus,
+                        adoptionDate,
+                        animalImage
+                );
+                applicationList.add(currentApplication);
+            }
+            displayApplications();
 
-            // Creating an Application object (assuming you have this class)
-            Application currentApplication = new Application(
-                animalId,
-                animalName,
-                age,
-                gender,
-                breed,
-                adopterSSN,
-                adopterName,
-                occupation,
-                adopterAge,
-                numberOfKids,
-                numberOfPets,
-                yearlyIncome,
-                adoptionStatus,
-                adoptionDate,
-                animalImage
-            );
-            applicationList.add(currentApplication);
-            
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    displayApplications();
-
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
- }
- private void displayApplications(){
-     for(Application currentApplication: applicationList){
-          try {
+
+    private void displayApplications() {
+        for (Application currentApplication : applicationList) {
+            try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ApplicationItem.fxml"));
                 Node applicationNode = loader.load();
 
@@ -136,8 +121,41 @@ public class ApplicationsExplorerController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-     }
- }
-   
-}
+        }
+    }
 
+    @FXML
+    private void showAddApplicationPopup() {
+        try {
+            Adopter adopter;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/NewApplicationPopup.fxml"));
+            Node popup = loader.load();
+            NewApplicationPopupController controller = loader.getController();
+            //controller.setAdopter(adopter);
+
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Add New Application");
+
+            Scene scene = new Scene((Parent)popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+
+            // Refresh the applications after the popup closes
+            refreshApplications();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void refreshApplications() {
+        applicationsContainer.getChildren().clear();
+        applicationList.clear();
+        getApplications(); // Call to repopulate the applications
+    }
+}
