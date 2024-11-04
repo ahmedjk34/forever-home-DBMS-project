@@ -75,8 +75,6 @@ public class AnimalExplorerController implements Initializable {
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         adoptionStatusColumn.setCellValueFactory(new PropertyValueFactory<>("adoptionStatus"));
 
-        animalTable.setItems(loadAnimalsByUserType());
-        updateButtonVisibility();
 
         // Set up double-click event handler on table rows
         animalTable.setOnMouseClicked(event -> {
@@ -97,7 +95,7 @@ public class AnimalExplorerController implements Initializable {
 
         String query;
         if ("Adopter".equalsIgnoreCase(userType)) {
-            query = "SELECT a.Animal_ID, a.Name, "
+            query = "SELECT a.Animal_ID, a.Name, a.Date_of_Birth, "
                     + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, "
                     + "a.Gender, a.Breed, a.Size, "
                     + "a.Behavior_Description, a.Animal_Image, "
@@ -173,6 +171,8 @@ public class AnimalExplorerController implements Initializable {
     public void setUserType(String userType) {
         this.userType = userType;
         updateButtonVisibility();
+        animalTable.setItems(loadAnimalsByUserType());
+
     }
 
     private void updateButtonVisibility() {
