@@ -21,7 +21,7 @@
          </columns>
       </TableView>
       <Label layoutX="46.0" layoutY="368.0" prefHeight="30.0" prefWidth="515.0" style="-fx-font-size: 11; -fx-text-fill: gray;" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Hint: Double click to view more animal information , single click to select the animal to adopt" />
-      <Button layoutX="271.0" layoutY="406.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Adopt">
+      <Button layoutX="271.0" layoutY="406.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Adopt" onAction="#adoptAnimal">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
