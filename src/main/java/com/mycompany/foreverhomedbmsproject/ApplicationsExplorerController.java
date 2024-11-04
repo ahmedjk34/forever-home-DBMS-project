@@ -25,6 +25,10 @@ import javafx.scene.Scene;
 public class ApplicationsExplorerController implements Initializable {
 
     private List<Application> applicationList;
+    
+    private String userType;
+    private String SSN;
+    
 
     @FXML
     private ScrollPane scrollPane;
@@ -127,11 +131,10 @@ public class ApplicationsExplorerController implements Initializable {
     @FXML
     private void showAddApplicationPopup() {
         try {
-            Adopter adopter;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/NewApplicationPopup.fxml"));
             Node popup = loader.load();
             NewApplicationPopupController controller = loader.getController();
-            //controller.setAdopter(adopter);
+            controller.setAdopterSSN(SSN);
 
             Stage popupStage = new Stage();
             popupStage.setTitle("Add New Application");
@@ -158,4 +161,11 @@ public class ApplicationsExplorerController implements Initializable {
         applicationList.clear();
         getApplications(); // Call to repopulate the applications
     }
+    
+    public void setUserType(String userType , String SSN){
+        this.userType = userType;
+        this.SSN = SSN;
+    }
+    
+
 }
