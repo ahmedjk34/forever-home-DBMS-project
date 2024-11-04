@@ -7,6 +7,13 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -83,6 +90,11 @@ public class MainInfoAdopterController implements Initializable {
                 String yearlyIncomeStr = yearlyIncomeTextField.getText().replaceAll("[$,]", "");
                 double yearlyIncome = Double.parseDouble(yearlyIncomeStr);
 
+                // Validate the date of birth
+                if (!validateDate(dob)) {
+                    return; // If the date is invalid, stop further processing
+                }
+
                 // Format socialStatus and gender for database storage
                 socialStatus = capitalizeFirstLetter(socialStatus);
                 gender = capitalizeFirstLetter(gender);
@@ -123,6 +135,12 @@ public class MainInfoAdopterController implements Initializable {
                         psAdopter.executeUpdate();
                     }
 
+                    // Calculate age from dob
+                    LocalDate dateOfBirth = LocalDate.parse(dob);
+                    LocalDate currentDate = LocalDate.now();
+                    int age = Period.between(dateOfBirth, currentDate).getYears();
+                    ageTextField.setText(String.valueOf(age)); // Set age in the ageTextField
+
                     showAlert("Success", "Information updated successfully.");
                     toggleFieldsEditable(false);
                     editInfoButton.setText("Edit Information");
@@ -132,6 +150,36 @@ public class MainInfoAdopterController implements Initializable {
             } catch (SQLException e) {
                 showAlert("Database Error", "Failed to save information: " + e.getMessage());
             }
+        }
+    }
+
+    private boolean validateDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+        try {
+            LocalDate parsedDate = LocalDate.parse(date, formatter);
+
+            // Check if the year is in the valid range
+            int year = parsedDate.getYear();
+            if (year < 1920) {
+                showAlert("Invalid Input", "Year of Birth must not be before 1920 to be an eligible adopter.");
+                return false;
+            }
+            if (year > 2004) {
+                showAlert("Invalid Input", "Year of Birth must not be after 2004.");
+                return false;
+            }
+
+            // Check if parsedDate matches the input date string, which validates logical date accuracy
+            String formattedDate = parsedDate.format(formatter);
+            if (!formattedDate.equals(date)) {
+                showAlert("Invalid Input", "Date must represent a valid calendar date.");
+                return false;
+            }
+
+            return true;
+        } catch (DateTimeParseException e) {
+            showAlert("Invalid Input", "Date must be in format YYYY-MM-DD and represent a valid date.");
+            return false;
         }
     }
 
