@@ -1,6 +1,5 @@
 package com.mycompany.foreverhomedbmsproject.Popups;
 
-import com.mycompany.foreverhomedbmsproject.Server.Adopter;
 import com.mycompany.foreverhomedbmsproject.Server.Animal;
 import java.io.IOException;
 import javafx.collections.FXCollections;
@@ -18,12 +17,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class NewApplicationPopupController implements Initializable {
 
@@ -42,7 +43,7 @@ public class NewApplicationPopupController implements Initializable {
     @FXML
     private TableColumn<Animal, String> sizeColumn;
 
-    private Adopter adopter;
+    private String adopterSSN;
     private ObservableList<Animal> animalList;
 
     @Override
@@ -115,8 +116,6 @@ public class NewApplicationPopupController implements Initializable {
         if (selectedAnimal != null) {
             if (event.getClickCount() == 2) {
                 showAnimalPopup(selectedAnimal);
-            } else if (event.getClickCount() == 1) {
-                adoptAnimal();
             }
         }
     }
@@ -132,7 +131,7 @@ public class NewApplicationPopupController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Animal Details");
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL); 
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -147,11 +146,40 @@ public class NewApplicationPopupController implements Initializable {
     public void adoptAnimal() {
         Animal selectedAnimal = animalTableView.getSelectionModel().getSelectedItem();
         if (selectedAnimal != null) {
-            System.out.println("Adoption request for: " + selectedAnimal.getName());
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String password = "ahm@212005";
+
+            String insertQuery = "INSERT INTO adopts (Animal_ID, ssn, application_date, application_status) VALUES (?, ?, ?, ?)";
+
+            try (Connection connection = DriverManager.getConnection(url, user, password); PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+
+                // Set the parameters for the query
+                preparedStatement.setInt(1, selectedAnimal.getAnimalId());  // Assuming Animal has getId()
+                preparedStatement.setString(2, adopterSSN);
+                preparedStatement.setDate(3, java.sql.Date.valueOf(LocalDate.now()));  // Current date in YYYY-MM-DD format
+                preparedStatement.setString(4, "Pending");
+
+                // Execute the query
+                int rowsAffected = preparedStatement.executeUpdate();
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Adoption request submitted for: " + selectedAnimal.getName());
+                    Stage stage = (Stage) animalTableView.getScene().getWindow();
+                    stage.close();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to submit adoption request for: " + selectedAnimal.getName(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Database error occurred while submitting adoption request.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No animal selected for adoption.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }
 
-    public void setAdopter(Adopter adopter) {
-        this.adopter = adopter;
+    public void setAdopterSSN(String adopterSSN) {
+        this.adopterSSN = adopterSSN;
     }
 }
