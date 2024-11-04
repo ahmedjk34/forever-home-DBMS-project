@@ -102,7 +102,7 @@ private void handleLogin() throws IOException {
                 AdopterDashboardController controller = loader.getController();
                 controller.setAdopter(loggedAdopter); 
                 Stage stage = (Stage) ((Node) ssnField).getScene().getWindow();
-                stage.setWidth(840);
+                stage.setWidth(930);
                 stage.setHeight(685);
                 stage.getScene().setRoot(root);
 

@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.ApplicationsExplorerController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="6.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.ApplicationsExplorerController">
     <children>
-        <BorderPane prefHeight="600.0" prefWidth="550.0">
+        <BorderPane prefHeight="600.0" prefWidth="650.0">
             <top>
-                <BorderPane prefHeight="50.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+                <BorderPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                     <left>
                         <Label prefHeight="33.0" prefWidth="182.0" text="Applications" textFill="WHITE" BorderPane.alignment="CENTER">
                             <graphic>
@@ -47,7 +47,7 @@
                 </BorderPane>
             </top>
             <center>
-                <ScrollPane fx:id="scrollPane">
+                <ScrollPane fx:id="scrollPane" prefHeight="486.0" prefWidth="576.0">
                     <content>
                         <VBox fx:id="applicationsContainer" spacing="10.0" />
                     </content>

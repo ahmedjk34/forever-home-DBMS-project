@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterDashboardController">
     <children>
-        <BorderPane layoutY="-4.0" maxHeight="60.0" prefHeight="55.0" prefWidth="825.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
+        <BorderPane layoutY="-4.0" maxHeight="60.0" prefHeight="55.0" prefWidth="915.0" style="-fx-background-color: #72946a; -fx-border-color: transparent transparent white transparent; -fx-border-width: 0 0 3 0;" />
         <BorderPane layoutY="50.0" maxHeight="600.0" prefHeight="700.0" prefWidth="825.0" style="-fx-background-color: #72946a;">
             <left>
        
@@ -78,7 +78,7 @@
                 </AnchorPane>
             </center>
             <left>
-                <AnchorPane fx:id="contentPane" prefHeight="600.0" prefWidth="550.0" BorderPane.alignment="CENTER" />
+                <AnchorPane fx:id="contentPane" prefHeight="600.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
             </left>
         </BorderPane>
     </children>
