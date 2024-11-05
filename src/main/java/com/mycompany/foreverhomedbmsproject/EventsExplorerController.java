@@ -4,7 +4,9 @@
  */
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.DonationsPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Event;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,10 +18,16 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -100,6 +108,45 @@ public class EventsExplorerController implements Initializable {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showDonationsPopup() {
+        // Get the selected Event from the eventTable
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+
+        if (selectedEvent != null) {
+            try {
+                // Load the FXML for the popup
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/DonationsPopup.fxml"));
+                AnchorPane popup = loader.load();
+
+                // Get the controller for the popup and set the event ID
+                DonationsPopupController controller = loader.getController();
+                controller.setEventId(selectedEvent.getEventId());
+
+                // Create a new stage for the popup
+                Stage popupStage = new Stage();
+                popupStage.setTitle("Event Donations");
+
+                // Set the scene with the loaded FXML
+                Scene scene = new Scene(popup);
+                popupStage.setScene(scene);
+
+                // Optional: Set the modality to block input to other windows
+                popupStage.initModality(Modality.APPLICATION_MODAL);
+
+                // Show the popup and wait for it to close
+                popupStage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Display an error message using JOptionPane
+            JOptionPane.showMessageDialog(null, "No event selected. Please select an event to view donations.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

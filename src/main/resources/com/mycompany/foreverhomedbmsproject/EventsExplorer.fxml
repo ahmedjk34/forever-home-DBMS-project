@@ -42,7 +42,7 @@
             <TableColumn fx:id="fundingGoalColumn" prefWidth="174.0" text="Funding Goal" />
          </columns>
       </TableView>
-      <Button layoutX="19.0" layoutY="548.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Check Donations">
+      <Button layoutX="19.0" layoutY="548.0" mnemonicParsing="false" onAction="#showDonationsPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Check Donations">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
