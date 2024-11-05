@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackExplorerController">
    <children>
-      <ScrollPane fx:id="scrollPane" layoutY="50.0" prefHeight="536.0" prefWidth="650.0" style="-fx-background-color: #72946a;" AnchorPane.topAnchor="50.0" />
+      <ScrollPane fx:id="scrollPane" layoutY="50.0" prefHeight="536.0" prefWidth="650.0" style="-fx-background-color: #72946a;" stylesheets="@../../../styles/fxml.css" AnchorPane.topAnchor="50.0" />
       <Button layoutX="14.0" layoutY="602.0" mnemonicParsing="false" onAction="#showAddReviewPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add Feedback">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">

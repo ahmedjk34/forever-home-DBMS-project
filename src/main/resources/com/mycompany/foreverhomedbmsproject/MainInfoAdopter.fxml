@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="650.0" maxWidth="550.0" prefHeight="650.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoAdopterController">
-    <AnchorPane prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: #72946D; -fx-border-color: white; -fx-border-radius: 25; -fx-background-radius: 25;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" BorderPane.alignment="CENTER">
+<AnchorPane id="AnchorPane" maxHeight="650.0" maxWidth="650.0" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoAdopterController">
+    <AnchorPane prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: #72946D; -fx-border-color: white; -fx-border-radius: 25; -fx-background-radius: 25;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="20.0" BorderPane.alignment="CENTER">
         <children>
             <BorderPane layoutX="15.0" layoutY="52.0" prefHeight="50.0" prefWidth="220.0">
                 <center>
