@@ -6,10 +6,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="625.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackExplorerController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackExplorerController">
    <children>
-      <ScrollPane fx:id="scrollPane" prefHeight="536.0" prefWidth="625.0" style="-fx-background-color: #72946a;" AnchorPane.topAnchor="0.0" />
-      <Button layoutX="235.0" layoutY="550.0" mnemonicParsing="false" onAction="#showAddReviewPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add Feedback">
+      <ScrollPane fx:id="scrollPane" prefHeight="536.0" prefWidth="650.0" style="-fx-background-color: #72946a;" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="247.0" layoutY="550.0" mnemonicParsing="false" onAction="#showAddReviewPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add Feedback">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

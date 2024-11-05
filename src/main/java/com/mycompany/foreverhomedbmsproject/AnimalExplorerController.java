@@ -57,6 +57,9 @@ public class AnimalExplorerController implements Initializable {
     private TableColumn<Animal, String> adoptionStatusColumn;
 
     @FXML
+    private TableColumn<Animal, String> BehaviourColumn;
+
+    @FXML
     private Button addAnimalButton;
     @FXML
     private Button removeAnimalButton;
@@ -74,7 +77,7 @@ public class AnimalExplorerController implements Initializable {
         breedColumn.setCellValueFactory(new PropertyValueFactory<>("breed"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         adoptionStatusColumn.setCellValueFactory(new PropertyValueFactory<>("adoptionStatus"));
-
+        BehaviourColumn.setCellValueFactory(new PropertyValueFactory<>("behaviorDescription"));
 
         // Set up double-click event handler on table rows
         animalTable.setOnMouseClicked(event -> {

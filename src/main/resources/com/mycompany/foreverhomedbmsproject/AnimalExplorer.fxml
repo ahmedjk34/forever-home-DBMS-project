@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AnimalExplorerController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AnimalExplorerController">
    <children>
-      <TableView fx:id="animalTable" layoutY="66.0" prefHeight="450.0" prefWidth="550.0">
+      <TableView fx:id="animalTable" layoutY="66.0" prefHeight="450.0" prefWidth="650.0">
         <columns>
             <TableColumn fx:id="animalIdColumn" prefWidth="65.5999755859375" text="Animal ID" />
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
@@ -22,6 +22,7 @@
             <TableColumn fx:id="breedColumn" prefWidth="60.79997253417969" text="Breed" />
             <TableColumn fx:id="sizeColumn" prefWidth="65.5999755859375" text="Size" />
             <TableColumn fx:id="adoptionStatusColumn" prefWidth="111.20001220703125" text="Adoption_Status" />
+            <TableColumn fx:id="BehaviourColumn" prefWidth="127.0" text="Behaviour" />
         </columns>
       </TableView>
       <Label layoutX="1.0" layoutY="19.0" prefHeight="33.0" prefWidth="182.0" text="Animals" textFill="WHITE">
@@ -36,7 +37,7 @@
             <Font name="Berlin Sans FB" size="23.0" />
          </font>
       </Label>
-      <BorderPane layoutY="536.0" prefHeight="64.0" prefWidth="550.0">
+      <BorderPane layoutY="536.0" prefHeight="64.0" prefWidth="650.0">
          <left>
             <Button fx:id="addAnimalButton" mnemonicParsing="false" onAction="#addAnimal" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Animal" BorderPane.alignment="TOP_CENTER">
                <graphic>
@@ -71,7 +72,7 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </padding>
       </BorderPane>
-      <Button layoutX="360.0" layoutY="19.0" mnemonicParsing="false" onAction="#generateReport" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Generate Report">
+      <Button layoutX="468.0" layoutY="14.0" mnemonicParsing="false" onAction="#generateReport" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Generate Report">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>

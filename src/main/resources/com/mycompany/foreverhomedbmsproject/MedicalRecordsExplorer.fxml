@@ -4,17 +4,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #72946a;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.mycompany.foreverhomedbmsproject.MedicalRecordsExplorerController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MedicalRecordsExplorerController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="550.0">
+      <BorderPane prefHeight="600.0" prefWidth="650.0">
          <top>
             <BorderPane prefHeight="50.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                <left>
@@ -48,7 +47,7 @@
             </BorderPane>
          </top>
          <center>
-            <ScrollPane fx:id="scrollPane">
+            <ScrollPane fx:id="scrollPane" prefHeight="486.0" prefWidth="634.0">
                 <content>
                     <VBox fx:id="recordsContainer" spacing="10.0" />
                 </content>
