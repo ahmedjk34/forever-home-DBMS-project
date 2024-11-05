@@ -63,7 +63,8 @@ public class MedicalRecordsExplorerController implements Initializable {
                 + "LEFT JOIN Treatment_Record tr ON m.Record_ID = tr.Record_ID "
                 + "LEFT JOIN Illness_Record ir ON m.Record_ID = ir.Record_ID "
                 + "LEFT JOIN Note_Record nr ON m.Record_ID = nr.Record_ID "
-                + "WHERE a.Animal_ID = m.Animal_ID";
+                + "WHERE a.Animal_ID = m.Animal_ID "
+                + "ORDER BY m.Record_ID";
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -103,6 +104,8 @@ public class MedicalRecordsExplorerController implements Initializable {
 
                     // Add illness if it's not already in the list
                     String illness = rs.getString("Illness");
+                    System.out.println("Note retrieved for Record ID " + recordId + ": " + illness); // Debugging line
+
                     if (illness != null && currentRecord.getIllnessRecords().stream()
                             .noneMatch(i -> i.getIllness().equals(illness))) {
                         currentRecord.addIllnessRecord(illness);
@@ -112,8 +115,9 @@ public class MedicalRecordsExplorerController implements Initializable {
                     String note = rs.getString("Note");
                     if (note != null && currentRecord.getNoteRecords().stream()
                             .noneMatch(n -> n.getNote().equals(note))) {
-                        currentRecord.addNoteRecord(note);
+                        currentRecord.addNoteRecord(note);  // Ensure that this method is implemented in your MedicalRecord class
                     }
+
                 }
             }
 
@@ -200,6 +204,5 @@ public class MedicalRecordsExplorerController implements Initializable {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
 }
