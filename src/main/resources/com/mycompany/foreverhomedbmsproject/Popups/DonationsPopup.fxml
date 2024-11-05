@@ -19,7 +19,7 @@
             <TableColumn fx:id="colAmount" prefWidth="104.0" text="Amount" />
         </columns>
       </TableView>
-      <Button layoutX="280.0" layoutY="332.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add a Donation">
+      <Button layoutX="280.0" layoutY="332.0" mnemonicParsing="false" onAction="#showAddDonationPopup" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add a Donation">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
