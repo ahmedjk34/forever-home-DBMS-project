@@ -1,5 +1,6 @@
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.EditMedicalRecordPopupController;
 import com.mycompany.foreverhomedbmsproject.Popups.NewMedicalRecordPopupController;
 import com.mycompany.foreverhomedbmsproject.Popups.RemoveMedicalRecordPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.MedicalRecord;
@@ -198,6 +199,7 @@ public class MedicalRecordsExplorerController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+    
+
 }
