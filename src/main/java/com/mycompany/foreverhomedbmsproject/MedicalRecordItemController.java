@@ -61,9 +61,11 @@ public class MedicalRecordItemController {
 
     @FXML
     private TableColumn<MedicalRecordItem, String> noteTable;
+    
+    private MedicalRecord currentRecord;
 
     public void setRecordData(MedicalRecord record) {
-        // Set data to fields
+        currentRecord = record;
         animalIDField.setText(String.valueOf(record.getAnimalId()));
         animalNameField.setText(record.getAnimalName());
         animalGenderField.setText(record.getAnimalGender());
@@ -112,6 +114,7 @@ public class MedicalRecordItemController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/EditMedicalRecordPopup.fxml"));
             AnchorPane popup = loader.load();
             EditMedicalRecordPopupController controller = loader.getController();
+            controller.setRecord(currentRecord);
 
             // Create a new stage for the popup
             Stage popupStage = new Stage();
@@ -132,4 +135,6 @@ public class MedicalRecordItemController {
         }
 
     }
+    
+
 }
