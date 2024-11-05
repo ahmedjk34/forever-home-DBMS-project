@@ -79,3 +79,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 0, 0.0, 0, 8); /* Adds a subtle shadow effect */
 }
 
+
+.scroll-pane {
+    -fx-background-color: transparent; /* Outer border background color */
+
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: #3b4a36; /* Inner background color */
+}
