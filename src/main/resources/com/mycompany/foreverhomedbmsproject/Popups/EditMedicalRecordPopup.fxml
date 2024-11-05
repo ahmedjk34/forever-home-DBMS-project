@@ -22,7 +22,7 @@
       </TableView>
       <Label layoutX="91.0" layoutY="253.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Clinic Name:" />
       <TextField fx:id="clinicNameField" layoutX="223.0" layoutY="249.0" minWidth="190.0" prefHeight="30.0" prefWidth="170.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
-      <Button layoutX="249.0" layoutY="195.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="173.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Remove a Row">
+      <Button layoutX="249.0" layoutY="195.0" mnemonicParsing="false" onAction="#removeSelectedRow" prefHeight="33.0" prefWidth="173.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Remove a Row">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,7 +31,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="436.0" layoutY="242.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="137.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Edit Name">
+      <Button layoutX="436.0" layoutY="242.0" mnemonicParsing="false" onAction="#editClinicName" prefHeight="39.0" prefWidth="137.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Edit Name">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +48,7 @@
       <TextField fx:id="treatmentField" layoutX="91.0" layoutY="372.0" minWidth="490.0" prefHeight="30.0" prefWidth="490.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
       <TextArea fx:id="noteArea" layoutX="91.0" layoutY="496.0" prefHeight="68.0" prefWidth="490.0" />
       <Label layoutX="91.0" layoutY="472.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Note:" />
-      <Button layoutX="249.0" layoutY="579.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="157.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add a Row">
+      <Button layoutX="249.0" layoutY="579.0" mnemonicParsing="false" onAction="#addRow" prefHeight="33.0" prefWidth="157.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add a Row">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
