@@ -94,12 +94,11 @@ public class ApplicationItemController implements Initializable {
             // Set a default image if none is provided
             animalImage.setImage(new Image("path/to/default/image.png")); // replace with actual default image path
         }
-        
-        if (userType.equals("Adopter")){
+
+        if (userType.equals("Adopter")) {
             acceptButton.setVisible(false);
             rejectButton.setVisible(false);
-        }
-        else {
+        } else {
             withdrawButton.setVisible(false);
         }
     }

@@ -25,10 +25,9 @@ import javafx.scene.Scene;
 public class ApplicationsExplorerController implements Initializable {
 
     private List<Application> applicationList;
-    
+
     private String userType;
     private String SSN;
-    
 
     @FXML
     private ScrollPane scrollPane;
@@ -139,7 +138,7 @@ public class ApplicationsExplorerController implements Initializable {
             Stage popupStage = new Stage();
             popupStage.setTitle("Add New Application");
 
-            Scene scene = new Scene((Parent)popup);
+            Scene scene = new Scene((Parent) popup);
             popupStage.setScene(scene);
 
             // Optional: Set the modality to block input to other windows
@@ -161,11 +160,14 @@ public class ApplicationsExplorerController implements Initializable {
         applicationList.clear();
         getApplications(); // Call to repopulate the applications
     }
-    
-    public void setUserType(String userType , String SSN){
+
+    public void setUserType(String userType) {
         this.userType = userType;
-        this.SSN = SSN;
     }
     
+
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
+    }
 
 }
