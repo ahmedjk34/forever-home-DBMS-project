@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="main-popup-style" stylesheets="@../../../../styles/fxml.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.mycompany.foreverhomedbmsproject.Popups.NewMedicalRecordPopupController">
+   <children>
+      <Label alignment="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="18.0" prefWidth="541.0" styleClass="main-title-style" stylesheets="@../../../../styles/fxml.css" text="Add a New Medical Record">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../assets/medical-record.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label layoutX="33.0" layoutY="176.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Ilness:" />
+      <TextField fx:id="illnessField" layoutX="33.0" layoutY="199.0" minWidth="542.0" prefHeight="30.0" prefWidth="542.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
+      <Label layoutX="33.0" layoutY="296.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Vaccination:" />
+      <TextField fx:id="vaccinationField" layoutX="33.0" layoutY="319.0" minWidth="542.0" prefHeight="30.0" prefWidth="542.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
+      <Label layoutX="33.0" layoutY="235.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Treatement:" />
+      <TextField fx:id="treatmentField" layoutX="33.0" layoutY="258.0" minWidth="542.0" prefHeight="30.0" prefWidth="542.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
+      <TextArea fx:id="noteArea" layoutX="33.0" layoutY="382.0" prefHeight="68.0" prefWidth="542.0" />
+      <Label layoutX="33.0" layoutY="358.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Note:" />
+      <Label layoutX="152.0" layoutY="64.0" prefHeight="23.0" prefWidth="104.0" style="-fx-font-size: 20; -fx-text-fill: lightgray;" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Animal ID:" />
+      <TextField fx:id="animalIdField" layoutX="256.0" layoutY="64.0" minWidth="200.0" prefHeight="29.0" prefWidth="170.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
+      <Button layoutX="262.0" layoutY="485.0" mnemonicParsing="false" onAction="#addButton" prefHeight="33.0" prefWidth="84.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../assets/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="33.0" layoutY="113.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Clinic Name:" />
+      <TextField fx:id="clinicNameField" layoutX="33.0" layoutY="136.0" minWidth="542.0" prefHeight="30.0" prefWidth="542.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" />
+   </children>
+</AnchorPane>
