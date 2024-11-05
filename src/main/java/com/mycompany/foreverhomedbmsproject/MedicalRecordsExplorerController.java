@@ -53,9 +53,11 @@ public class MedicalRecordsExplorerController implements Initializable {
     private void getMedicalRecords() {
 
         medicalRecordsList.clear();
-
-        String query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image ,m.Clinic_Name, a.name, a.gender, "
-                + "vr.Vaccination, tr.Treatment, ir.Illness, nr.Note, "
+        String query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "
+                + "vr.Vaccination, vr.date_added AS vaccination_date, "
+                + "tr.Treatment, tr.date_added AS treatment_date, "
+                + "ir.Illness, ir.date_added AS illness_date, "
+                + "nr.Note, nr.date_added AS note_date, "
                 + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age "
                 + "FROM Medical_Record m "
                 + "JOIN Animal a ON m.Animal_ID = a.Animal_ID "
@@ -64,7 +66,7 @@ public class MedicalRecordsExplorerController implements Initializable {
                 + "LEFT JOIN Illness_Record ir ON m.Record_ID = ir.Record_ID "
                 + "LEFT JOIN Note_Record nr ON m.Record_ID = nr.Record_ID "
                 + "WHERE a.Animal_ID = m.Animal_ID "
-                + "ORDER BY m.Record_ID";
+                + "ORDER BY m.Record_ID, vr.date_added, tr.date_added, ir.date_added, nr.date_added";
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); PreparedStatement stmt = conn.prepareStatement(query)) {
 
