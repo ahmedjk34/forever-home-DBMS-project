@@ -44,6 +44,9 @@ public class FeedbackExplorerController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    @FXML
+    private VBox vbox;
+
     private String adopterSSN;
     private List<Feedback> feedbackList = new ArrayList<>();
 
@@ -86,7 +89,8 @@ public class FeedbackExplorerController implements Initializable {
     }
 
     private void populateScrollPane() {
-        VBox vBox = new VBox();
+        vbox.getChildren().clear(); // Clear existing items in vbox before adding new ones
+
         for (Feedback feedback : feedbackList) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FeedbackItem.fxml"));
@@ -96,13 +100,13 @@ public class FeedbackExplorerController implements Initializable {
                 FeedbackItemController itemController = loader.getController();
                 itemController.setFeedback(feedback);
 
-                vBox.getChildren().add(feedbackPane);
+                // Add each feedbackPane directly to the vbox
+                vbox.getChildren().add(feedbackPane);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        scrollPane.setContent(vBox);
     }
 
     public void refreshFeedbacks() {

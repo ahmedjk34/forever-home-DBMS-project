@@ -6,14 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="222.0" prefWidth="640.0" style="-fx-background-color: #72946a; -fx-border-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackItemController">
+<AnchorPane maxWidth="600.0" prefHeight="222.0" prefWidth="610.0" style="-fx-background-color: #72946a; -fx-border-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.FeedbackItemController">
    <children>
-      <AnchorPane layoutX="23.0" layoutY="22.0" prefHeight="183.0" prefWidth="614.0" style="-fx-background-radius: 20;">
+      <AnchorPane layoutX="23.0" layoutY="22.0" prefHeight="183.0" prefWidth="585.0" style="-fx-background-radius: 20;">
          <children>
             <Label fx:id="titleOfFeedback" layoutX="10.0" layoutY="5.0" style="-fx-font-size: 25;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Title" />
             <Label fx:id="authorName" layoutX="108.0" layoutY="158.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="AUTHOR" />
-            <Label fx:id="dateOfFeedback" layoutX="472.0" layoutY="157.0" prefHeight="23.0" prefWidth="128.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="DATE" />
-            <TextArea fx:id="feedbackText" editable="false" layoutY="37.0" prefHeight="111.0" prefWidth="614.0" style="-fx-background-color: #72946a;" />
+            <Label fx:id="dateOfFeedback" layoutX="444.0" layoutY="157.0" prefHeight="23.0" prefWidth="128.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="DATE" />
+            <TextArea fx:id="feedbackText" editable="false" layoutY="37.0" prefHeight="111.0" prefWidth="578.0" style="-fx-background-color: #72946a;" />
             <Label layoutX="12.0" layoutY="158.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Author:">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
@@ -23,7 +23,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="399.0" layoutY="157.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date:">
+            <Label layoutX="371.0" layoutY="157.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date:">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
