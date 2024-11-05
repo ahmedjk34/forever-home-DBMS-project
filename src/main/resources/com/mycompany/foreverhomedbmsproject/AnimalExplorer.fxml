@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AnimalExplorerController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AnimalExplorerController">
    <children>
-      <TableView fx:id="animalTable" layoutY="66.0" prefHeight="450.0" prefWidth="650.0">
+      <TableView fx:id="animalTable" layoutY="66.0" prefHeight="504.0" prefWidth="650.0">
         <columns>
             <TableColumn fx:id="animalIdColumn" prefWidth="65.5999755859375" text="Animal ID" />
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
@@ -37,7 +37,7 @@
             <Font name="Berlin Sans FB" size="23.0" />
          </font>
       </Label>
-      <BorderPane layoutY="536.0" prefHeight="64.0" prefWidth="650.0">
+      <BorderPane layoutY="581.0" prefHeight="54.0" prefWidth="650.0">
          <left>
             <Button fx:id="addAnimalButton" mnemonicParsing="false" onAction="#addAnimal" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Animal" BorderPane.alignment="TOP_CENTER">
                <graphic>

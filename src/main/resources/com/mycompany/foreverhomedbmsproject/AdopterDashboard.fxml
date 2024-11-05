@@ -77,7 +77,7 @@
                 </AnchorPane>
             </center>
             <left>
-                <AnchorPane fx:id="contentPane" prefHeight="600.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
+                <AnchorPane fx:id="contentPane" prefHeight="650.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
             </left>
         </BorderPane>
     </children>

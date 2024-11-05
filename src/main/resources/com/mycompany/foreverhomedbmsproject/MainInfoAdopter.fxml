@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="550.0" prefHeight="600.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoAdopterController">
-    <AnchorPane prefHeight="600.0" prefWidth="550.0" style="-fx-background-color: #72946D; -fx-border-color: white; -fx-border-radius: 25; -fx-background-radius: 25;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" BorderPane.alignment="CENTER">
+<AnchorPane id="AnchorPane" maxHeight="650.0" maxWidth="550.0" prefHeight="650.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoAdopterController">
+    <AnchorPane prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: #72946D; -fx-border-color: white; -fx-border-radius: 25; -fx-background-radius: 25;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" BorderPane.alignment="CENTER">
         <children>
-            <BorderPane layoutX="14.0" layoutY="41.0" prefHeight="50.0" prefWidth="220.0">
+            <BorderPane layoutX="15.0" layoutY="52.0" prefHeight="50.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="ssnTextField" disable="true" editable="false" prefHeight="18.0" prefWidth="474.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                 </center>
@@ -24,7 +24,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="121.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="15.0" layoutY="132.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="genderTextField" disable="true" editable="false" prefWidth="477.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                 </center>
@@ -36,7 +36,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="281.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="15.0" layoutY="292.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="emailTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -48,7 +48,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="361.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="15.0" layoutY="372.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="addressTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -60,7 +60,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="441.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="15.0" layoutY="452.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="numberOfPetsTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -72,7 +72,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="511.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="15.0" layoutY="522.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="yearlyIncomeTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -84,7 +84,7 @@
                     </Label>
             </top>
             </BorderPane>
-         <BorderPane layoutX="14.0" layoutY="201.0" prefHeight="38.0" prefWidth="220.0">
+         <BorderPane layoutX="15.0" layoutY="212.0" prefHeight="38.0" prefWidth="220.0">
             <center>
                <TextField fx:id="ageTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
             </center>
@@ -96,7 +96,7 @@
                </Label>
             </top>
          </BorderPane>
-            <BorderPane layoutX="294.0" layoutY="41.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="295.0" layoutY="52.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="fullNameTextField" disable="true" editable="false" prefWidth="477.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                 </center>
@@ -108,7 +108,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="294.0" layoutY="121.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="295.0" layoutY="132.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="phoneNumberTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -120,7 +120,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="294.0" layoutY="281.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="295.0" layoutY="292.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="socialStatusTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -132,7 +132,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="294.0" layoutY="361.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="295.0" layoutY="372.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="occupationTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -144,7 +144,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="294.0" layoutY="441.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="295.0" layoutY="452.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="numberOfChildrenTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -156,7 +156,7 @@
                     </Label>
             </top>
             </BorderPane>
-            <BorderPane layoutX="294.0" layoutY="201.0" prefHeight="38.0" prefWidth="220.0">
+            <BorderPane layoutX="295.0" layoutY="212.0" prefHeight="38.0" prefWidth="220.0">
                 <center>
                     <TextField fx:id="dobTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
                 </center>
@@ -168,7 +168,7 @@
                     </Label>
             </top>
             </BorderPane>
-         <Button fx:id="editInfoButton" layoutX="294.0" layoutY="516.0" mnemonicParsing="false" onAction="#editInformation" prefHeight="49.0" prefWidth="220.0" style="-fx-font-size: 18;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit Information">
+         <Button fx:id="editInfoButton" layoutX="295.0" layoutY="527.0" mnemonicParsing="false" onAction="#editInformation" prefHeight="49.0" prefWidth="220.0" style="-fx-font-size: 18;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit Information">
             <graphic>
                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                   <image>

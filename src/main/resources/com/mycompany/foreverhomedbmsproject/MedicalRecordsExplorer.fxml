@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: #72946a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MedicalRecordsExplorerController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="650.0">
+      <BorderPane prefHeight="650.0" prefWidth="650.0">
          <top>
             <BorderPane prefHeight="50.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                <left>
