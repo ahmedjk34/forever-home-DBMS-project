@@ -71,7 +71,15 @@ public class AdopterDashboardController implements Initializable {
 
     @FXML
     private void handleContactUsAction() {
-        System.out.println("Contact Us button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EventsExplorer.fxml"));
+            AnchorPane eventsPanel = loader.load();
+            EventsExplorerController controller = loader.getController();
+            controller.setUserType("Adopter");
+            contentPane.getChildren().setAll(eventsPanel);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
