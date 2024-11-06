@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.Stage;
 
 public class AdopterDashboardController implements Initializable {
 
@@ -41,11 +42,11 @@ public class AdopterDashboardController implements Initializable {
         }
     }
 
-    
     @FXML
-    private void handleMainInfoAdopterAction(){
-         loadMainInfoAdopter();
+    private void handleMainInfoAdopterAction() {
+        loadMainInfoAdopter();
     }
+
     @FXML
     private void handleApplicationsAction() {
         try {
@@ -105,9 +106,28 @@ public class AdopterDashboardController implements Initializable {
             controller.setSSN(adopter.getSsn());
             controller.setUserType("Adopter");
             contentPane.getChildren().setAll(medicalRecordsPane);
-            
+
         } catch (IOException ex) {
             Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void handleLogoutAction() {
+        try {
+            // Load the new FXML for the Authentication view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Authentication.fxml"));
+            AnchorPane authenticationPane = loader.load();
+
+            // Retrieve the current stage using the contentPane
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+
+            // Set the new root and adjust the window size
+            stage.getScene().setRoot(authenticationPane);
+            stage.setWidth(700);
+            stage.setHeight(600);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

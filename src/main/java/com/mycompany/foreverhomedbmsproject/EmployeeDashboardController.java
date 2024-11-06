@@ -10,9 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class EmployeeDashboardController implements Initializable {
 
@@ -153,10 +155,24 @@ public class EmployeeDashboardController implements Initializable {
     }
 
     // Handles the Log Out button click
+// Handles the Log Out button click
     @FXML
     private void handleLogoutAction() {
-        System.out.println("Log Out button clicked");
-        // Add your handling code here (e.g., log out the user)
+        try {
+            // Load the new FXML for the Authentication view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Authentication.fxml"));
+            AnchorPane authenticationPane = loader.load();
+
+            // Retrieve the current stage using the contentPane
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+
+            // Set the new root and adjust the window size
+            stage.getScene().setRoot(authenticationPane);
+            stage.setWidth(700);
+            stage.setHeight(600);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

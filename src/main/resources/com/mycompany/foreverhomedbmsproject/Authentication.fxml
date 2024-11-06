@@ -64,6 +64,12 @@
                </center>
                <bottom>
                   <BorderPane prefHeight="200.0" prefWidth="694.0" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
                      <top>
                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogin" prefHeight="35.0" prefWidth="224.0" style="-fx-font-style: bold;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Login" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
@@ -75,25 +81,12 @@
                         </Button>
                      </top>
                      <center>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" style="-fx-border-radius: 5; -fx-background-radius: 5;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Check out our events !" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font size="1.0" />
-                           </font>
-                        </Button>
-                     </center>
-                     <bottom>
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="294.0" text="Made by Ahmed Gharib &amp; Anas Toma" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>
                         </Label>
-                     </bottom>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
+                     </center>
                   </BorderPane>
                </bottom>
             </BorderPane>

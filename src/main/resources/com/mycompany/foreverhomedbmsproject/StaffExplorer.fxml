@@ -34,7 +34,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <BorderPane layoutX="10.0" layoutY="591.0" prefHeight="54.0" prefWidth="650.0">
+      <BorderPane layoutX="10.0" layoutY="591.0" prefHeight="54.0" prefWidth="634.0">
          <left>
             <Button fx:id="addEmployeeButton" mnemonicParsing="false" onAction="#addEmployee" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Employee" BorderPane.alignment="TOP_CENTER">
                <graphic>
@@ -72,7 +72,7 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </padding>
       </BorderPane>
-      <TableView fx:id="employeeTable" layoutX="13.0" layoutY="73.0" prefHeight="504.0" prefWidth="634.0">
+      <TableView fx:id="employeeTable" layoutX="13.0" layoutY="73.0" prefHeight="504.0" prefWidth="628.0">
          <columns>
             <TableColumn fx:id="employeeIdColumn" prefWidth="48.0" text="ID" />
             <TableColumn fx:id="FnameColumn" prefWidth="77.0" text="First Name" />
@@ -81,7 +81,7 @@
             <TableColumn fx:id="phoneNumberColumn" prefWidth="108.0" text="Phone Number" />
             <TableColumn fx:id="expertiseColumn" prefWidth="85.0" text="Expertise" />
             <TableColumn fx:id="roleColumn" prefWidth="71.0" text="Role" />
-            <TableColumn fx:id="salaryColumn" prefWidth="73.0" text="Salary" />
+            <TableColumn fx:id="salaryColumn" prefWidth="64.0" text="Salary" />
          </columns>
       </TableView>
    </children>

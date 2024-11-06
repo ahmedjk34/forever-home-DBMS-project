@@ -4,6 +4,7 @@
  */
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.AddEventController;
 import com.mycompany.foreverhomedbmsproject.Popups.DonationsPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Event;
 import java.io.File;
@@ -26,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -73,6 +75,9 @@ public class EventsExplorerController implements Initializable {
     private TableColumn<Event, Double> fundingGoalColumn;
 
     private ObservableList<Event> eventsList = FXCollections.observableArrayList();
+    
+    @FXML
+    private Button addEvent;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,6 +95,7 @@ public class EventsExplorerController implements Initializable {
 
     public void setUserType(String userType) {
         this.userType = userType;
+        if (userType.equalsIgnoreCase("Adopter")) addEvent.setVisible(false);
     }
 
     public String getUserType() {
@@ -162,7 +168,41 @@ public class EventsExplorerController implements Initializable {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
+    @FXML
+    private void showAddNewEvent() {
+        // Get the selected Event from the eventTable
+
+        try {
+            // Load the FXML for the popup
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/AddEvent.fxml"));
+            AnchorPane popup = loader.load();
+
+            // Get the controller for the popup and set the event ID
+            AddEventController controller = loader.getController();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Add Event");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+            
+            getEvents();
+            
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void generateReport() {
         String url = "jdbc:postgresql://localhost:5432/postgres";

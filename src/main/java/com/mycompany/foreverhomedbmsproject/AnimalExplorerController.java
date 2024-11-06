@@ -91,7 +91,7 @@ public class AnimalExplorerController implements Initializable {
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         adoptionStatusColumn.setCellValueFactory(new PropertyValueFactory<>("adoptionStatus"));
         BehaviourColumn.setCellValueFactory(new PropertyValueFactory<>("behaviorDescription"));
-        
+
         // Set up double-click event handler on table rows
         animalTable.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
@@ -251,7 +251,7 @@ public class AnimalExplorerController implements Initializable {
             // Show the popup and wait for it to close
             popupStage.showAndWait();
 
-            loadAnimalsByUserType();
+            animalTable.setItems(loadAnimalsByUserType());
 
         } catch (IOException e) {
             e.printStackTrace();
