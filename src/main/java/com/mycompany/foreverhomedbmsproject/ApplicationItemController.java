@@ -55,6 +55,8 @@ public class ApplicationItemController implements Initializable {
     private Button withdrawButton;
     @FXML
     private Button rejectButton;
+    
+    private ApplicationsExplorerController parentController;
 
     private String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
     private String user = "postgres";
@@ -122,8 +124,8 @@ public class ApplicationItemController implements Initializable {
 
             // Check if any rows were deleted
             if (affectedRows > 0) {
-                applicationStatusLabel.setText("Withdrawn"); // Change application status label
                 showAlert("Success", "Application withdrawn successfully.");
+                parentController.refreshApplications();
             } else {
                 showAlert("Error", "Application already withdrawn");
 
@@ -156,5 +158,9 @@ public class ApplicationItemController implements Initializable {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+    
+    public void setParentController(ApplicationsExplorerController parentController){
+        this.parentController = parentController;
     }
 }

@@ -118,6 +118,7 @@ public class ApplicationsExplorerController implements Initializable {
 
                 ApplicationItemController itemController = loader.getController();
                 itemController.setUserType("Adopter");
+                itemController.setParentController(this);
                 itemController.setApplicationData(currentApplication);
 
                 applicationsContainer.getChildren().add(applicationNode);
@@ -155,7 +156,7 @@ public class ApplicationsExplorerController implements Initializable {
         }
     }
 
-    private void refreshApplications() {
+    public void refreshApplications() {
         applicationsContainer.getChildren().clear();
         applicationList.clear();
         getApplications(); // Call to repopulate the applications
