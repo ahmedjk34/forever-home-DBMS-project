@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.MainInfoStaffController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="590.0" prefHeight="590.0" prefWidth="517.0" style="-fx-background-color: #72946D; -fx-border-color: white; -fx-border-radius: 25; -fx-background-radius: 25;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <BorderPane layoutX="15.0" layoutY="52.0" prefHeight="50.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="ssnTextField" disable="true" editable="false" prefHeight="18.0" prefWidth="474.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+               </center>
+               <top>
+                  <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="15.0" layoutY="132.0" prefHeight="38.0" prefWidth="220.0">
+               <top>
+                  <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Gender:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+               <bottom>
+                  <ComboBox fx:id="genderComboBox" disable="true" minWidth="220.0" prefWidth="250.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
+            <BorderPane layoutX="15.0" layoutY="292.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="emailTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Email:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="15.0" layoutY="372.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="addressTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Address:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="15.0" layoutY="452.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="expertiseTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Experties:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="15.0" layoutY="522.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="salaryTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Salary:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="15.0" layoutY="212.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="ageTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Age:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="295.0" layoutY="52.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="fullNameTextField" disable="true" editable="false" prefWidth="477.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+               </center>
+               <top>
+                  <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Full Name:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="295.0" layoutY="132.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="phoneNumberTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="23.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Phone Number:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="295.0" layoutY="292.0" prefHeight="38.0" prefWidth="220.0">
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Social Status:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+               <bottom>
+                  <ComboBox fx:id="socialStatusComboBox" disable="true" minWidth="220.0" prefWidth="220.0" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
+            <BorderPane layoutX="295.0" layoutY="372.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="hireDateTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Hire Date:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="295.0" layoutY="452.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="roleTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Role:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <BorderPane layoutX="295.0" layoutY="212.0" prefHeight="38.0" prefWidth="220.0">
+               <center>
+                  <TextField fx:id="dobTextField" disable="true" editable="false" styleClass="main-input-style" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+               <top>
+                  <Label prefHeight="15.0" prefWidth="180.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Date of Birth:" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="12.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+            <Button fx:id="editInfoButton" layoutX="295.0" layoutY="527.0" mnemonicParsing="false" onAction="#editInformation" prefHeight="49.0" prefWidth="220.0" style="-fx-font-size: 18;" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Edit Information">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

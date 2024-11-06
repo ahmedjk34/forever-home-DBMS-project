@@ -2,20 +2,29 @@ package com.mycompany.foreverhomedbmsproject;
 
 import com.mycompany.foreverhomedbmsproject.Server.Staff;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
 
-public class EmployeeDashboardController {
+public class EmployeeDashboardController implements Initializable {
 
     Staff staff;
-    
+
     @FXML
     AnchorPane contentPane;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        loadMainInfoStaff();
+    }
 
     public Staff getStaff() {
         return staff;
@@ -23,23 +32,26 @@ public class EmployeeDashboardController {
 
     public void setStaff(Staff staff) {
         this.staff = staff;
+        loadMainInfoStaff();
     }
 
-//    private void loadMainInfoAdopter() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainInfoEmployee.fxml"));
-//            AnchorPane mainInfoPane = loader.load();
-//            MainInfoEmployeeController controller = loader.getController();
-//            controller.setStaff(staff);
-//            contentPane.getChildren().setAll(mainInfoPane);
-//        } catch (IOException ex) {
-//            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    private void loadMainInfoStaff() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainInfoStaff.fxml"));
+            AnchorPane mainInfoPane = loader.load();
+            MainInfoStaffController controller = loader.getController();
+            controller.setStaff(staff);
+            System.out.println("TEST" + staff);
+            contentPane.getChildren().setAll(mainInfoPane);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @FXML
     private void handleMainInfoAction() {
         System.out.println("Main Info button clicked");
-        // Add your handling code here (e.g., show main information)
+        loadMainInfoStaff();
     }
 
     // Handles the Applications button click
