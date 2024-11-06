@@ -72,7 +72,6 @@ public class MedicalRecordsExplorerController implements Initializable {
 
         String query;
 
-        System.out.println("Adopter".equals(userType) + "////" + userType);
 
         if ("Adopter".equals(userType)) {
             query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "

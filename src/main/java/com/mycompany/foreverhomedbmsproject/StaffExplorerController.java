@@ -1,6 +1,8 @@
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.AddEmployeePopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Staff;
+import java.io.IOException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.StringProperty;
@@ -17,6 +19,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class StaffExplorerController implements Initializable {
@@ -112,10 +121,31 @@ public class StaffExplorerController implements Initializable {
     // Method to handle adding a new employee
     @FXML
     private void addEmployee() {
-        // Create a new staff member (You can collect input through a form here)
-        Staff newEmployee = new Staff("000-00-0000", "password", "Female", "Anna", "Taylor", "789 Pine St", "Single", "anna.taylor@email.com",
-                "555-8765", LocalDate.of(1995, 5, 20), LocalDate.now(), "IT", "Developer", 70000);
-        employeeList.add(newEmployee);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/AddEmployeePopup.fxml"));
+            AnchorPane popup = loader.load();
+            AddEmployeePopupController controller = loader.getController();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Add a New Employee");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+            
+            getEmployeeDate();
+        } catch (IOException ex) {
+            Logger.getLogger(StaffExplorerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }
 
     @FXML
