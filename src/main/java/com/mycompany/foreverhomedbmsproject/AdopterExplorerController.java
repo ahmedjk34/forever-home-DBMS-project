@@ -4,6 +4,8 @@
  */
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.AddAdopterPopupController;
+import com.mycompany.foreverhomedbmsproject.Popups.EditAdopterPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Adopter;
 
 /**
@@ -35,6 +37,7 @@ import javax.swing.JOptionPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AdopterExplorerController implements Initializable {
@@ -128,100 +131,127 @@ public class AdopterExplorerController implements Initializable {
 
     @FXML
     private void addAdopter(ActionEvent event) {
-//        try {
-//            // Load the "AddAdopterPopup.fxml" file
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddAdopterPopup.fxml"));
-//            AnchorPane popup = loader.load();
-//            AddAdopterPopupController controller = loader.getController();
-//
-//            // Create a new stage for the popup
-//            Stage popupStage = new Stage();
-//            popupStage.setTitle("Add New Adopter");
-//
-//            // Set the scene with the loaded FXML
-//            Scene scene = new Scene(popup);
-//            popupStage.setScene(scene);
-//
-//            // Optional: Set the modality to block input to other windows
-//            popupStage.initModality(Modality.APPLICATION_MODAL);
-//
-//            // Show the popup and wait for it to close
-//            popupStage.showAndWait();
-//
-//            // Refresh the adopter list after adding a new adopter
-//            loadAdopterData();  // You need to implement this method to reload the data into the table
-//
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/AddAdopterPopup.fxml"));
+            AnchorPane popup = loader.load();
+            AddAdopterPopupController controller = loader.getController();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Add New Adopter");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+
+            // Refresh the adopter list after adding a new adopter
+            loadAdopterData();  // You need to implement this method to reload the data into the table
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     private void removeAdopter(ActionEvent event) {
-//        Adopter selectedAdopter = AdoptersTable.getSelectionModel().getSelectedItem();
-//        if (selectedAdopter != null) {
-//            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this adopter?", "Delete Adopter", JOptionPane.YES_NO_OPTION);
-//            if (confirm == JOptionPane.YES_OPTION) {
-//                try {
-//                    String url = "jdbc:postgresql://localhost:5432/postgres";
-//                    String user = "postgres";
-//                    String password = "yourpassword";
-//                    String deleteQuery = "DELETE FROM Adopter WHERE adopter_id = ?";
-//
-//                    try (Connection conn = DriverManager.getConnection(url, user, password); PreparedStatement pstmt = conn.prepareStatement(deleteQuery)) {
-//                        pstmt.setString(1, selectedAdopter.getAdopterId());
-//                        pstmt.executeUpdate();
-//                        adopterList.remove(selectedAdopter);
-//                        loadAdopterData();
-//                        JOptionPane.showMessageDialog(null, "Adopter deleted successfully.");
-//                    }
-//
-//                } catch (Exception e) {
-//                    JOptionPane.showMessageDialog(null, "Error deleting adopter: " + e.getMessage());
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
+        // Get the selected adopter from the table
+        Adopter selectedAdopter = AdoptersTable.getSelectionModel().getSelectedItem();
+
+        // Check if an adopter is selected
+        if (selectedAdopter == null) {
+            // Show a warning message if no adopter is selected
+            JOptionPane.showMessageDialog(null, "Please select an adopter to remove.", "No Selection", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Get the SSN of the selected adopter
+        String ssnToDelete = selectedAdopter.getSsn();
+
+        // SQL queries to delete from the Adopter and Person tables
+        String deleteAdopterQuery = "DELETE FROM Adopter WHERE SSN = ?";
+        String deletePersonQuery = "DELETE FROM Person WHERE SSN = ?";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "ahm@212005")) {
+            // Start a transaction to ensure both deletions are handled together
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement pstmt1 = conn.prepareStatement(deleteAdopterQuery); PreparedStatement pstmt2 = conn.prepareStatement(deletePersonQuery)) {
+
+                // Set SSN in the delete queries
+                pstmt1.setString(1, ssnToDelete);
+                pstmt2.setString(1, ssnToDelete);
+
+                // Execute the delete queries
+                pstmt1.executeUpdate();
+                pstmt2.executeUpdate();
+
+                // Commit the transaction
+                conn.commit();
+
+                // Inform the user that the adopter has been removed
+                JOptionPane.showMessageDialog(null, "Adopter removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                // Refresh the adopter list after removal
+                loadAdopterData();  // Reload the table data
+            } catch (Exception e) {
+                // Rollback if there is an error
+                conn.rollback();
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error removing adopter.", "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                // Reset auto-commit
+                conn.setAutoCommit(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error connecting to the database.", "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
     private void editAdopter(ActionEvent event) {
-//        // Get the selected adopter from the table
-//        Adopter selectedAdopter = (Adopter) AdoptersTable.getSelectionModel().getSelectedItem();
-//
-//        // Check if an adopter is selected
-//        if (selectedAdopter == null) {
-//            JOptionPane.showMessageDialog(null, "Please select an adopter to edit.", "No Selection", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//
-//        try {
-//            // Load the "EditAdopterPopup.fxml" file
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("EditAdopterPopup.fxml"));
-//            AnchorPane popup = loader.load();
-//            EditAdopterPopupController controller = loader.getController();
-//            controller.setAdopter(selectedAdopter);  // Set the selected adopter to be edited
-//
-//            // Create a new stage for the popup
-//            Stage popupStage = new Stage();
-//            popupStage.setTitle("Edit Adopter");
-//
-//            // Set the scene with the loaded FXML
-//            Scene scene = new Scene(popup);
-//            popupStage.setScene(scene);
-//
-//            // Optional: Set the modality to block input to other windows
-//            popupStage.initModality(Modality.APPLICATION_MODAL);
-//
-//            // Show the popup and wait for it to close
-//            popupStage.showAndWait();
-//
-//            // Refresh the adopter list after editing
-//            loadAdopterData();  // You need to implement this method to reload the data into the table
-//
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
+        // Get the selected adopter from the table
+        Adopter selectedAdopter = (Adopter) AdoptersTable.getSelectionModel().getSelectedItem(); 
+
+        // Check if an adopter is selected
+        if (selectedAdopter == null) {
+            JOptionPane.showMessageDialog(null, "Please select an adopter to edit.", "No Selection", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            // Load the "EditAdopterPopup.fxml" file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/EditAdopterPopup.fxml"));
+            AnchorPane popup = loader.load();
+            EditAdopterPopupController controller = loader.getController();
+            controller.setAdopter(selectedAdopter);  // Set the selected adopter to be edited
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Edit Adopter");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+
+            // Refresh the adopter list after editing
+            loadAdopterData();  // You need to implement this method to reload the data into the table
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

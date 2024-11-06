@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #72946a;" stylesheets="@../../../styles/fxml.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterExplorerController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #72946a;" stylesheets="@../../../styles/fxml.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.AdopterExplorerController">
    <children>
       <Label layoutX="36.0" layoutY="24.0" prefHeight="33.0" prefWidth="115.0" text="Adopters" textFill="WHITE">
          <graphic>
@@ -75,7 +74,7 @@
       </BorderPane>
       <TableView fx:id="AdoptersTable" layoutX="11.0" layoutY="68.0" prefHeight="504.0" prefWidth="631.0">
          <columns>
-            <TableColumn fx:id="AdopterIdColumn" prefWidth="77.0" text="ID" />
+            <TableColumn fx:id="AdopterIdColumn" prefWidth="77.0" text="SSN" />
             <TableColumn fx:id="FnameColumn" prefWidth="81.0" text="First Name" />
             <TableColumn fx:id="LnameColumn" prefWidth="73.0" text="Last Name" />
             <TableColumn fx:id="AddressColumn" prefWidth="73.0" text="Address" />
