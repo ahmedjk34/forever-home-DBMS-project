@@ -57,8 +57,16 @@ public class EmployeeDashboardController implements Initializable {
     // Handles the Applications button click
     @FXML
     private void handleApplicationsAction() {
-        System.out.println("Applications button clicked");
-        // Add your handling code here (e.g., show applications)
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ApplicationsExplorer.fxml"));
+            AnchorPane applicationsPane = loader.load();
+            ApplicationsExplorerController controller = loader.getController();
+            controller.setUserType("Staff");
+            controller.setSSN(staff.getSsn());
+            contentPane.getChildren().setAll(applicationsPane);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Handles the Animals button click
@@ -68,8 +76,8 @@ public class EmployeeDashboardController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalExplorer.fxml"));
             AnchorPane animalPane = loader.load();
             AnimalExplorerController controller = loader.getController();
-            controller.setUserType("Staff");
             controller.setSSN(staff.getSsn());
+            controller.setUserType("Staff");
             contentPane.getChildren().setAll(animalPane);
         } catch (IOException ex) {
             Logger.getLogger(EmployeeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
