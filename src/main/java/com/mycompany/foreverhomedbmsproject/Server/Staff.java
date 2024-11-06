@@ -13,10 +13,10 @@ public class Staff extends Person {
     private String role;
     private double salary;
 
-    // Constructor
+    // Constructor to match the query
     public Staff(String ssn, String password, String gender, String fName, String lName, String address,
-                 String socialStatus, String email, String phoneNumber, LocalDate dateOfBirth,
-                 LocalDate hireDate, String expertise, String role, double salary) {
+            String socialStatus, String email, String phoneNumber, LocalDate dateOfBirth,
+            LocalDate hireDate, String expertise, String role, double salary) {
         super(ssn, password, gender, fName, lName, address, socialStatus, email, phoneNumber, dateOfBirth);
         this.hireDate = hireDate;
         this.expertise = expertise;
@@ -57,15 +57,15 @@ public class Staff extends Person {
         this.salary = salary;
     }
 
-    // toString() Method
+    // toString() Method to provide a readable string for the Staff object
     @Override
     public String toString() {
-        return "Staff{" +
-                "hireDate=" + hireDate +
-                ", expertise='" + expertise + '\'' +
-                ", role='" + role + '\'' +
-                ", salary=" + salary +
-                ", fullName='" + getFullName() + '\'' +
-                "} " + super.toString();
+        return "Staff{"
+                + "hireDate=" + hireDate
+                + ", expertise='" + expertise + '\''
+                + ", role='" + role + '\''
+                + ", salary=" + salary
+                + ", fullName='" + getFullName() + '\''
+                + "} " + super.toString();
     }
 }
