@@ -66,6 +66,7 @@ public class AdopterDashboardController implements Initializable {
         AnchorPane animalPane = loader.load();
         AnimalExplorerController controller = loader.getController();
         controller.setUserType("Adopter");
+        controller.setSSN(adopter.getSsn());
         contentPane.getChildren().setAll(animalPane);
     }
 
