@@ -4,7 +4,10 @@ import com.mycompany.foreverhomedbmsproject.Popups.EditMedicalRecordPopupControl
 import com.mycompany.foreverhomedbmsproject.Popups.NewMedicalRecordPopupController;
 import com.mycompany.foreverhomedbmsproject.Popups.RemoveMedicalRecordPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.MedicalRecord;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +15,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +31,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.swing.JFrame;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
 
 public class MedicalRecordsExplorerController implements Initializable {
 
@@ -223,6 +236,40 @@ public class MedicalRecordsExplorerController implements Initializable {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+          @FXML
+    private void generateReport() {
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String user = "postgres";
+        String password = "ahm@212005";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            // Load the .jrxml file
+            InputStream inp = new FileInputStream(new File("MedicalReports_Adopter.jrxml"));
+
+            // Compile the report
+            JasperDesign jd = JRXmlLoader.load(inp);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+
+            // Set report parameters
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("adopterSSN", SSN);
+
+            // Fill the report with data
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, connection);
+
+            // Display the report in a JFrame
+            JFrame frame = new JFrame("Adopter Report");
+            frame.getContentPane().add(new JRViewer(jp));
+            frame.setSize(800, 600);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void setUserType(String userType) {
         this.userType = userType;
@@ -232,4 +279,6 @@ public class MedicalRecordsExplorerController implements Initializable {
     public void setSSN(String SSN) {
         this.SSN = SSN;
     }
+    
+  
 }
