@@ -7,18 +7,18 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javax.swing.JOptionPane;
 
 public class MainInfoAdopterController implements Initializable {
@@ -26,14 +26,24 @@ public class MainInfoAdopterController implements Initializable {
     private Adopter adopter;
 
     @FXML
-    private TextField ssnTextField, fullNameTextField, genderTextField, phoneNumberTextField, emailTextField, socialStatusTextField, addressTextField, occupationTextField, numberOfPetsTextField, numberOfChildrenTextField, yearlyIncomeTextField, dobTextField, ageTextField;
+    private TextField ssnTextField, fullNameTextField, phoneNumberTextField, emailTextField, addressTextField,
+            occupationTextField, numberOfPetsTextField, numberOfChildrenTextField, yearlyIncomeTextField,
+            dobTextField, ageTextField;
+
+    @FXML
+    private ComboBox<String> socialStatusComboBox;
+    
+    @FXML
+    private ComboBox<String> genderComboBox;
 
     @FXML
     private Button editInfoButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Any initialization if needed
+        // Initialize the ComboBox options
+        genderComboBox.setItems(FXCollections.observableArrayList("Male", "Female"));
+        socialStatusComboBox.setItems(FXCollections.observableArrayList("Single", "Divorced", "Widowed", "Married"));
     }
 
     public void setAdopter(Adopter adopter) {
@@ -45,10 +55,10 @@ public class MainInfoAdopterController implements Initializable {
         if (adopter != null) {
             ssnTextField.setText(adopter.getSsn());
             fullNameTextField.setText(adopter.getFullName());
-            genderTextField.setText(adopter.getGender());
+            genderComboBox.setValue(adopter.getGender());
             phoneNumberTextField.setText(adopter.getPhoneNumber());
             emailTextField.setText(adopter.getEmail());
-            socialStatusTextField.setText(adopter.getSocialStatus());
+            socialStatusComboBox.setValue(adopter.getSocialStatus());
             addressTextField.setText(adopter.getAddress());
             occupationTextField.setText(adopter.getOccupation());
             numberOfPetsTextField.setText(String.valueOf(adopter.getNumberOfPetsOwned()));
@@ -77,27 +87,21 @@ public class MainInfoAdopterController implements Initializable {
                 String lastName = nameParts[1];
 
                 String address = addressTextField.getText();
-                String socialStatus = socialStatusTextField.getText();
+                String socialStatus = socialStatusComboBox.getValue();
                 String email = emailTextField.getText();
                 String phoneNumber = phoneNumberTextField.getText();
                 String dob = dobTextField.getText();
-                String gender = genderTextField.getText();
+                String gender = genderComboBox.getValue();
                 String occupation = occupationTextField.getText();
                 int numberOfPets = Integer.parseInt(numberOfPetsTextField.getText());
                 int numberOfChildren = Integer.parseInt(numberOfChildrenTextField.getText());
 
-                // Remove any dollar sign or commas from the input before parsing
                 String yearlyIncomeStr = yearlyIncomeTextField.getText().replaceAll("[$,]", "");
                 double yearlyIncome = Double.parseDouble(yearlyIncomeStr);
 
-                // Validate the date of birth
                 if (!validateDate(dob)) {
-                    return; // If the date is invalid, stop further processing
+                    return;
                 }
-
-                // Format socialStatus and gender for database storage
-                socialStatus = capitalizeFirstLetter(socialStatus);
-                gender = capitalizeFirstLetter(gender);
 
                 if (!validateInput(socialStatus, gender, numberOfPets, numberOfChildren, yearlyIncome)) {
                     return;
@@ -135,11 +139,10 @@ public class MainInfoAdopterController implements Initializable {
                         psAdopter.executeUpdate();
                     }
 
-                    // Calculate age from dob
                     LocalDate dateOfBirth = LocalDate.parse(dob);
                     LocalDate currentDate = LocalDate.now();
                     int age = Period.between(dateOfBirth, currentDate).getYears();
-                    ageTextField.setText(String.valueOf(age)); // Set age in the ageTextField
+                    ageTextField.setText(String.valueOf(age));
 
                     showAlert("Success", "Information updated successfully.");
                     toggleFieldsEditable(false);
@@ -158,7 +161,6 @@ public class MainInfoAdopterController implements Initializable {
         try {
             LocalDate parsedDate = LocalDate.parse(date, formatter);
 
-            // Check if the year is in the valid range
             int year = parsedDate.getYear();
             if (year < 1920) {
                 showAlert("Invalid Input", "Year of Birth must not be before 1920 to be an eligible adopter.");
@@ -169,7 +171,6 @@ public class MainInfoAdopterController implements Initializable {
                 return false;
             }
 
-            // Check if parsedDate matches the input date string, which validates logical date accuracy
             String formattedDate = parsedDate.format(formatter);
             if (!formattedDate.equals(date)) {
                 showAlert("Invalid Input", "Date must represent a valid calendar date.");
@@ -208,29 +209,18 @@ public class MainInfoAdopterController implements Initializable {
         return true;
     }
 
-    private String capitalizeFirstLetter(String text) {
-        if (text == null || text.isEmpty()) {
-            return text;
-        }
-        return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
-    }
-
     private void toggleFieldsEditable(boolean enable) {
         fullNameTextField.setDisable(!enable);
         fullNameTextField.setEditable(enable);
 
-        genderTextField.setDisable(!enable);
-        genderTextField.setEditable(enable);
-
+        genderComboBox.setDisable(!enable);
         phoneNumberTextField.setDisable(!enable);
         phoneNumberTextField.setEditable(enable);
 
         emailTextField.setDisable(!enable);
         emailTextField.setEditable(enable);
 
-        socialStatusTextField.setDisable(!enable);
-        socialStatusTextField.setEditable(enable);
-
+        socialStatusComboBox.setDisable(!enable);
         addressTextField.setDisable(!enable);
         addressTextField.setEditable(enable);
 
@@ -249,7 +239,7 @@ public class MainInfoAdopterController implements Initializable {
         dobTextField.setDisable(!enable);
         dobTextField.setEditable(enable);
 
-        ageTextField.setDisable(true); // Age field remains uneditable since it's calculated from DOB
+        ageTextField.setDisable(true);
     }
 
     private void showAlert(String title, String message) {
