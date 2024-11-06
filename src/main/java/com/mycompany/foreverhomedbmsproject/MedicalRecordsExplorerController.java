@@ -42,6 +42,8 @@ public class MedicalRecordsExplorerController implements Initializable {
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "ahm@212005";
 
+    private String userType, SSN;
+
     // ID of the specific animal to retrieve medical records for
     private int specificAnimalId = 1;
 
@@ -51,27 +53,53 @@ public class MedicalRecordsExplorerController implements Initializable {
     }
 
     public void getMedicalRecords() {
-        
+
         recordsContainer.getChildren().clear();
         medicalRecordsList.clear();
-        String query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "
-                + "vr.Vaccination, vr.date_added AS vaccination_date, "
-                + "tr.Treatment, tr.date_added AS treatment_date, "
-                + "ir.Illness, ir.date_added AS illness_date, "
-                + "nr.Note, nr.date_added AS note_date, "
-                + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age "
-                + "FROM Medical_Record m "
-                + "JOIN Animal a ON m.Animal_ID = a.Animal_ID "
-                + "LEFT JOIN Vaccination_Record vr ON m.Record_ID = vr.Record_ID "
-                + "LEFT JOIN Treatment_Record tr ON m.Record_ID = tr.Record_ID "
-                + "LEFT JOIN Illness_Record ir ON m.Record_ID = ir.Record_ID "
-                + "LEFT JOIN Note_Record nr ON m.Record_ID = nr.Record_ID "
-                + "WHERE a.Animal_ID = m.Animal_ID "
-                + "ORDER BY m.Record_ID, vr.date_added, tr.date_added, ir.date_added, nr.date_added";
+
+        String query;
+
+        System.out.println("Adopter".equals(userType) + "////" + userType);
+
+        if ("Adopter".equals(userType)) {
+            query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "
+                    + "vr.Vaccination, vr.date_added AS vaccination_date, "
+                    + "tr.Treatment, tr.date_added AS treatment_date, "
+                    + "ir.Illness, ir.date_added AS illness_date, "
+                    + "nr.Note, nr.date_added AS note_date, "
+                    + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age "
+                    + "FROM Medical_Record m "
+                    + "JOIN Animal a ON m.Animal_ID = a.Animal_ID "
+                    + "JOIN Adopts ad ON a.Animal_ID = ad.Animal_ID "
+                    + "LEFT JOIN Vaccination_Record vr ON m.Record_ID = vr.Record_ID "
+                    + "LEFT JOIN Treatment_Record tr ON m.Record_ID = tr.Record_ID "
+                    + "LEFT JOIN Illness_Record ir ON m.Record_ID = ir.Record_ID "
+                    + "LEFT JOIN Note_Record nr ON m.Record_ID = nr.Record_ID "
+                    + "WHERE ad.SSN = ? "
+                    + "ORDER BY m.Record_ID, vr.date_added, tr.date_added, ir.date_added, nr.date_added";
+
+        } else { // Assuming Staff or other roles
+            query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "
+                    + "vr.Vaccination, vr.date_added AS vaccination_date, "
+                    + "tr.Treatment, tr.date_added AS treatment_date, "
+                    + "ir.Illness, ir.date_added AS illness_date, "
+                    + "nr.Note, nr.date_added AS note_date, "
+                    + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age "
+                    + "FROM Medical_Record m "
+                    + "JOIN Animal a ON m.Animal_ID = a.Animal_ID "
+                    + "LEFT JOIN Vaccination_Record vr ON m.Record_ID = vr.Record_ID "
+                    + "LEFT JOIN Treatment_Record tr ON m.Record_ID = tr.Record_ID "
+                    + "LEFT JOIN Illness_Record ir ON m.Record_ID = ir.Record_ID "
+                    + "LEFT JOIN Note_Record nr ON m.Record_ID = nr.Record_ID "
+                    + "ORDER BY m.Record_ID, vr.date_added, tr.date_added, ir.date_added, nr.date_added";
+        }
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); PreparedStatement stmt = conn.prepareStatement(query)) {
 
-//        stmt.setInt(1, specificAnimalId);
+            if ("Adopter".equals(userType)) {
+                stmt.setString(1, SSN); // Set adopter SSN for the WHERE clause
+            }
+
             try (ResultSet rs = stmt.executeQuery()) {
                 MedicalRecord currentRecord = null;
 
@@ -84,42 +112,30 @@ public class MedicalRecordsExplorerController implements Initializable {
                     String animalAge = rs.getString("Age");
                     String animalImage = rs.getString("animal_image");
 
-                    // Check if we are processing a new medical record
                     if (currentRecord == null || currentRecord.getRecordId() != recordId) {
-                        // Create a new MedicalRecord instance and add it to the list
                         currentRecord = new MedicalRecord(recordId, animalId, clinicName, animalName, animalGender, animalAge, animalImage);
                         medicalRecordsList.add(currentRecord);
                     }
 
-                    // Add vaccination if it's not already in the list
                     String vaccination = rs.getString("Vaccination");
-                    if (vaccination != null && currentRecord.getVaccinationRecords().stream()
-                            .noneMatch(v -> v.getVaccination().equals(vaccination))) {
+                    if (vaccination != null && currentRecord.getVaccinationRecords().stream().noneMatch(v -> v.getVaccination().equals(vaccination))) {
                         currentRecord.addVaccinationRecord(vaccination);
                     }
 
-                    // Add treatment if it's not already in the list
                     String treatment = rs.getString("Treatment");
-                    if (treatment != null && currentRecord.getTreatmentRecords().stream()
-                            .noneMatch(t -> t.getTreatment().equals(treatment))) {
+                    if (treatment != null && currentRecord.getTreatmentRecords().stream().noneMatch(t -> t.getTreatment().equals(treatment))) {
                         currentRecord.addTreatmentRecord(treatment);
                     }
 
-                    // Add illness if it's not already in the list
                     String illness = rs.getString("Illness");
-
-                    if (illness != null && currentRecord.getIllnessRecords().stream()
-                            .noneMatch(i -> i.getIllness().equals(illness))) {
+                    if (illness != null && currentRecord.getIllnessRecords().stream().noneMatch(i -> i.getIllness().equals(illness))) {
                         currentRecord.addIllnessRecord(illness);
                     }
 
-                    // Add note if it's not already in the list
                     String note = rs.getString("Note");
-                    if (note != null && currentRecord.getNoteRecords().stream()
-                            .noneMatch(n -> n.getNote().equals(note))) {
-                        currentRecord.addNoteRecord(note);  // Ensure that this method is implemented in your MedicalRecord class
+                    if (note != null && currentRecord.getNoteRecords().stream().noneMatch(n -> n.getNote().equals(note))) {
+                        currentRecord.addNoteRecord(note);
                     }
-
                 }
             }
 
@@ -207,5 +223,13 @@ public class MedicalRecordsExplorerController implements Initializable {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-  
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+        getMedicalRecords();
+    }
+
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
+    }
 }

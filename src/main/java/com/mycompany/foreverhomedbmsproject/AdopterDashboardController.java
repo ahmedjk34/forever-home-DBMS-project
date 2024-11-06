@@ -101,7 +101,11 @@ public class AdopterDashboardController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MedicalRecordsExplorer.fxml"));
             AnchorPane medicalRecordsPane = loader.load();
+            MedicalRecordsExplorerController controller = loader.getController();
+            controller.setSSN(adopter.getSsn());
+            controller.setUserType("Adopter");
             contentPane.getChildren().setAll(medicalRecordsPane);
+            
         } catch (IOException ex) {
             Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
