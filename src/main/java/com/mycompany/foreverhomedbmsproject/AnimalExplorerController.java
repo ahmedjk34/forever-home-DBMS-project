@@ -170,7 +170,8 @@ public class AnimalExplorerController implements Initializable {
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Load the .jrxml file
-            InputStream inp = new FileInputStream(new File("AnimalsReport_Adopter.jrxml"));
+            String reportFileName = (userType.equals("Adopter")) ? "AnimalsReport_Adopter.jrxml" : "AnimalsReport_Staff.jrxml";
+            InputStream inp = new FileInputStream(new File(reportFileName));
 
             // Compile the report
             JasperDesign jd = JRXmlLoader.load(inp);

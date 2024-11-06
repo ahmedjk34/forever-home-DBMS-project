@@ -244,7 +244,11 @@ public class MedicalRecordsExplorerController implements Initializable {
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Load the .jrxml file
-            InputStream inp = new FileInputStream(new File("MedicalReports_Adopter.jrxml"));
+// Determine the report file name based on the user type
+            String reportFileName = (userType.equals("Adopter")) ? "MedicalReports_Adopter.jrxml" : "MedicalReports_Staff.jrxml";
+
+// Load the report file using the appropriate file name
+            InputStream inp = new FileInputStream(new File(reportFileName));
 
             // Compile the report
             JasperDesign jd = JRXmlLoader.load(inp);

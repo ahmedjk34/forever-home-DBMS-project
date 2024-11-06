@@ -145,6 +145,28 @@ public class MainInfoAdopterController implements Initializable {
                     ageTextField.setText(String.valueOf(age));
 
                     showAlert("Success", "Information updated successfully.");
+                  if (adopter != null) {
+                        adopter.setSsn(ssn); // Assuming SSN might be editable, otherwise you can skip this
+                        adopter.setFName(firstName);
+                        adopter.setLName(lastName);
+                        adopter.setAddress(address);
+                        adopter.setSocialStatus(socialStatus);
+                        adopter.setEmail(email);
+                        adopter.setPhoneNumber(phoneNumber);
+                        adopter.setDateOfBirth(LocalDate.parse(dob));
+                        adopter.setGender(gender);
+                        adopter.setOccupation(occupation);
+                        adopter.setNumberOfChildren(numberOfChildren);
+                        adopter.setNumberOfPetsOwned(numberOfPets);
+                        adopter.setYearlyIncome(yearlyIncome);
+
+                        // Recalculate age based on the updated date of birth
+                        LocalDate d = LocalDate.parse(dob);
+                        LocalDate cd = LocalDate.now();
+                        int eAge = Period.between(d, cd).getYears();
+                        ageTextField.setText(String.valueOf(eAge));
+                    }
+                    
                     toggleFieldsEditable(false);
                     editInfoButton.setText("Edit Information");
                 }

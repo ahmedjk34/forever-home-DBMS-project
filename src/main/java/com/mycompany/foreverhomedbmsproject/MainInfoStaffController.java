@@ -159,6 +159,28 @@ public class MainInfoStaffController implements Initializable {
                     int age = Period.between(dateOfBirth, currentDate).getYears();
                     ageTextField.setText(String.valueOf(age));
                     showAlert("Success", "Information updated successfully.");
+                    if (staff != null) {
+                        staff.setSsn(ssn); // Assuming SSN might be editable, otherwise you can skip this
+                        staff.setFName(firstName);
+                        staff.setLName(lastName);
+                        staff.setAddress(address);
+                        staff.setSocialStatus(socialStatus);
+                        staff.setEmail(email);
+                        staff.setPhoneNumber(phoneNumber);
+                        staff.setDateOfBirth(LocalDate.parse(dob));
+                        staff.setGender(gender);
+                        staff.setHireDate(LocalDate.parse(hireDate));
+                        staff.setExpertise(expertise);
+                        staff.setRole(role);
+                        staff.setSalary(salary);
+
+                        // Recalculate age based on the updated date of birth
+                        LocalDate d = LocalDate.parse(dob);
+                        LocalDate cd = LocalDate.now();
+                        int eAge = Period.between(d, cd).getYears();
+                        ageTextField.setText(String.valueOf(eAge));
+                    }
+
                     toggleFieldsEditable(false);
                     editInfoButton.setText("Edit Information");
                 }
