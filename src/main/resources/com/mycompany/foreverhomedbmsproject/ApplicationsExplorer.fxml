@@ -51,7 +51,7 @@
             <bottom>
                 <BorderPane prefHeight="64.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                     <left>
-                        <Button mnemonicParsing="false" onAction="#showAddApplicationPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Application" BorderPane.alignment="CENTER">
+                        <Button fx:id="addApplicationButton" mnemonicParsing="false" onAction="#showAddApplicationPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add an Application" BorderPane.alignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

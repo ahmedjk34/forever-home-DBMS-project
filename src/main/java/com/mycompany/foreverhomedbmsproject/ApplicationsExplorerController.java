@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
 public class ApplicationsExplorerController implements Initializable {
 
@@ -35,12 +36,15 @@ public class ApplicationsExplorerController implements Initializable {
     @FXML
     private VBox applicationsContainer;  // VBox to hold individual record items
 
+    @FXML
+    private Button addApplicationButton;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         applicationList = new ArrayList<>();
         getApplications();
     }
 
+     
     private void getApplications() {
         String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
@@ -209,6 +213,7 @@ public class ApplicationsExplorerController implements Initializable {
     public void setUserType(String userType) {
         this.userType = userType;
         getApplications();
+        if (userType.equals("Staff")) addApplicationButton.setVisible(false);
     }
 
     public void setSSN(String SSN) {
