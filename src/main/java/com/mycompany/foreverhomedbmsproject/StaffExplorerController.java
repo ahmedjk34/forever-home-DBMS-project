@@ -3,17 +3,18 @@ package com.mycompany.foreverhomedbmsproject;
 import com.mycompany.foreverhomedbmsproject.Popups.AddEmployeePopupController;
 import com.mycompany.foreverhomedbmsproject.Popups.EditEmployeePopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Staff;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -27,7 +28,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
 
 public class StaffExplorerController implements Initializable {
 
@@ -169,7 +178,7 @@ public class StaffExplorerController implements Initializable {
                 String url = "jdbc:postgresql://localhost:5432/postgres";
                 String user = "postgres";
                 String password = "ahm@212005";
-                String deleteQuery = "DELETE FROM Staff WHERE SSN = ? CASCADE";  // SQL query to delete
+                String deleteQuery = "DELETE FROM Staff WHERE SSN = ?";  // SQL query to delete
 
                 try (Connection conn = DriverManager.getConnection(url, user, password); var pstmt = conn.prepareStatement(deleteQuery)) {
 
@@ -202,7 +211,6 @@ public class StaffExplorerController implements Initializable {
                     "No Selection", JOptionPane.WARNING_MESSAGE);
         }
     }
-
 
     @FXML
     private void editEmployee() {
@@ -240,6 +248,30 @@ public class StaffExplorerController implements Initializable {
 
     @FXML
     private void generateReport() {
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String user = "postgres";
+        String password = "ahm@212005";
 
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            // Load the .jrxml file
+            InputStream inp = new FileInputStream(new File("StaffReport.jrxml"));
+
+            // Compile the report
+            JasperDesign jd = JRXmlLoader.load(inp);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+
+            // Fill the report with data
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, connection);
+
+            // Display the report in a JFrame
+            JFrame frame = new JFrame("Staff Report");
+            frame.getContentPane().add(new JRViewer(jp));
+            frame.setSize(800, 600);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
