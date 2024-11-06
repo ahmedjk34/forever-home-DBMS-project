@@ -98,6 +98,17 @@ public class EmployeeDashboardController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleAdopterAction() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdoptersExplorer.fxml"));
+            AnchorPane adopterPanel = loader.load();
+            contentPane.getChildren().setAll(adopterPanel);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     // Handles the Feedback button click
     @FXML
     private void handleFeedbackAction() {

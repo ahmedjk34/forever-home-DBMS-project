@@ -1,5 +1,6 @@
 package com.mycompany.foreverhomedbmsproject;
 
+import com.mycompany.foreverhomedbmsproject.Popups.AddAnimalPopupController;
 import com.mycompany.foreverhomedbmsproject.Popups.AnimalPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Animal;
 import java.io.File;
@@ -35,6 +36,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -87,7 +91,7 @@ public class AnimalExplorerController implements Initializable {
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         adoptionStatusColumn.setCellValueFactory(new PropertyValueFactory<>("adoptionStatus"));
         BehaviourColumn.setCellValueFactory(new PropertyValueFactory<>("behaviorDescription"));
-
+        
         // Set up double-click event handler on table rows
         animalTable.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
@@ -227,12 +231,76 @@ public class AnimalExplorerController implements Initializable {
 
     @FXML
     private void addAnimal() {
-        System.out.println("Add Animal button clicked");
+        try {
+            // Load the FXML for the popup
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/AddAnimalPopup.fxml"));
+            AnchorPane popup = loader.load();
+            AddAnimalPopupController controller = loader.getController();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Add New Feedback");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+
+            loadAnimalsByUserType();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void removeAnimal() {
-        System.out.println("Remove Animal button clicked");
+        // Get the selected animal from the table
+        Animal selectedAnimal = animalTable.getSelectionModel().getSelectedItem();
+
+        if (selectedAnimal == null) {
+            // Show error message if no animal is selected
+            JOptionPane.showMessageDialog(null, "No animal selected. Please select an animal to remove.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Get the Animal ID of the selected animal
+        int animalId = selectedAnimal.getAnimalId();
+
+        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+        String user = "postgres";
+        String password = "ahm@212005";
+
+        String query = "DELETE FROM Animal WHERE Animal_ID = ?";
+
+        try (Connection conn = DriverManager.getConnection(dbUrl, user, password); PreparedStatement pst = conn.prepareStatement(query)) {
+
+            // Set the parameter for the query (Animal ID)
+            pst.setInt(1, animalId);
+
+            // Execute the delete query
+            int rowsAffected = pst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Successfully deleted the animal from the database
+                JOptionPane.showMessageDialog(null, "Animal with ID " + animalId + " has been removed.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                // Refresh the table data to reflect the change
+                animalTable.setItems(loadAnimalsByUserType());
+            } else {
+                // No animal found with that ID in the database
+                JOptionPane.showMessageDialog(null, "No animal found with the given ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Show error message if an exception occurs
+            JOptionPane.showMessageDialog(null, "Error deleting animal: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
