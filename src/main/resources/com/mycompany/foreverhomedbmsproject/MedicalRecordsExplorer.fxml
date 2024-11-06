@@ -31,7 +31,7 @@
                   </Label>
                </left>
                <right>
-                  <Button mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Generate Report" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#generateReport" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Generate Report" BorderPane.alignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
