@@ -46,6 +46,8 @@ public class MedicalRecordItemController {
     @FXML
     private Label clinicNameLabel;
 
+    private MedicalRecordsExplorerController parentController;
+
     // TableView to hold medical record data
     @FXML
     private TableView<MedicalRecordItem> medicalRecordsTable;
@@ -61,7 +63,7 @@ public class MedicalRecordItemController {
 
     @FXML
     private TableColumn<MedicalRecordItem, String> noteTable;
-    
+
     private MedicalRecord currentRecord;
 
     public void setRecordData(MedicalRecord record) {
@@ -130,11 +132,16 @@ public class MedicalRecordItemController {
             // Show the popup and wait for it to close
             popupStage.showAndWait();
 
+            parentController.getMedicalRecords();  // Fetch updated records and refresh UI
+
         } catch (IOException ex) {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
+
+    public void setParentController(MedicalRecordsExplorerController parentController) {
+        this.parentController = parentController;
+    }
 
 }

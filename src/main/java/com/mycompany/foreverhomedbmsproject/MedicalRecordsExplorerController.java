@@ -50,8 +50,9 @@ public class MedicalRecordsExplorerController implements Initializable {
         getMedicalRecords();
     }
 
-    private void getMedicalRecords() {
-
+    public void getMedicalRecords() {
+        
+        recordsContainer.getChildren().clear();
         medicalRecordsList.clear();
         String query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "
                 + "vr.Vaccination, vr.date_added AS vaccination_date, "
@@ -106,7 +107,6 @@ public class MedicalRecordsExplorerController implements Initializable {
 
                     // Add illness if it's not already in the list
                     String illness = rs.getString("Illness");
-                    System.out.println("Note retrieved for Record ID " + recordId + ": " + illness); // Debugging line
 
                     if (illness != null && currentRecord.getIllnessRecords().stream()
                             .noneMatch(i -> i.getIllness().equals(illness))) {
@@ -138,6 +138,7 @@ public class MedicalRecordsExplorerController implements Initializable {
 
                 MedicalRecordItemController itemController = loader.getController();
                 itemController.setRecordData(record);
+                itemController.setParentController(this);
 
                 recordsContainer.getChildren().add(recordNode);
 
@@ -206,5 +207,5 @@ public class MedicalRecordsExplorerController implements Initializable {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+  
 }
