@@ -36,6 +36,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -46,13 +47,19 @@ public class FeedbackExplorerController implements Initializable {
 
     @FXML
     private VBox vbox;
+    
+    @FXML
+    private Button addFeedback;
 
     private String adopterSSN;
+    
+
     private List<Feedback> feedbackList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshFeedbacks();
+        if (adopterSSN == null) addFeedback.setVisible(false);
     }
 
     private void getFeedbacks() {

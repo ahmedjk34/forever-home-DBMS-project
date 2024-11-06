@@ -20,7 +20,7 @@
                </padding>
             </VBox>
          </content></ScrollPane>
-      <Button layoutX="14.0" layoutY="602.0" mnemonicParsing="false" onAction="#showAddReviewPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add Feedback">
+      <Button fx:id="addFeedback" layoutX="14.0" layoutY="602.0" mnemonicParsing="false" onAction="#showAddReviewPopup" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Add Feedback">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
