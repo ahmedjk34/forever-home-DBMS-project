@@ -72,7 +72,6 @@ public class MedicalRecordsExplorerController implements Initializable {
 
         String query;
 
-
         if ("Adopter".equals(userType)) {
             query = "SELECT m.Record_ID, a.Animal_ID, a.animal_image, m.Clinic_Name, a.name, a.gender, "
                     + "vr.Vaccination, vr.date_added AS vaccination_date, "
@@ -88,6 +87,7 @@ public class MedicalRecordsExplorerController implements Initializable {
                     + "LEFT JOIN Illness_Record ir ON m.Record_ID = ir.Record_ID "
                     + "LEFT JOIN Note_Record nr ON m.Record_ID = nr.Record_ID "
                     + "WHERE ad.SSN = ? "
+                    + "AND ad.application_status IN ('Approved', 'Pending') "
                     + "ORDER BY m.Record_ID, vr.date_added, tr.date_added, ir.date_added, nr.date_added";
 
         } else { // Assuming Staff or other roles
@@ -235,8 +235,8 @@ public class MedicalRecordsExplorerController implements Initializable {
             Logger.getLogger(MedicalRecordsExplorerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-          @FXML
+
+    @FXML
     private void generateReport() {
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
@@ -269,7 +269,6 @@ public class MedicalRecordsExplorerController implements Initializable {
         }
     }
 
-
     public void setUserType(String userType) {
         this.userType = userType;
         getMedicalRecords();
@@ -278,6 +277,5 @@ public class MedicalRecordsExplorerController implements Initializable {
     public void setSSN(String SSN) {
         this.SSN = SSN;
     }
-    
-  
+
 }
