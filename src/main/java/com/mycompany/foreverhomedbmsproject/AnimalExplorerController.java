@@ -27,12 +27,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javax.swing.JFrame;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import java.util.Map;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.util.JRXmlUtils;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.swing.JRViewer;
 
@@ -67,6 +74,8 @@ public class AnimalExplorerController implements Initializable {
     private Button editAnimalButton;
 
     private String userType;
+
+    private String SSN;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -156,14 +165,25 @@ public class AnimalExplorerController implements Initializable {
         String password = "ahm@212005";
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            InputStream inp = new FileInputStream(new File("AnimalExplorerReport.jrxml"));
+            // Load the .jrxml file
+            InputStream inp = new FileInputStream(new File("AnimalsReport_Adopter.jrxml"));
+
+            // Compile the report
             JasperDesign jd = JRXmlLoader.load(inp);
             JasperReport jr = JasperCompileManager.compileReport(jd);
-            JasperPrint jp = JasperFillManager.fillReport(jr, null, connection);
 
-            JFrame frame = new JFrame("Report");
+            // Set report parameters
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("adopterSSN", SSN);
+
+            // Fill the report with data
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, connection);
+
+            // Display the report in a JFrame
+            JFrame frame = new JFrame("Adopter Report");
             frame.getContentPane().add(new JRViewer(jp));
-            frame.pack();
+            frame.setSize(800, 600);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setVisible(true);
 
         } catch (Exception e) {
@@ -175,7 +195,10 @@ public class AnimalExplorerController implements Initializable {
         this.userType = userType;
         updateButtonVisibility();
         animalTable.setItems(loadAnimalsByUserType());
+    }
 
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
     }
 
     private void updateButtonVisibility() {
@@ -216,4 +239,5 @@ public class AnimalExplorerController implements Initializable {
     private void editAnimal() {
         System.out.println("Edit Animal button clicked");
     }
+
 }
