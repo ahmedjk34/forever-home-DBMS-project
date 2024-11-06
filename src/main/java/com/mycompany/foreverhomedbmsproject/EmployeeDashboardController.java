@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 public class EmployeeDashboardController {
 
     Staff staff;
+    
+    @FXML
     AnchorPane contentPane;
 
     public Staff getStaff() {
@@ -34,7 +36,6 @@ public class EmployeeDashboardController {
 //            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-
     @FXML
     private void handleMainInfoAction() {
         System.out.println("Main Info button clicked");
@@ -51,42 +52,73 @@ public class EmployeeDashboardController {
     // Handles the Animals button click
     @FXML
     private void handleAnimalsAction() {
-        System.out.println("Animals button clicked");
-        // Add your handling code here (e.g., show animal details)
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalExplorer.fxml"));
+            AnchorPane animalPane = loader.load();
+            AnimalExplorerController controller = loader.getController();
+            controller.setUserType("Staff");
+            controller.setSSN(staff.getSsn());
+            contentPane.getChildren().setAll(animalPane);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Handles the Events button click
     @FXML
     private void handleEventsAction() {
-        System.out.println("Events button clicked");
-        // Add your handling code here (e.g., show events)
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EventsExplorer.fxml"));
+            AnchorPane eventsPanel = loader.load();
+            EventsExplorerController controller = loader.getController();
+            controller.setUserType("Staff");
+            contentPane.getChildren().setAll(eventsPanel);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Handles the Feedback button click
     @FXML
     private void handleFeedbackAction() {
-        System.out.println("Feedback button clicked");
-        // Add your handling code here (e.g., show feedback form)
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FeedbackExplorer.fxml"));
+            AnchorPane feedbackPane = loader.load();
+            FeedbackExplorerController controller = loader.getController();
+            contentPane.getChildren().setAll(feedbackPane);
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Handles the Medical Records button click
     @FXML
     private void handleMedicalRecordsAction() {
         System.out.println("Medical Records button clicked");
-        // Add your handling code here (e.g., show medical records)
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MedicalRecordsExplorer.fxml"));
+            AnchorPane medicalRecordsPane = loader.load();
+            MedicalRecordsExplorerController controller = loader.getController();
+            controller.setSSN(staff.getSsn());
+            controller.setUserType("Staff");
+            contentPane.getChildren().setAll(medicalRecordsPane);
+
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Handles the Employees button click
     @FXML
     private void handleEmployeesAction() {
-        System.out.println("Employees button clicked");
-        // Add your handling code here (e.g., show employees list)
-    }
 
+    }
     // Handles the Log Out button click
+
     @FXML
     private void handleLogoutAction() {
         System.out.println("Log Out button clicked");
         // Add your handling code here (e.g., log out the user)
     }
+
 }
