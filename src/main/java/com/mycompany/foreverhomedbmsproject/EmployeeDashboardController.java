@@ -106,7 +106,6 @@ public class EmployeeDashboardController implements Initializable {
     // Handles the Medical Records button click
     @FXML
     private void handleMedicalRecordsAction() {
-        System.out.println("Medical Records button clicked");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MedicalRecordsExplorer.fxml"));
             AnchorPane medicalRecordsPane = loader.load();
@@ -123,10 +122,18 @@ public class EmployeeDashboardController implements Initializable {
     // Handles the Employees button click
     @FXML
     private void handleEmployeesAction() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("StaffExplorer.fxml"));
+            AnchorPane staffRecordsPane = loader.load();
+            StaffExplorerController controller = loader.getController();
+            contentPane.getChildren().setAll(staffRecordsPane);
 
+        } catch (IOException ex) {
+            Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    // Handles the Log Out button click
 
+    // Handles the Log Out button click
     @FXML
     private void handleLogoutAction() {
         System.out.println("Log Out button clicked");
