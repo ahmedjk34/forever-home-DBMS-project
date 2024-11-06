@@ -154,5 +154,6 @@ public class FeedbackExplorerController implements Initializable {
 
     public void setAdopterSSN(String adopterSSN) {
         this.adopterSSN = adopterSSN;
+        addFeedback.setVisible(true);
     }
 }
