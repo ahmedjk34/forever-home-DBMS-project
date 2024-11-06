@@ -22,7 +22,7 @@
                   <AnchorPane maxWidth="506.0" prefHeight="262.0" prefWidth="348.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="animalImage" fitHeight="128.0" fitWidth="128.0" layoutX="74.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="rejectButton" layoutX="88.0" layoutY="204.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Reject">
+                        <Button fx:id="rejectButton" layoutX="88.0" layoutY="204.0" mnemonicParsing="false" onAction="#rejectApplication" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Reject">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -31,7 +31,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="acceptButton" layoutX="87.0" layoutY="148.0" mnemonicParsing="false" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Accept">
+                        <Button fx:id="acceptButton" layoutX="87.0" layoutY="148.0" mnemonicParsing="false" onAction="#acceptApplication" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Accept">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

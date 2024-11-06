@@ -55,7 +55,7 @@ public class ApplicationItemController implements Initializable {
     private Button withdrawButton;
     @FXML
     private Button rejectButton;
-    
+
     private ApplicationsExplorerController parentController;
 
     private String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
@@ -143,12 +143,74 @@ public class ApplicationItemController implements Initializable {
 
     @FXML
     private void acceptApplication() {
+        String adopterSSN = adopterSSNLabel.getText();
+        String animalID = animalIDField.getText();
 
+        // Define the SQL query to update the application status to "Approved"
+        String query = "UPDATE Adopts SET application_status = 'Approved' WHERE SSN = ? AND Animal_ID = ?";
+
+        try (
+                Connection conn = DriverManager.getConnection(dbUrl, user, password); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Set the parameters for the prepared statement
+            pstmt.setString(1, adopterSSN);
+            pstmt.setInt(2, Integer.parseInt(animalID));
+
+            // Execute the update
+            int affectedRows = pstmt.executeUpdate();
+
+            // Check if any rows were updated
+            if (affectedRows > 0) {
+                showAlert("Success", "Application accepted successfully.");
+                parentController.refreshApplications();
+            } else {
+                showAlert("Error", "Failed to accept application. Please try again.");
+            }
+
+        } catch (SQLException e) {
+            // Handle SQL exceptions using showAlert
+            e.printStackTrace();
+            showAlert("Error", "Error accepting application: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            // Handle invalid number format for animal ID
+            showAlert("Error", "Invalid Animal ID.");
+        }
     }
 
     @FXML
-    void rejectApplication() {
+    private void rejectApplication() {
+        String adopterSSN = adopterSSNLabel.getText();
+        String animalID = animalIDField.getText();
 
+        // Define the SQL query to update the application status to "Rejected"
+        String query = "UPDATE Adopts SET application_status = 'Rejected' WHERE SSN = ? AND Animal_ID = ?";
+
+        try (
+                Connection conn = DriverManager.getConnection(dbUrl, user, password); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Set the parameters for the prepared statement
+            pstmt.setString(1, adopterSSN);
+            pstmt.setInt(2, Integer.parseInt(animalID));
+
+            // Execute the update
+            int affectedRows = pstmt.executeUpdate();
+
+            // Check if any rows were updated
+            if (affectedRows > 0) {
+                showAlert("Success", "Application rejected successfully.");
+                parentController.refreshApplications();
+            } else {
+                showAlert("Error", "Failed to reject application. Please try again.");
+            }
+
+        } catch (SQLException e) {
+            // Handle SQL exceptions using showAlert
+            e.printStackTrace();
+            showAlert("Error", "Error rejecting application: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            // Handle invalid number format for animal ID
+            showAlert("Error", "Invalid Animal ID.");
+        }
     }
 
     private void showAlert(String title, String message) {
@@ -159,8 +221,8 @@ public class ApplicationItemController implements Initializable {
     public void setUserType(String userType) {
         this.userType = userType;
     }
-    
-    public void setParentController(ApplicationsExplorerController parentController){
+
+    public void setParentController(ApplicationsExplorerController parentController) {
         this.parentController = parentController;
     }
 }
