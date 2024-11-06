@@ -144,6 +144,8 @@ public class AddEmployeePopupController implements Initializable {
             }
 
             showAlert("Success", "Employee added successfully.", AlertType.INFORMATION);
+            ((javafx.stage.Stage) idTextField.getScene().getWindow()).close();
+
 
         } catch (Exception e) {
             showAlert("Error", "Database error: " + e.getMessage(), AlertType.ERROR);
