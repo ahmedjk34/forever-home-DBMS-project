@@ -52,8 +52,8 @@ public class AdopterDashboardController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ApplicationsExplorer.fxml"));
             AnchorPane applicationsPane = loader.load();
             ApplicationsExplorerController controller = loader.getController();
-            controller.setUserType("Adopter");
             controller.setSSN(adopter.getSsn());
+            controller.setUserType("Adopter");
             contentPane.getChildren().setAll(applicationsPane);
         } catch (IOException ex) {
             Logger.getLogger(AdopterDashboardController.class.getName()).log(Level.SEVERE, null, ex);
