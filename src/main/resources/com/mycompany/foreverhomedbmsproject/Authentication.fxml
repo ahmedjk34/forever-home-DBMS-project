@@ -81,7 +81,7 @@
                         </Button>
                      </top>
                      <center>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="294.0" text="Made by Ahmed Gharib &amp; Anas Toma" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="22.0" prefWidth="314.0" text="Made by Ahmed Gharib &amp; Anas Hassan" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>
