@@ -120,7 +120,7 @@ ORDER BY
 	<title>
 		<band height="70" splitType="Stretch">
 			<image>
-				<reportElement x="275" y="0" width="300" height="64" uuid="ea5ad761-92e5-4024-9d51-efba4363bb54"/>
+				<reportElement x="760" y="3" width="300" height="64" uuid="ea5ad761-92e5-4024-9d51-efba4363bb54"/>
 				<imageExpression><![CDATA["leaf_banner_red.png"]]></imageExpression>
 			</image>
 			<staticText>
