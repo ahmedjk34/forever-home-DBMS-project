@@ -7,6 +7,35 @@
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<subDataset name="Piechart" uuid="7cd2cebc-2b97-469d-b27f-5a1ca64143eb">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DatabaseAdapter.jrdax"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT 
+    COALESCE(Application_Status, 'None') AS Application_Status,
+    COUNT(*) AS Status_Count
+FROM 
+    Adopts
+RIGHT JOIN 
+    Animal ON Adopts.Animal_ID = Animal.Animal_ID
+GROUP BY 
+    COALESCE(Application_Status, 'None')]]>
+		</queryString>
+		<field name="application_status" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="application_status"/>
+			<property name="com.jaspersoft.studio.field.label" value="application_status"/>
+		</field>
+		<field name="status_count" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="status_count"/>
+			<property name="com.jaspersoft.studio.field.label" value="status_count"/>
+		</field>
+		<group name="application_status">
+			<groupExpression><![CDATA[$F{application_status}]]></groupExpression>
+		</group>
+		<group name="status_count">
+			<groupExpression><![CDATA[$F{status_count}]]></groupExpression>
+		</group>
+	</subDataset>
 	<queryString language="SQL">
 		<![CDATA[SELECT animal_id,
 	name,
@@ -188,13 +217,42 @@ FROM animal]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
+		<band height="242" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="30093aa1-3dd7-4eea-9cc9-e183637af8f4"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="110" y="30" width="310" height="200" uuid="72701d30-6e96-45a2-9d98-5e758aac00ec"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="Piechart" uuid="03dee2d2-d7d2-441a-97b0-8c800f2fa5f5"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{application_status}]]></keyExpression>
+					<valueExpression><![CDATA[$F{status_count}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement x="207" y="10" width="140" height="16" uuid="3335b44a-f915-408a-a147-85478bd78adb">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Adoption Status Pi chart]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 	<pageFooter>
