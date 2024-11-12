@@ -2,6 +2,7 @@ package com.mycompany.foreverhomedbmsproject;
 
 import com.mycompany.foreverhomedbmsproject.Popups.AddAnimalPopupController;
 import com.mycompany.foreverhomedbmsproject.Popups.AnimalPopupController;
+import com.mycompany.foreverhomedbmsproject.Popups.EditAnimalPopupController;
 import com.mycompany.foreverhomedbmsproject.Server.Animal;
 import java.io.File;
 import java.io.FileInputStream;
@@ -240,7 +241,7 @@ public class AnimalExplorerController implements Initializable {
 
             // Create a new stage for the popup
             Stage popupStage = new Stage();
-            popupStage.setTitle("Add New Feedback");
+            popupStage.setTitle("Add New Aniaml");
 
             // Set the scene with the loaded FXML
             Scene scene = new Scene(popup);
@@ -306,7 +307,46 @@ public class AnimalExplorerController implements Initializable {
 
     @FXML
     private void editAnimal() {
-        System.out.println("Edit Animal button clicked");
+        // Get the selected animal from the table
+        Animal selectedAnimal = animalTable.getSelectionModel().getSelectedItem();
+
+        if (selectedAnimal == null) {
+            // Show error message if no animal is selected
+            JOptionPane.showMessageDialog(null, "No animal selected. Please select an animal to edit.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Load the FXML for the popup
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Popups/EditAnimalPopup.fxml"));
+            AnchorPane popup = loader.load();
+
+            // Get the controller of the popup
+            EditAnimalPopupController controller = loader.getController();
+
+            // Pass the selected animal to the controller
+            controller.setAnimal(selectedAnimal);
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Edit Animal");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(popup);
+            popupStage.setScene(scene);
+
+            // Optional: Set the modality to block input to other windows
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup and wait for it to close
+            popupStage.showAndWait();
+
+            // After the popup closes, refresh the table data (if needed)
+            animalTable.setItems(loadAnimalsByUserType());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
