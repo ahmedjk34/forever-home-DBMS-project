@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.EmployeeDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.EmployeeDashboardController">
    <children>
-      <BorderPane layoutX="-2.0" layoutY="-2.0" prefHeight="652.0" prefWidth="830.0" style="-fx-background-color: #72946a;">
+      <BorderPane layoutX="-2.0" layoutY="-2.0" prefHeight="652.0" prefWidth="916.0" style="-fx-background-color: #72946a;">
          <left>
             <AnchorPane fx:id="contentPane" prefHeight="652.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <AnchorPane fx:id="itemsAnchor" maxHeight="627.0" maxWidth="366.0" prefHeight="627.0" prefWidth="230.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="itemsAnchor" maxHeight="627.0" maxWidth="366.0" prefHeight="627.0" prefWidth="237.0" styleClass="side-bar" stylesheets="@../../../styles/fxml.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleMainInfoAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Main Info">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleMainInfoAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Main Info">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -25,7 +25,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleApplicationsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="162.0" mnemonicParsing="false" onAction="#handleApplicationsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Applications">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,7 +34,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleAnimalsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleAnimalsAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Animals">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleEventsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Events">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleEventsAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Events">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +52,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleFeedbackAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleFeedbackAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Feedback">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -61,7 +61,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="428.0" mnemonicParsing="false" onAction="#handleMedicalRecordsAction" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="427.0" mnemonicParsing="false" onAction="#handleMedicalRecordsAction" prefHeight="42.0" prefWidth="182.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Medical Records">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +70,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleEmployeesAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Employees">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleEmployeesAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Employees">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -79,7 +79,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="554.0" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Log out">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="42.0" prefWidth="178.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Log out">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -88,7 +88,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" layoutX="20.0" layoutY="490.0" mnemonicParsing="false" onAction="#handleAdopterAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Adopters">
+                  <Button alignment="CENTER" layoutX="26.0" layoutY="489.0" mnemonicParsing="false" onAction="#handleAdopterAction" prefHeight="42.0" prefWidth="180.0" styleClass="main-button-style" stylesheets="@../../../styles/fxml.css" text="Adopters">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
