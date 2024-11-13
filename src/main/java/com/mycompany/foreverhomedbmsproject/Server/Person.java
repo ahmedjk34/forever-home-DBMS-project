@@ -49,7 +49,7 @@ public class Person {
     }
 
     public void setGender(String gender) {
-        this.ssn = gender;
+        this.gender = gender;
     }
 
     public String getPassword() {
