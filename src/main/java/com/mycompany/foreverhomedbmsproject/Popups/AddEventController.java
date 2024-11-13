@@ -18,9 +18,6 @@ import java.util.ResourceBundle;
 public class AddEventController implements Initializable {
 
     @FXML
-    private TextField eventIdField;
-
-    @FXML
     private TextField eventNameField;
 
     @FXML
@@ -46,7 +43,6 @@ public class AddEventController implements Initializable {
     @FXML
     private void handleAddButtonClick() {
         // Retrieve values from text fields
-        String eventId = eventIdField.getText();
         String eventName = eventNameField.getText();
         String eventTimeStr = eventTimeField.getText();
         String eventDateStr = eventDateField.getText();
@@ -106,7 +102,7 @@ public class AddEventController implements Initializable {
             statement.executeUpdate();
 
             // Close the window after successful insertion
-            ((javafx.stage.Stage) eventIdField.getScene().getWindow()).close();
+            ((javafx.stage.Stage) eventNameField.getScene().getWindow()).close();
 
         } catch (SQLException e) {
             e.printStackTrace();
