@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -157,7 +158,7 @@ public class FeedbackExplorerController implements Initializable {
     public void setAdopterSSN(String adopterSSN) {
         this.adopterSSN = adopterSSN;
         addFeedback.setVisible(true);
-
+        scrollPane.setPrefHeight(536); // Reset height to computed size
     }
 
 }
