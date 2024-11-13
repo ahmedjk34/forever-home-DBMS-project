@@ -76,10 +76,10 @@
             </BorderPane>
             <BorderPane layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="240.0">
                <left>
-                  <Label prefHeight="23.0" prefWidth="50.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Size:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="55.0" styleClass="main-text-style" stylesheets="@../../../../styles/fxml.css" text="Size:" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <TextField fx:id="sizeTextField" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                  <ComboBox fx:id="sizeComboBox" minWidth="182.0" prefHeight="29.0" prefWidth="182.0" promptText="Size" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" visibleRowCount="2" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane layoutX="262.0" layoutY="109.0" prefHeight="25.0" prefWidth="240.0">

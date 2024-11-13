@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -41,7 +40,7 @@ public class EditAnimalPopupController implements Initializable {
     @FXML
     private TextField dobTextField;
     @FXML
-    private TextField sizeTextField;
+    private ComboBox<String> sizeComboBox;  // Replaced TextField with ComboBox for Size
     @FXML
     private TextField ageTextField;
     @FXML
@@ -62,6 +61,9 @@ public class EditAnimalPopupController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // Initialize gender options (this can be changed based on your needs)
         genderComboBox.getItems().addAll("Male", "Female");
+
+        // Initialize size options
+        sizeComboBox.getItems().addAll("Small", "Medium", "Large");
 
         // Call populateFields to initialize fields if an animal is set
         if (animal != null) {
@@ -85,9 +87,10 @@ public class EditAnimalPopupController implements Initializable {
         genderComboBox.setValue(animal.getGender());
         breedTextField.setText(animal.getBreed());
         dobTextField.setText(animal.getDob()); // Or you can format it
-        sizeTextField.setText(animal.getSize());
+        sizeComboBox.setValue(animal.getSize()); // Set the ComboBox value based on size
         ageTextField.setText(animal.getAge());
         colorTextField.setText(animal.getColors());
+        animalImagePath = animal.getAnimalImage();
     }
 
     // Method to handle the "Edit" button click
@@ -100,12 +103,12 @@ public class EditAnimalPopupController implements Initializable {
         String gender = genderComboBox.getValue();
         String breed = breedTextField.getText();
         String dob = dobTextField.getText();
-        String size = sizeTextField.getText();
+        String size = sizeComboBox.getValue();
         String age = ageTextField.getText();
         String color = colorTextField.getText();
 
         // Validation
-        if (name.isEmpty() || breed.isEmpty() || gender == null || dob.isEmpty() || size.isEmpty() || color.isEmpty()) {
+        if (name.isEmpty() || breed.isEmpty() || gender == null || dob.isEmpty() || size == null || color.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -114,14 +117,13 @@ public class EditAnimalPopupController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate parsedDate = null;
         try {
-            parsedDate = LocalDate.parse(dob, formatter); // Parse the date string into LocalDate
+            parsedDate = LocalDate.parse(dob, formatter);
         } catch (DateTimeParseException e) {
             JOptionPane.showMessageDialog(null, "Invalid date format! Please use YYYY-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Convert LocalDate to java.sql.Date
-        java.sql.Date sqlDate = java.sql.Date.valueOf(parsedDate); // Efficient conversion
+        java.sql.Date sqlDate = java.sql.Date.valueOf(parsedDate);
 
         // SQL query to update an existing animal
         String updateAnimalQuery = "UPDATE Animal SET Name = ?, Date_of_Birth = ?, Behavior_Description = ?, Size = ?, Breed = ?, Gender = ?, Animal_Image = ? WHERE Animal_ID = ?";
@@ -129,52 +131,59 @@ public class EditAnimalPopupController implements Initializable {
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD); PreparedStatement pstAnimal = conn.prepareStatement(updateAnimalQuery)) {
 
             // Set values for the animal prepared statement
-            pstAnimal.setString(1, name); // Name
-            pstAnimal.setDate(2, sqlDate); // Date_of_Birth (java.sql.Date)
-            pstAnimal.setString(3, behavior); // Behavior_Description
-            pstAnimal.setString(4, size); // Size
-            pstAnimal.setString(5, breed); // Breed
-            pstAnimal.setString(6, gender); // Gender
-            pstAnimal.setString(7, animalImagePath); // Animal_Image (file path)
-            pstAnimal.setInt(8, Integer.parseInt(animalID)); // Animal_ID (integer)
+            pstAnimal.setString(1, name);
+            pstAnimal.setDate(2, sqlDate);
+            pstAnimal.setString(3, behavior);
+            pstAnimal.setString(4, size);
+            pstAnimal.setString(5, breed);
+            pstAnimal.setString(6, gender);
+            pstAnimal.setString(7, animalImagePath); // New image path if selected
+            pstAnimal.setInt(8, Integer.parseInt(animalID));
 
-            // Execute the update query for Animal
             int rowsAffected = pstAnimal.executeUpdate();
             if (rowsAffected > 0) {
                 // Success: Update colors in Animal_Color
-                String[] colorArray = color.split(","); // Split the colors by comma
+                String[] colorArray = color.split(",");
                 String deleteColorQuery = "DELETE FROM Animal_Color WHERE Animal_ID = ?";
                 try (PreparedStatement pstDeleteColor = conn.prepareStatement(deleteColorQuery)) {
-                    pstDeleteColor.setInt(1, Integer.parseInt(animalID)); // Animal_ID
-                    pstDeleteColor.executeUpdate(); // Delete previous color records
+                    pstDeleteColor.setInt(1, Integer.parseInt(animalID));
+                    pstDeleteColor.executeUpdate();
                 }
 
-                // Insert new colors
                 String colorQuery = "INSERT INTO Animal_Color (Animal_ID, Color) VALUES (?, ?)";
                 try (PreparedStatement pstColor = conn.prepareStatement(colorQuery)) {
                     for (String c : colorArray) {
-                        pstColor.setInt(1, Integer.parseInt(animalID)); // Animal_ID
-                        pstColor.setString(2, c.trim()); // Color
-                        pstColor.addBatch(); // Add the insert to batch
+                        pstColor.setInt(1, Integer.parseInt(animalID));
+                        pstColor.setString(2, c.trim());
+                        pstColor.addBatch();
+                    }
+                    pstColor.executeBatch();
+                    JOptionPane.showMessageDialog(null, "Animal updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Update the animal instance
+                    animal.setName(name);
+                    animal.setBehaviorDescription(behavior);
+                    animal.setGender(gender);
+                    animal.setBreed(breed);
+                    animal.setDob(dob);
+                    animal.setSize(size);
+                    animal.setAge(age);
+                    animal.setColors(color);
+                    if (animalImagePath != null) {
+                        animal.setAnimalImage(animalImagePath);
                     }
 
-                    // Execute batch insert for all colors
-                    int[] batchResult = pstColor.executeBatch();
-                    JOptionPane.showMessageDialog(null, "Animal updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                     ((javafx.stage.Stage) idTextField.getScene().getWindow()).close();
-
                 } catch (Exception e) {
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Error adding colors: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                // Failure: Animal update failed
                 JOptionPane.showMessageDialog(null, "Failed to update animal.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            // Show error message if an exception occurs
             JOptionPane.showMessageDialog(null, "Error updating animal: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -189,24 +198,17 @@ public class EditAnimalPopupController implements Initializable {
         // Show the open file dialog and get the selected file
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-            // Get the absolute path of the selected image
             String absolutePath = selectedFile.getAbsolutePath();
 
-            // Define the base directory to compare and strip the correct part of the path
             String baseDirectory = "C:/Users/lenovo/Documents/NetBeansProjects/foreverHomeDBMSProject/src/main/resources/assets/animal_images";
             File baseDir = new File(baseDirectory);
 
-            // Get the relative path based on the base directory
             String relativePath = absolutePath.replace(baseDir.getAbsolutePath() + File.separator, "/assets/animal_images/");
 
-            // Normalize the path (to avoid backslashes on Windows)
             relativePath = relativePath.replace("\\", "/");
 
-            // Save the relative path for the image
             animalImagePath = relativePath;
 
-            // Optionally, you could display the image path in the UI
-            System.out.println("Selected image path: " + animalImagePath);
         }
     }
 }
