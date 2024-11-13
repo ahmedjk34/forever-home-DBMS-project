@@ -38,13 +38,13 @@ public class ApplicationsExplorerController implements Initializable {
 
     @FXML
     private Button addApplicationButton;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         applicationList = new ArrayList<>();
         getApplications();
     }
 
-     
     private void getApplications() {
         String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
@@ -213,11 +213,14 @@ public class ApplicationsExplorerController implements Initializable {
     public void setUserType(String userType) {
         this.userType = userType;
         getApplications();
-        if (userType.equals("Staff")) addApplicationButton.setVisible(false);
+        if (userType.equals("Staff")) {
+            addApplicationButton.setVisible(false);
+        }
     }
 
     public void setSSN(String SSN) {
         this.SSN = SSN;
+
     }
 
 }
