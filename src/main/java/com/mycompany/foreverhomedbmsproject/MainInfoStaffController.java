@@ -94,6 +94,7 @@ public class MainInfoStaffController implements Initializable {
             editInfoButton.setText("Save Information");
         } else {
             try {
+                // Gather input data
                 String ssn = ssnTextField.getText();
                 String fullName = fullNameTextField.getText();
                 String[] nameParts = fullName.split(" ", 2);
@@ -103,7 +104,6 @@ public class MainInfoStaffController implements Initializable {
                 }
                 String firstName = nameParts[0];
                 String lastName = nameParts[1];
-
                 String address = addressTextField.getText();
                 String socialStatus = socialStatusComboBox.getValue();
                 String email = emailTextField.getText();
@@ -113,16 +113,34 @@ public class MainInfoStaffController implements Initializable {
                 String hireDate = hireDateTextField.getText();
                 String expertise = expertiseTextField.getText();
                 String role = roleTextField.getText();
-                double salary = Double.parseDouble(salaryTextField.getText().replaceAll("[$,]", ""));
 
-                if (!validateDate(dob)) {
+                // Validate salary input
+                double salary;
+                try {
+                    salary = Double.parseDouble(salaryTextField.getText().replaceAll("[$,]", ""));
+                    if (salary < 0) {
+                        showAlert("Invalid Input", "Salary must be a positive number.");
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    showAlert("Invalid Input", "Please enter a valid number for salary.");
                     return;
                 }
 
-                if (!validateInput(socialStatus, gender, salary)) {
+                // Check if all required fields are filled
+                if (ssn.isEmpty() || fullName.isEmpty() || address.isEmpty() || socialStatus == null || email.isEmpty()
+                        || phoneNumber.isEmpty() || dob.isEmpty() || gender == null || hireDate.isEmpty()
+                        || expertise.isEmpty() || role.isEmpty()) {
+                    showAlert("Invalid Input", "All fields must be filled.");
                     return;
                 }
 
+                // Validate Date of Birth and minimum age requirement
+                if (!validateDate(dob) || !validateMinimumAge(dob, 18)) {
+                    return;
+                }
+
+                // Proceed with database update
                 String url = "jdbc:postgresql://localhost:5432/postgres";
                 String dbUser = "postgres";
                 String dbPassword = "ahm@212005";
@@ -155,12 +173,11 @@ public class MainInfoStaffController implements Initializable {
                     }
 
                     LocalDate dateOfBirth = LocalDate.parse(dob);
-                    LocalDate currentDate = LocalDate.now();
-                    int age = Period.between(dateOfBirth, currentDate).getYears();
+                    int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
                     ageTextField.setText(String.valueOf(age));
                     showAlert("Success", "Information updated successfully.");
                     if (staff != null) {
-                        staff.setSsn(ssn); // Assuming SSN might be editable, otherwise you can skip this
+                        staff.setSsn(ssn);
                         staff.setFName(firstName);
                         staff.setLName(lastName);
                         staff.setAddress(address);
@@ -184,8 +201,6 @@ public class MainInfoStaffController implements Initializable {
                     toggleFieldsEditable(false);
                     editInfoButton.setText("Edit Information");
                 }
-            } catch (NumberFormatException e) {
-                showAlert("Invalid Input", "Please enter a valid number for salary.");
             } catch (SQLException e) {
                 showAlert("Database Error", "Failed to save information: " + e.getMessage());
             }
@@ -196,8 +211,7 @@ public class MainInfoStaffController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
         try {
             LocalDate parsedDate = LocalDate.parse(date, formatter);
-            String formattedDate = parsedDate.format(formatter);
-            if (!formattedDate.equals(date)) {
+            if (!parsedDate.format(formatter).equals(date)) {
                 showAlert("Invalid Input", "Date must represent a valid calendar date.");
                 return false;
             }
@@ -206,6 +220,17 @@ public class MainInfoStaffController implements Initializable {
             showAlert("Invalid Input", "Date must be in format YYYY-MM-DD and represent a valid date.");
             return false;
         }
+    }
+
+    private boolean validateMinimumAge(String dob, int minAge) {
+        LocalDate birthDate = LocalDate.parse(dob);
+        LocalDate today = LocalDate.now();
+        int age = Period.between(birthDate, today).getYears();
+        if (age < minAge) {
+            showAlert("Invalid Input", "Age must be at least " + minAge + " years.");
+            return false;
+        }
+        return true;
     }
 
     private boolean validateInput(String socialStatus, String gender, double salary) {
@@ -246,8 +271,6 @@ public class MainInfoStaffController implements Initializable {
         expertiseTextField.setDisable(!enable);
         expertiseTextField.setEditable(enable);
 
-        roleTextField.setDisable(!enable);
-        roleTextField.setEditable(enable);
 
         salaryTextField.setDisable(!enable);
         salaryTextField.setEditable(enable);
