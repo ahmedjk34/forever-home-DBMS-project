@@ -89,15 +89,15 @@
                   <Label layoutX="14.0" layoutY="56.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Adopter Name:" />
                   <Label fx:id="adopterNameLabel" layoutX="157.0" layoutY="60.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NAME" />
                   <Label layoutX="14.0" layoutY="79.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="AdopterSSN:" />
-                  <Label fx:id="adopterSSNLabel" layoutX="163.0" layoutY="83.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN" />
+                  <Label fx:id="adopterSSNLabel" layoutX="137.0" layoutY="83.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="SSN" />
                   <Label layoutX="16.0" layoutY="102.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Occupation:" />
-                  <Label fx:id="adopterOccupationLabel" layoutX="152.0" layoutY="106.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="OCCUPATION" />
+                  <Label fx:id="adopterOccupationLabel" layoutX="135.0" layoutY="106.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="OCCUPATION" />
                   <Label layoutX="15.0" layoutY="125.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Kids" />
-                  <Label fx:id="adopterNumOfKidsLabel" layoutX="160.0" layoutY="129.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NUM__KIDS" />
+                  <Label fx:id="adopterNumOfKidsLabel" layoutX="149.0" layoutY="129.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NUM__KIDS" />
                   <Label layoutX="15.0" layoutY="157.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Number of Pets: " />
-                  <Label fx:id="adopterNumOfPetsLabel" layoutX="164.0" layoutY="161.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NUM_PETS" />
+                  <Label fx:id="adopterNumOfPetsLabel" layoutX="163.0" layoutY="161.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="NUM_PETS" />
                   <Label layoutX="15.0" layoutY="190.0" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Yearly Income:" />
-                  <Label fx:id="adopterYearlyIncomeLabel" layoutX="168.0" layoutY="194.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="INCOME" />
+                  <Label fx:id="adopterYearlyIncomeLabel" layoutX="157.0" layoutY="194.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="INCOME" />
                   <Label layoutX="19.0" layoutY="14.0" styleClass="main-title-style" stylesheets="@../../../styles/fxml.css" text="Adopter Information">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -131,26 +131,16 @@
                         <Font name="Berlin Sans FB Demi Bold" size="12.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="14.0" layoutY="120.0" prefHeight="18.0" prefWidth="232.0">
+                  <AnchorPane layoutX="17.0" layoutY="70.0" prefHeight="18.0" prefWidth="232.0">
                      <children>
                         <Label styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Application Date:" />
                         <Label fx:id="applicationDateLabel" layoutX="162.0" layoutY="7.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="DATE" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="14.0" layoutY="179.0" prefHeight="15.0" prefWidth="233.0">
+                  <AnchorPane layoutX="16.0" layoutY="120.0" prefHeight="15.0" prefWidth="233.0">
                      <children>
                         <Label styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Application Status:" />
-                        <Label fx:id="applicationStatusLabel" layoutX="175.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="STATUS">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="14.0" layoutY="56.0" prefHeight="17.0" prefWidth="226.0">
-                     <children>
-                        <Label styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="Application ID:" />
-                        <Label layoutX="131.0" layoutY="7.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="APPLICATION_ID" />
+                        <Label fx:id="applicationStatusLabel" layoutX="173.0" layoutY="4.0" style="-fx-font-size: 12;" styleClass="main-text-style" stylesheets="@../../../styles/fxml.css" text="STATUS" />
                      </children>
                   </AnchorPane>
                </children>
