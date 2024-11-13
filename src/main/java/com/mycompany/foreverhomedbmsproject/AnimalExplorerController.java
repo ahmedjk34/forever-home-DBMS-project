@@ -112,6 +112,8 @@ public class AnimalExplorerController implements Initializable {
 
         String query;
         if ("Adopter".equalsIgnoreCase(userType)) {
+            animalTable.setPrefHeight(550); 
+
             query = "SELECT a.Animal_ID, a.Name, a.Date_of_Birth, "
                     + "DATE_PART('year', AGE(a.Date_of_Birth))::text AS Age, "
                     + "a.Gender, a.Breed, a.Size, "

@@ -47,19 +47,21 @@ public class FeedbackExplorerController implements Initializable {
 
     @FXML
     private VBox vbox;
-    
+
     @FXML
     private Button addFeedback;
 
     private String adopterSSN;
-    
 
     private List<Feedback> feedbackList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshFeedbacks();
-        if (adopterSSN == null) addFeedback.setVisible(false);
+        if (adopterSSN == null) {
+            addFeedback.setVisible(false);
+            scrollPane.setPrefHeight(575); // Set the scroll pane height to 600 pixels
+        }
     }
 
     private void getFeedbacks() {
@@ -155,7 +157,7 @@ public class FeedbackExplorerController implements Initializable {
     public void setAdopterSSN(String adopterSSN) {
         this.adopterSSN = adopterSSN;
         addFeedback.setVisible(true);
+
     }
-    
-    
+
 }
