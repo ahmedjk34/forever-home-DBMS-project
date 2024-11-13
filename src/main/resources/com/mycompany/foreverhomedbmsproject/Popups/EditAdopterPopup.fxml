@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="main-popup-style" stylesheets="@../../../../styles/fxml.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.Popups.EditAdopterPopupController">
+<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="693.0" styleClass="main-popup-style" stylesheets="@../../../../styles/fxml.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.Popups.EditAdopterPopupController">
    <children>
-      <AnchorPane fx:id="inAnchor" layoutX="60.0" layoutY="80.0" prefHeight="327.0" prefWidth="565.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="inAnchor" layoutX="60.0" layoutY="80.0" prefHeight="327.0" prefWidth="573.0" style="-fx-border-color: white;">
          <children>
             <BorderPane layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0">
                <left>
@@ -30,9 +30,9 @@
                   <TextField fx:id="fnameTextField" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="28.0" prefHeight="29.0" prefWidth="267.0">
                <left>
-                  <Label prefHeight="23.0" prefWidth="64.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Email:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="58.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Email:" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <TextField fx:id="emailTextField" prefHeight="31.0" prefWidth="138.0" styleClass="main-input-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" BorderPane.alignment="CENTER" />
@@ -54,7 +54,7 @@
                   <Label prefHeight="23.0" prefWidth="104.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Last Name:" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="117.0" prefHeight="31.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="117.0" prefHeight="31.0" prefWidth="267.0">
                <left>
                   <Label prefHeight="23.0" prefWidth="117.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Occupation:" BorderPane.alignment="CENTER" />
                </left>
@@ -62,7 +62,7 @@
                   <TextField fx:id="OccupationTextField" prefHeight="31.0" prefWidth="128.0" styleClass="main-input-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="160.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="160.0" prefHeight="29.0" prefWidth="267.0">
                <center>
                   <TextField fx:id="NoPetsTextField" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
@@ -86,15 +86,15 @@
                   <Label prefHeight="23.0" prefWidth="78.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Address:" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
-            <BorderPane layoutX="13.0" layoutY="244.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="13.0" layoutY="244.0" prefHeight="29.0" prefWidth="252.0">
                <left>
-                  <Label prefHeight="23.0" prefWidth="115.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Social Status:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="120.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Social Status:" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <ComboBox fx:id="socialStatusComboBox" maxWidth="110.0" minWidth="110.0" prefHeight="29.0" prefWidth="109.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="201.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="201.0" prefHeight="29.0" prefWidth="267.0">
                <left>
                   <Label fx:id="NoChildrenTexrfield" prefHeight="23.0" prefWidth="123.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="No. Children:" BorderPane.alignment="CENTER" />
                </left>
@@ -102,7 +102,7 @@
                   <TextField fx:id="NoChildrenTextField" prefHeight="31.0" prefWidth="159.0" styleClass="main-input-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="244.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="244.0" prefHeight="29.0" prefWidth="267.0">
                <left>
                   <Label prefHeight="23.0" prefWidth="139.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Yearly Income:" BorderPane.alignment="CENTER" />
                </left>
@@ -110,17 +110,17 @@
                   <TextField fx:id="YearlyIncomeTextField" prefHeight="31.0" prefWidth="174.0" styleClass="main-input-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="286.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="14.0" layoutY="286.0" prefHeight="29.0" prefWidth="252.0">
                <left>
-                  <Label prefHeight="23.0" prefWidth="115.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Gender:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="74.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Gender:" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <ComboBox fx:id="genderComboBox" prefWidth="150.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="286.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="286.0" prefHeight="25.0" prefWidth="267.0">
                <left>
-                  <Label prefHeight="23.0" prefWidth="107.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Password:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="93.0" styleClass="main-text-style" stylesheets="@../../../../../../../../../../Desktop/foreverHomeDBMSProject/src/main/resources/styles/fxml.css" text="Password:" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <PasswordField fx:id="passwordField" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />

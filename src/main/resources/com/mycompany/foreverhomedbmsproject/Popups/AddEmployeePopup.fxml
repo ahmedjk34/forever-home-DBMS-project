@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="main-popup-style" stylesheets="@../../../../styles/fxml.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.Popups.AddEmployeePopupController">
+<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="670.0" styleClass="main-popup-style" stylesheets="@../../../../styles/fxml.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.foreverhomedbmsproject.Popups.AddEmployeePopupController">
    <children>
       <Label alignment="CENTER" layoutX="50.0" layoutY="22.0" prefHeight="18.0" prefWidth="541.0" styleClass="main-title-style" stylesheets="@../../../../styles/fxml.css" text="Add an Employee">
          <graphic>
@@ -21,15 +21,15 @@
             </ImageView>
          </graphic>
       </Label>
-      <AnchorPane fx:id="inAnchor" layoutX="47.0" layoutY="59.0" prefHeight="348.0" prefWidth="566.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="inAnchor" layoutX="47.0" layoutY="59.0" prefHeight="321.0" prefWidth="579.0" style="-fx-border-color: white;">
          <children>
             <!-- Employee ID Field -->
             <BorderPane layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0">
                <left>
-                  <Label prefHeight="23.0" prefWidth="119.0" styleClass="main-text-style" text="Employee ID:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="97.0" styleClass="main-text-style" text="SSN:" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <TextField fx:id="idTextField" prefHeight="31.0" prefWidth="183.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="idTextField" prefHeight="29.0" prefWidth="151.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <!-- First Name -->
@@ -42,12 +42,12 @@
                </center>
             </BorderPane>
             <!-- Email -->
-            <BorderPane layoutX="289.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="28.0" prefHeight="29.0" prefWidth="267.0">
                <left>
                   <Label prefHeight="23.0" prefWidth="64.0" styleClass="main-text-style" text="Email:" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <TextField fx:id="emailTextField" prefHeight="31.0" prefWidth="138.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="emailTextField" prefHeight="29.0" prefWidth="148.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <!-- Phone Number -->
@@ -56,7 +56,7 @@
                   <TextField fx:id="phoneNumberTextField" prefHeight="31.0" prefWidth="138.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
                </center>
                <left>
-                  <Label prefHeight="23.0" prefWidth="156.0" styleClass="main-text-style" text="Phone Number:" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="139.0" styleClass="main-text-style" text="Phone Number:" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
             <!-- Last Name -->
@@ -69,7 +69,7 @@
                </left>
             </BorderPane>
             <!-- Hire Date -->
-            <BorderPane layoutX="289.0" layoutY="117.0" prefHeight="31.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="117.0" prefHeight="31.0" prefWidth="267.0">
                <left>
                   <Label prefHeight="23.0" prefWidth="95.0" styleClass="main-text-style" text="Hire Date:" BorderPane.alignment="CENTER" />
                </left>
@@ -96,7 +96,7 @@
                </left>
             </BorderPane>
             <!-- Address -->
-            <BorderPane layoutX="289.0" layoutY="160.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="160.0" prefHeight="29.0" prefWidth="267.0">
                <center>
                   <TextField fx:id="addressTextField" prefHeight="25.0" prefWidth="187.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
                </center>
@@ -112,41 +112,41 @@
                   <ComboBox fx:id="genderComboBox" prefWidth="150.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="239.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="286.0" layoutY="239.0" prefHeight="29.0" prefWidth="273.0">
                <left>
                   <Label prefHeight="23.0" prefWidth="115.0" styleClass="main-text-style" text="Social Status:" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <ComboBox fx:id="socialStatusComboBox" prefWidth="150.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                  <ComboBox fx:id="socialStatusComboBox" prefHeight="29.0" prefWidth="143.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane layoutX="289.0" layoutY="201.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="201.0" prefHeight="29.0" prefWidth="267.0">
                <center>
-                  <TextField fx:id="roleTextField" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="roleTextField" prefHeight="29.0" prefWidth="221.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
                </center>
                <left>
-                  <Label prefHeight="23.0" prefWidth="88.0" styleClass="main-text-style" text="Role" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="78.0" styleClass="main-text-style" text="Role:" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
-            <BorderPane layoutX="14.0" layoutY="296.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="14.0" layoutY="278.0" prefHeight="25.0" prefWidth="240.0">
                <center>
                   <TextField fx:id="salaryTextField" prefHeight="25.0" prefWidth="165.0" styleClass="main-input-style" BorderPane.alignment="CENTER" />
                </center>
                <left>
-                  <Label prefHeight="23.0" prefWidth="88.0" styleClass="main-text-style" text="Salary" BorderPane.alignment="CENTER" />
+                  <Label prefHeight="23.0" prefWidth="77.0" styleClass="main-text-style" text="Salary:" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
-            <BorderPane layoutX="283.0" layoutY="296.0" prefHeight="25.0" prefWidth="240.0">
+            <BorderPane layoutX="289.0" layoutY="278.0" prefHeight="29.0" prefWidth="267.0">
                <left>
                   <Label prefHeight="23.0" prefWidth="88.0" styleClass="main-text-style" text="Password:" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <PasswordField fx:id="passwordField" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
+                  <PasswordField fx:id="passwordField" prefHeight="29.0" prefWidth="168.0" styleClass="main-input-style" stylesheets="@../../../../styles/fxml.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </children>
       </AnchorPane>
-      <Button layoutX="279.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleAddButtonClick" prefHeight="33.0" prefWidth="84.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add">
+      <Button layoutX="293.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleAddButtonClick" prefHeight="33.0" prefWidth="84.0" styleClass="main-button-style" stylesheets="@../../../../styles/fxml.css" text="Add">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
