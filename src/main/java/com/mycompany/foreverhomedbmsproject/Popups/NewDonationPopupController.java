@@ -98,8 +98,8 @@ public class NewDonationPopupController implements Initializable {
         double amount;
         try {
             amount = Double.parseDouble(amountField.getText().trim());
-            if (amount < 0) {
-                throw new NumberFormatException("Amount cannot be negative.");
+            if (amount <= 0) {
+                throw new NumberFormatException("Amount cannot be negative or zero.");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Please enter a valid positive amount.", "Input Error", JOptionPane.ERROR_MESSAGE);
