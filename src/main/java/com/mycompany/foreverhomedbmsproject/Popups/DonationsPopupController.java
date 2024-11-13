@@ -48,7 +48,7 @@ public class DonationsPopupController implements Initializable {
         colDonationId.setCellValueFactory(new PropertyValueFactory<>("donationId"));
         colDonerName.setCellValueFactory(new PropertyValueFactory<>("donerName"));
         colDonationType.setCellValueFactory(new PropertyValueFactory<>("donationType"));
-        colDonationType.setCellValueFactory(new PropertyValueFactory<>("dateOfDonation"));
+        colDonationDate.setCellValueFactory(new PropertyValueFactory<>("dateOfDonation"));
         colPurpose.setCellValueFactory(new PropertyValueFactory<>("purpose"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
@@ -94,7 +94,7 @@ public class DonationsPopupController implements Initializable {
             e.printStackTrace();
         }
     }
-  
+
     @FXML
     private void showAddDonationPopup() {
         try {
