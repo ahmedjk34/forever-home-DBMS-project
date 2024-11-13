@@ -108,9 +108,8 @@ public class EventsExplorerController implements Initializable {
         String password = "ahm@212005";
 
         String query = "SELECT Event_ID, Event_Name, Date_of_The_Event, Time_of_The_Event, Location, Funding_Goal FROM Event";
-
         try (Connection conn = DriverManager.getConnection(dbUrl, user, password); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-
+        eventsList.clear();
             while (rs.next()) {
                 Event event = new Event(
                         rs.getInt("Event_ID"),
