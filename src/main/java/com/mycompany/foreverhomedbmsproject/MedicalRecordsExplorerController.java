@@ -120,6 +120,10 @@ public class MedicalRecordsExplorerController implements Initializable {
                     int animalId = rs.getInt("Animal_ID");
                     String clinicName = rs.getString("Clinic_Name");
                     String animalName = rs.getString("name");
+                    if (animalName == null) {
+                        animalName = "Unknown Animal";  // Or any default value you want
+                    }
+
                     String animalGender = rs.getString("gender");
                     String animalAge = rs.getString("Age");
                     String animalImage = rs.getString("animal_image");
