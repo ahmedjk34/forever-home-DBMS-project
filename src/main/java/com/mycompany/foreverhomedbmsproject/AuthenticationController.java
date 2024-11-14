@@ -126,6 +126,11 @@ public class AuthenticationController implements Initializable {
                     String socialStatus = resultSet.getString("Social_status");
                     String retrievedGender = resultSet.getString("Gender");
 
+                    if (!role.equals("Manager")) {
+                        showAlert("Login Error", "Only Manager login is supported for staff currently");
+                        return;
+                    }
+
                     Staff loggedStaff = new Staff(retrievedSSN, retrievedPassword, retrievedGender, fName, lName, address,
                             socialStatus, email, phoneNumber, dateOfBirth, hireDate, expertise, role, salary);
 
@@ -153,5 +158,3 @@ public class AuthenticationController implements Initializable {
     }
 
 }
-
-
